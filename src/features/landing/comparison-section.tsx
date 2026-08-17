@@ -46,6 +46,7 @@ function QuantaraCard() {
             width={419}
             height={313}
             className="h-6 w-auto not-italic"
+            unoptimized
           />
           Quantara
         </p>
@@ -151,6 +152,7 @@ export function ComparisonSection() {
                 width={419}
                 height={313}
                 className="h-6 w-auto not-italic"
+                unoptimized
               />
               Quantara
             </p>

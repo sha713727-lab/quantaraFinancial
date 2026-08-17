@@ -91,6 +91,7 @@ function QuantaraMark({
         width={logoLockup.width}
         height={logoLockup.height}
         className="h-8 w-auto sm:h-9 lg:h-11"
+        unoptimized
         priority={priority}
       />
     </Link>
