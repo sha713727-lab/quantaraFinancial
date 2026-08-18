@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Star } from "lucide-react";
 
 import { testimonials } from "@/features/landing/content";
 
@@ -45,24 +44,12 @@ export function TestimonialsMarqueeSection() {
                   <p className="truncate text-sm font-semibold text-white">
                     {item.name}
                   </p>
-                  <p className="truncate text-xs text-white/50">{item.role}</p>
+                  <p className="truncate text-xs text-white/85">{item.role}</p>
                 </div>
               </header>
 
               <div className="flex flex-1 flex-col gap-3 px-5 py-5 text-left">
-                <div
-                  className="flex items-center gap-1"
-                  aria-label="5 out of 5"
-                >
-                  {Array.from({ length: 5 }).map((_, starIndex) => (
-                    <Star
-                      key={starIndex}
-                      className="fill-brand-cream text-brand-cream size-3.5"
-                      aria-hidden="true"
-                    />
-                  ))}
-                </div>
-                <p className="text-sm leading-6 text-white/80">{item.quote}</p>
+                <p className="text-sm leading-6 text-white/90">{item.quote}</p>
               </div>
             </article>
           ))}

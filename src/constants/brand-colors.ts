@@ -2,7 +2,7 @@ export const brandColors = {
   navy: "#071426",
   cream: "#f7f0df",
   deep: "#020712",
-  muted: "#3d4f66",
+  muted: "#2f4158",
   accent: "#6e91b9",
   label: "#5c3d18",
   creamSoft: "#fff9ec",

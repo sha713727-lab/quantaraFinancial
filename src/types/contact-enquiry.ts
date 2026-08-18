@@ -1,11 +1,19 @@
 export type ContactFieldName =
-  "firstName" | "lastName" | "email" | "phone" | "message";
+  | "firstName"
+  | "lastName"
+  | "email"
+  | "phone"
+  | "company"
+  | "service"
+  | "message";
 
 export type ContactFieldErrors = {
   readonly firstName?: string;
   readonly lastName?: string;
   readonly email?: string;
   readonly phone?: string;
+  readonly company?: string;
+  readonly service?: string;
   readonly message?: string;
 };
 

@@ -5,7 +5,19 @@ export const contactFieldNames = [
   "lastName",
   "email",
   "phone",
+  "company",
+  "service",
   "message",
+] as const;
+
+export const contactServiceValues = [
+  "",
+  "audit-assurance",
+  "taxation",
+  "erp-solutions",
+  "corporate-advisory",
+  "accounting-outsourcing",
+  "risk-advisory",
 ] as const;
 
 export const contactEnquirySchema = z
@@ -19,6 +31,8 @@ export const contactEnquirySchema = z
       .min(8)
       .max(24)
       .regex(/^[+0-9() .\-]+$/),
+    company: z.string().trim().max(120),
+    service: z.enum(contactServiceValues),
     message: z.string().trim().min(10).max(4000),
   })
   .strict();

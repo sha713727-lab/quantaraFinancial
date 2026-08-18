@@ -1,4 +1,5 @@
 import { contactEmail } from "@/constants/contact-email";
+import { services } from "@/features/landing/content";
 import { smtpPassword } from "@/lib/env";
 import { log } from "@/lib/logger";
 import { sendTitanEmail } from "@/lib/send-titan-email";
@@ -29,6 +30,13 @@ export async function createEnquiry(
       `Last name: ${input.lastName}`,
       `Email: ${input.email}`,
       `Phone: ${input.phone}`,
+      `Organisation: ${input.company === "" ? "Not provided" : input.company}`,
+      `Practice area: ${
+        input.service === ""
+          ? "Not specified"
+          : (services.find((service) => service.slug === input.service)
+              ?.title ?? input.service)
+      }`,
       "",
       "Message:",
       input.message,

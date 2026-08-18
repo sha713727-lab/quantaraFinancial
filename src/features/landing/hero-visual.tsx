@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import type { ReactNode } from "react";
 
@@ -48,7 +46,7 @@ function ServiceFloatCard({
       className={`${floatCardClassName} ${className}`}
     >
       <div className="flex items-center justify-between">
-        <p className="text-brand-cream/65 text-[0.65rem] font-medium tracking-[0.12em] uppercase">
+        <p className="text-brand-cream/85 text-[0.65rem] font-medium tracking-[0.12em] uppercase">
           {label}
         </p>
         <span className="bg-brand-cream/10 grid size-7 place-items-center rounded-full">
@@ -59,7 +57,7 @@ function ServiceFloatCard({
         {heading}
       </p>
       {detail !== undefined ? (
-        <p className="text-brand-cream/65 mt-2 line-clamp-2 text-xs leading-5">
+        <p className="text-brand-cream/85 mt-2 line-clamp-2 text-xs leading-5">
           {detail}
         </p>
       ) : null}
@@ -82,11 +80,11 @@ export function FinancialVisual() {
         className={`${floatCardClassName} absolute inset-x-6 top-10 bottom-16 z-10 rounded-[1.5rem] p-5 sm:inset-x-16 sm:top-12 sm:bottom-16 sm:rounded-[1.75rem] sm:p-7`}
       >
         <div className="flex items-center justify-between">
-          <p className="text-brand-cream/65 text-[0.65rem] font-medium tracking-[0.16em] uppercase">
+          <p className="text-brand-cream/85 text-[0.65rem] font-medium tracking-[0.16em] uppercase">
             {advisory.category}
           </p>
           <AdvisoryIcon
-            className="text-brand-cream/75 size-4"
+            className="text-brand-cream size-4"
             aria-hidden="true"
           />
         </div>
@@ -100,7 +98,7 @@ export function FinancialVisual() {
         <p className="text-brand-cream mt-5 text-center text-3xl font-semibold tracking-tight sm:mt-6 sm:text-4xl">
           Advisory
         </p>
-        <p className="text-brand-cream/65 mx-auto mt-2 max-w-[16rem] text-center text-xs leading-5">
+        <p className="text-brand-cream/85 mx-auto mt-2 max-w-[16rem] text-center text-xs leading-5">
           {advisory.description}
         </p>
 
@@ -197,7 +195,7 @@ export function FinancialVisual() {
             <p className="text-brand-cream text-sm font-semibold">
               {erp.title}
             </p>
-            <p className="text-brand-cream/65 mt-1.5 text-xs leading-5">
+            <p className="text-brand-cream/85 mt-1.5 text-xs leading-5">
               {erp.description}
             </p>
           </div>

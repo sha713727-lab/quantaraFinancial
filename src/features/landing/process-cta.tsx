@@ -25,8 +25,8 @@ function ProcessCard({
         aria-hidden="true"
         className={
           isAccent
-            ? "text-brand-navy/12 pointer-events-none absolute -top-3 -left-1 text-[clamp(6.5rem,14vw,8.5rem)] leading-none font-bold tracking-[-0.06em] select-none"
-            : "text-brand-cream/14 pointer-events-none absolute -top-3 -left-1 text-[clamp(6.5rem,14vw,8.5rem)] leading-none font-bold tracking-[-0.06em] select-none"
+            ? "text-brand-navy/55 pointer-events-none absolute -top-3 -left-1 text-[clamp(6.5rem,14vw,8.5rem)] leading-none font-bold tracking-[-0.06em] select-none"
+            : "text-brand-cream/40 pointer-events-none absolute -top-3 -left-1 text-[clamp(6.5rem,14vw,8.5rem)] leading-none font-bold tracking-[-0.06em] select-none"
         }
       >
         {step.number}
@@ -40,7 +40,7 @@ function ProcessCard({
           className={
             isAccent
               ? "text-brand-navy/70 mt-4 max-w-[18rem] text-sm leading-7"
-              : "text-brand-cream/70 mt-4 max-w-[18rem] text-sm leading-7"
+              : "text-brand-cream/85 mt-4 max-w-[18rem] text-sm leading-7"
           }
         >
           {step.description}
@@ -148,14 +148,18 @@ export function ProcessSection() {
                 key={step.title}
                 type="button"
                 aria-label={`Go to ${step.title}`}
-                aria-current={activeIndex === index ? "true" : "false"}
+                aria-current={activeIndex === index ? true : undefined}
                 onClick={() => scrollToCard(index)}
-                className={
-                  activeIndex === index
-                    ? "bg-brand-navy h-2 w-6 rounded-full transition-all"
-                    : "bg-brand-navy/25 size-2 rounded-full transition-all"
-                }
-              />
+                className="focus-visible:ring-brand-navy grid size-12 place-items-center rounded-full focus-visible:ring-2 focus-visible:outline-none"
+              >
+                <span
+                  className={
+                    activeIndex === index
+                      ? "bg-brand-navy h-2 w-6 rounded-full"
+                      : "bg-brand-navy/40 size-2 rounded-full"
+                  }
+                />
+              </button>
             ))}
           </div>
         </div>

@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import { sitePaths } from "@/constants/site-paths";
 import { FinancialVisual } from "@/features/landing/hero-visual";
-import { Reveal } from "@/features/landing/motion-primitives";
 
 export function HeroSection() {
   return (
@@ -17,17 +16,20 @@ export function HeroSection() {
       />
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100svh-5rem)] w-full max-w-7xl flex-col items-center justify-start gap-4 px-5 pt-16 pb-10 text-center sm:px-8 sm:pt-20 sm:pb-12 lg:pt-24">
-        <Reveal className="relative z-20 mx-auto w-full max-w-5xl">
+        <div className="relative z-20 mx-auto w-full max-w-5xl">
           <h1 className="text-brand-navy mx-auto max-w-full text-[clamp(0.78rem,calc((100vw-2.75rem)/17.2),2.85rem)] leading-[1.12] font-semibold tracking-[-0.03em] uppercase italic">
-            <span className="block whitespace-nowrap">
+            <span className="block min-[360px]:whitespace-nowrap">
               Your Secure And Trusted
             </span>
-            <span className="block whitespace-nowrap">Financial Partner</span>
+            <span className="block min-[360px]:whitespace-nowrap">
+              Financial Partner
+            </span>
           </h1>
           <p className="text-brand-muted mx-auto mt-5 max-w-2xl px-1 text-sm leading-6 sm:text-base sm:leading-7">
-            Quantara Financial delivers expert financial and accounting
-            solutions designed to elevate your business. Partner with us for
-            strategic growth and lasting financial success.
+            Quantara Financial is a specialized strategic practice of Shahbaz
+            Hannan &amp; Co. Chartered Accountants. We provide audit, taxation,
+            ERP, corporate advisory, accounting outsourcing, and risk advisory
+            for businesses with obligations in the UAE, UK, and USA.
           </p>
           <div className="mt-7 flex w-full flex-col justify-center gap-3 sm:flex-row">
             <Link
@@ -43,7 +45,7 @@ export function HeroSection() {
               Explore Our Services
             </Link>
           </div>
-        </Reveal>
+        </div>
 
         <div className="relative z-0 mt-4 w-full">
           <FinancialVisual />

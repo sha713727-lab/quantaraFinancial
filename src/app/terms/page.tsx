@@ -18,6 +18,11 @@ export const metadata: Metadata = {
     url: "/terms",
     type: "website",
   },
+  twitter: {
+    title: "Terms of Use",
+    description:
+      "Terms that govern use of the Quantara Financial website. Professional work is provided under a separate engagement.",
+  },
 };
 
 export default function TermsPage() {

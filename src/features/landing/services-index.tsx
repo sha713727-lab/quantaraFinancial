@@ -37,7 +37,7 @@ export function ServicesIndex() {
                   />
                 </div>
                 <div className="flex flex-1 flex-col p-6">
-                  <p className="text-brand-accent text-[0.65rem] font-bold tracking-[0.22em] uppercase">
+                  <p className="text-brand-navy text-[0.65rem] font-bold tracking-[0.22em] uppercase">
                     {service.category} — {service.number}
                   </p>
                   <h3 className="text-brand-navy mt-3 text-lg font-semibold tracking-[-0.02em]">

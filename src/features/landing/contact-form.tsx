@@ -2,11 +2,12 @@
 
 import { useActionState, useEffect, useRef } from "react";
 
+import { services } from "@/features/landing/content";
 import { submitContactEnquiry } from "@/features/landing/submit-contact-enquiry";
 import type { ContactActionState } from "@/types/contact-enquiry";
 
 const inputClassName =
-  "mt-2 min-h-12 w-full rounded-xl border border-brand-navy/15 bg-brand-cream-soft px-4 text-sm text-brand-navy outline-none transition-colors placeholder:text-brand-muted/50 focus-visible:ring-2 focus-visible:ring-brand-navy focus-visible:ring-offset-4 focus-visible:ring-offset-brand-cream";
+  "mt-2 min-h-12 w-full rounded-xl border border-brand-navy/15 bg-brand-cream-soft px-4 text-sm text-brand-navy outline-none transition-colors placeholder:text-brand-navy/55 focus-visible:ring-2 focus-visible:ring-brand-navy focus-visible:ring-offset-4 focus-visible:ring-offset-brand-cream";
 
 const labelClassName =
   "block text-[0.65rem] font-bold tracking-[0.18em] text-brand-navy uppercase";
@@ -152,6 +153,63 @@ export function ContactForm() {
           ) : null}
         </p>
 
+        <p>
+          <label htmlFor="contact-company" className={labelClassName}>
+            Organisation
+          </label>
+          <input
+            id="contact-company"
+            name="company"
+            type="text"
+            autoComplete="organization"
+            maxLength={120}
+            aria-invalid={Boolean(fields?.company)}
+            aria-describedby={
+              fields?.company ? "contact-company-error" : undefined
+            }
+            className={inputClassName}
+          />
+          {fields?.company ? (
+            <span
+              id="contact-company-error"
+              className="text-brand-navy mt-2 block text-sm"
+            >
+              {fields.company}
+            </span>
+          ) : null}
+        </p>
+
+        <p>
+          <label htmlFor="contact-service" className={labelClassName}>
+            Practice area
+          </label>
+          <select
+            id="contact-service"
+            name="service"
+            defaultValue=""
+            aria-invalid={Boolean(fields?.service)}
+            aria-describedby={
+              fields?.service ? "contact-service-error" : undefined
+            }
+            className={inputClassName}
+          >
+            <option value="">Tell us in the message</option>
+            {services.map((service) => (
+              <option key={service.slug} value={service.slug}>
+                {service.title}
+              </option>
+            ))}
+          </select>
+          {fields?.service ? (
+            <span
+              id="contact-service-error"
+              className="text-brand-navy mt-2 block text-sm"
+            >
+              {fields.service}
+            </span>
+          ) : null}
+        </p>
+
         <p className="sm:col-span-2">
           <label htmlFor="contact-message" className={labelClassName}>
             Message
@@ -211,14 +269,14 @@ export function ContactForm() {
         >
           Submitted successfully
         </h2>
-        <p className="text-brand-cream/70 mt-4 text-sm leading-7">
+        <p className="text-brand-cream/85 mt-4 text-sm leading-7">
           Your message is with the Quantara team. We will reply to the email you
           entered.
         </p>
         <button
           type="button"
           onClick={() => dialogRef.current?.close()}
-          className="bg-brand-cream text-brand-navy focus-visible:ring-brand-cream focus-visible:ring-offset-brand-navy mt-8 inline-flex min-h-11 items-center justify-center rounded-full px-5 text-[0.68rem] font-bold tracking-[0.18em] uppercase transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+          className="bg-brand-cream text-brand-navy focus-visible:ring-brand-cream focus-visible:ring-offset-brand-navy mt-8 inline-flex min-h-12 items-center justify-center rounded-full px-5 text-[0.68rem] font-bold tracking-[0.18em] uppercase transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
         >
           Close
         </button>

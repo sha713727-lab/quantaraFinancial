@@ -11,13 +11,29 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/services",
   },
+  openGraph: {
+    title: "Services",
+    description:
+      "Audit, taxation, ERP, corporate advisory, accounting outsourcing, and risk advisory from Quantara Financial.",
+    url: "/services",
+    type: "website",
+  },
+  twitter: {
+    title: "Services",
+    description:
+      "Audit, taxation, ERP, corporate advisory, accounting outsourcing, and risk advisory from Quantara Financial.",
+  },
 };
 
 export default function ServicesPage() {
   return (
     <PageShell>
       <ServicesIndex />
-      <InnerPageEndMatter />
+      <InnerPageEndMatter
+        title="Discuss your requirements"
+        description="Choose a practice area, or tell us the decision you need to make. We will take it from there."
+        ctaLabel="Discuss Your Requirements"
+      />
     </PageShell>
   );
 }

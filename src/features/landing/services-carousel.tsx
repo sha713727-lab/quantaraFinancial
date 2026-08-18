@@ -170,14 +170,14 @@ export function ServicesCarouselSection() {
             id="practice-areas-title"
             className="mx-auto max-w-full text-[clamp(0.72rem,calc((100vw-2.75rem)/22),2.65rem)] leading-[1.12] font-semibold tracking-[-0.03em] uppercase italic"
           >
-            <span className="text-brand-cream/55 block whitespace-nowrap">
+            <span className="text-brand-cream/85 block min-[360px]:whitespace-nowrap">
               Accounting &amp; Advisory
             </span>
-            <span className="text-brand-accent block whitespace-nowrap">
+            <span className="text-brand-cream block min-[360px]:whitespace-nowrap">
               For Leadership Teams
             </span>
           </h2>
-          <p className="text-brand-cream/60 mx-auto mt-3 max-w-xl text-sm leading-7">
+          <p className="text-brand-cream/85 mx-auto mt-3 max-w-xl text-sm leading-7">
             From audit and taxation to ERP and outsourcing — scoped to the
             decision you need to make.
           </p>
@@ -192,14 +192,14 @@ export function ServicesCarouselSection() {
               <h3 className="text-2xl leading-[1.15] font-bold tracking-[-0.03em] sm:text-3xl">
                 {active.headline}
               </h3>
-              <p className="text-brand-cream/60 mt-3 text-sm leading-7 italic">
+              <p className="text-brand-cream/85 mt-3 text-sm leading-7 italic">
                 {active.statement}
               </p>
             </div>
 
             <Link
               href={servicePath(active.slug)}
-              className="bg-brand-cream text-brand-navy focus-visible:ring-brand-cream focus-visible:ring-offset-brand-navy mt-6 inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-[0.68rem] font-bold tracking-[0.18em] uppercase transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+              className="bg-brand-cream text-brand-navy focus-visible:ring-brand-cream focus-visible:ring-offset-brand-navy mt-6 inline-flex min-h-12 items-center gap-2 rounded-full px-5 text-[0.68rem] font-bold tracking-[0.18em] uppercase transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
             >
               {active.ctaLabel}
               <span aria-hidden="true">&rarr;</span>
@@ -215,8 +215,8 @@ export function ServicesCarouselSection() {
                   key={service.slug}
                   type="button"
                   onClick={() => goToChapter(index)}
-                  aria-current={index === activeIndex ? "true" : "false"}
-                  className="group py-2 focus-visible:outline-none"
+                  aria-current={index === activeIndex ? true : undefined}
+                  className="focus-visible:ring-brand-cream grid size-12 place-items-center rounded-full focus-visible:ring-2 focus-visible:outline-none"
                 >
                   <span
                     data-active={index === activeIndex}

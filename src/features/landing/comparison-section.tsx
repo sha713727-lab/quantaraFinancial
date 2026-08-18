@@ -10,7 +10,7 @@ function OtherFirmsCard() {
   return (
     <article className="bg-brand-navy h-full overflow-hidden rounded-2xl">
       <header className="border-brand-cream/12 border-b px-5 py-4">
-        <p className="text-brand-cream/55 text-center text-[0.65rem] font-semibold tracking-[0.18em] uppercase italic">
+        <p className="text-brand-cream/80 text-center text-[0.65rem] font-semibold tracking-[0.18em] uppercase italic">
           Other firms
         </p>
       </header>
@@ -21,11 +21,11 @@ function OtherFirmsCard() {
             className="border-brand-cream/8 flex items-start gap-3 border-b px-5 py-3.5 last:border-b-0"
           >
             <CircleAlert
-              className="mt-0.5 size-4 shrink-0 text-white/55"
+              className="mt-0.5 size-4 shrink-0 text-white/80"
               strokeWidth={1.75}
               aria-hidden="true"
             />
-            <span className="text-sm leading-6 text-white/70">
+            <span className="text-sm leading-6 text-white/85">
               {point.other}
             </span>
           </li>
@@ -139,10 +139,10 @@ export function ComparisonSection() {
       <div className="mx-auto w-full max-w-[1080px] px-5 md:px-8">
         <div className="text-center">
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-            <p className="text-brand-navy/40 text-[0.7rem] font-semibold tracking-[0.18em] uppercase italic">
+            <p className="text-brand-muted text-[0.7rem] font-semibold tracking-[0.18em] uppercase italic">
               Other firms
             </p>
-            <span className="text-brand-navy/35 text-xl font-semibold uppercase italic sm:text-2xl">
+            <span className="text-brand-muted text-xl font-semibold uppercase italic sm:text-2xl">
               vs
             </span>
             <p className="text-brand-navy flex items-center gap-2 text-[0.7rem] font-semibold tracking-[0.14em] uppercase italic">
@@ -195,14 +195,18 @@ export function ComparisonSection() {
                 key={card.id}
                 type="button"
                 aria-label={`Show ${card.label}`}
-                aria-current={activeIndex === index ? "true" : "false"}
+                aria-current={activeIndex === index ? true : undefined}
                 onClick={() => scrollToCard(index)}
-                className={
-                  activeIndex === index
-                    ? "bg-brand-navy h-2 w-6 rounded-full transition-all"
-                    : "bg-brand-navy/25 size-2 rounded-full transition-all"
-                }
-              />
+                className="focus-visible:ring-brand-navy grid size-12 place-items-center rounded-full focus-visible:ring-2 focus-visible:outline-none"
+              >
+                <span
+                  className={
+                    activeIndex === index
+                      ? "bg-brand-navy h-2 w-6 rounded-full"
+                      : "bg-brand-navy/40 size-2 rounded-full"
+                  }
+                />
+              </button>
             ))}
           </div>
         </div>

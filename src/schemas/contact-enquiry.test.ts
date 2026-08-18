@@ -9,6 +9,22 @@ test("contactEnquirySchema accepts a complete enquiry", () => {
     lastName: "Hassan",
     email: "amina@example.com",
     phone: "+971 50 123 4567",
+    company: "Example Trading LLC",
+    service: "taxation",
+    message: "Please review our UAE VAT position for the next filing.",
+  });
+
+  assert.equal(parsed.success, true);
+});
+
+test("contactEnquirySchema accepts empty organisation and practice area", () => {
+  const parsed = contactEnquirySchema.safeParse({
+    firstName: "Amina",
+    lastName: "Hassan",
+    email: "amina@example.com",
+    phone: "+971501234567",
+    company: "",
+    service: "",
     message: "Please review our UAE VAT position for the next filing.",
   });
 
@@ -21,6 +37,8 @@ test("contactEnquirySchema rejects unknown keys and a short message", () => {
     lastName: "Hassan",
     email: "amina@example.com",
     phone: "+971501234567",
+    company: "",
+    service: "",
     message: "Hello",
     extra: true,
   });

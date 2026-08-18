@@ -14,14 +14,14 @@ export const privacySections: readonly LegalSection[] = [
   {
     heading: "Information we collect",
     paragraphs: [
-      "The contact form on this website collects first name, last name, email address, telephone number, and the message you submit. If you email or telephone us instead, we receive the details you choose to send — typically your name, email address, telephone number, organisation, and the content of your enquiry.",
+      "The contact form on this website collects first name, last name, email address, telephone number, organisation name, the practice area selected, and the message you submit. If you email or telephone us instead, we receive the details you choose to send — typically your name, email address, telephone number, organisation, and the content of your enquiry.",
       "Our servers may record technical data required to deliver the site and to protect the contact form, such as IP address, browser type, and the pages requested. We do not use advertising cookies or analytics pixels on this site.",
     ],
   },
   {
     heading: "How we use information",
     paragraphs: [
-      "We use enquiry details to respond, to assess whether we can take on the work, and to keep records required for professional and legal obligations. Form submissions are sent to team@quantarafinancial.info over Titan Email. We do not sell personal information.",
+      "We use enquiry details to respond, to assess whether we can take on the work, and to keep records required for professional and legal obligations. Form submissions are emailed to team@quantarafinancial.info using authenticated SMTP. We do not sell personal information.",
     ],
   },
   {

@@ -22,6 +22,8 @@ const fieldMessages: Record<ContactFieldName, string> = {
   lastName: "Enter your last name.",
   email: "Enter a valid email address.",
   phone: "Enter a valid phone number.",
+  company: "Enter a shorter organisation name.",
+  service: "Choose a practice area.",
   message: "Enter a message of at least 10 characters.",
 };
 
@@ -101,6 +103,8 @@ export async function submitContactEnquiry(
     lastName: readField(formData, "lastName"),
     email: readField(formData, "email"),
     phone: readField(formData, "phone"),
+    company: readField(formData, "company"),
+    service: readField(formData, "service"),
     message: readField(formData, "message"),
   });
 
@@ -110,6 +114,8 @@ export async function submitContactEnquiry(
       lastName?: string;
       email?: string;
       phone?: string;
+      company?: string;
+      service?: string;
       message?: string;
     } = {};
 

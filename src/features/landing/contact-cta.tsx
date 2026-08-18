@@ -5,7 +5,7 @@ function CueArrow() {
   return (
     <svg
       viewBox="0 0 200 120"
-      className="text-brand-cream/80 h-24 w-40"
+      className="text-brand-cream/85 h-24 w-40"
       fill="none"
       aria-hidden="true"
     >
@@ -26,9 +26,15 @@ function CueArrow() {
   );
 }
 
-export function ContactSection() {
-  const href = sitePaths.consultation;
-
+export function ContactSection({
+  title = "Discuss your requirements",
+  description = "Talk to Quantara about audit, taxation, advisory, outsourcing, or ERP. We assess the work before we recommend a scope.",
+  ctaLabel = "Talk to an Advisor",
+}: {
+  readonly title?: string;
+  readonly description?: string;
+  readonly ctaLabel?: string;
+}) {
   return (
     <section
       id="contact"
@@ -48,11 +54,10 @@ export function ContactSection() {
                 id="contact-title"
                 className="text-brand-cream text-[clamp(1.6rem,3.8vw,2.75rem)] leading-[1.1] font-bold tracking-[-0.04em] uppercase italic"
               >
-                Unlock your financial potential
+                {title}
               </h2>
-              <p className="text-brand-cream/65 mt-4 text-sm leading-7 sm:text-base">
-                Talk to Quantara about audit, taxation, advisory, outsourcing,
-                and ERP. Book a consultation and we will take it from there.
+              <p className="text-brand-cream/85 mt-4 text-sm leading-7 sm:text-base">
+                {description}
               </p>
             </div>
 
@@ -61,10 +66,10 @@ export function ContactSection() {
                 <CueArrow />
               </div>
               <MagneticLink
-                href={href}
+                href={sitePaths.consultation}
                 className="bg-brand-cream text-brand-navy focus-visible:ring-brand-cream focus-visible:ring-offset-brand-navy inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl px-8 text-[0.7rem] font-bold tracking-[0.16em] whitespace-nowrap uppercase transition-transform duration-200 ease-out will-change-transform hover:shadow-[0_14px_32px_rgba(2,7,18,0.35)] focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none"
               >
-                Talk to an advisor
+                {ctaLabel}
               </MagneticLink>
             </div>
           </div>

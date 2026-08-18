@@ -92,10 +92,10 @@ export function PresenceGlobeSection() {
               id="presence-title"
               className="max-w-xl text-[clamp(0.78rem,calc((100vw-2.75rem)/20),2.65rem)] leading-[1.12] font-semibold tracking-[-0.03em] uppercase italic"
             >
-              <span className="text-brand-navy/55 block">
+              <span className="text-brand-navy/80 block">
                 Tailored Financial
               </span>
-              <span className="text-brand-accent mt-1 block">
+              <span className="text-brand-navy mt-1 block">
                 Solutions For Growth
               </span>
             </h2>
@@ -139,7 +139,7 @@ export function PresenceGlobeSection() {
             <h3 className="text-brand-cream mt-3 text-xs font-bold tracking-[0.14em] uppercase">
               Taxation
             </h3>
-            <p className="text-brand-cream/65 mt-1.5 text-xs leading-5">
+            <p className="text-brand-cream/85 mt-1.5 text-xs leading-5">
               Planning, compliance, and advisory across UAE, UK, and USA.
             </p>
           </article>

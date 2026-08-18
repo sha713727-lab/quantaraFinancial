@@ -66,7 +66,7 @@ export function BlogArticleView({
           href={sitePaths.consultation}
           className="bg-brand-navy text-brand-cream hover:bg-brand-deep focus-visible:ring-brand-navy focus-visible:ring-offset-brand-cream mt-10 inline-flex min-h-12 items-center justify-center rounded-sm px-8 text-xs font-bold tracking-[0.12em] uppercase transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(7,20,38,0.28)] focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none"
         >
-          Talk to an Advisor
+          Talk to a Financial Advisor
         </Link>
       </div>
 

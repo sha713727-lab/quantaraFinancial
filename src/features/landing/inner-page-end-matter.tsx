@@ -1,11 +1,19 @@
 import { ContactSection } from "@/features/landing/contact-cta";
-import { TestimonialsMarqueeSection } from "@/features/landing/testimonials-marquee";
 
-export function InnerPageEndMatter() {
+export function InnerPageEndMatter({
+  title,
+  description,
+  ctaLabel,
+}: {
+  readonly title: string;
+  readonly description: string;
+  readonly ctaLabel: string;
+}) {
   return (
-    <>
-      <TestimonialsMarqueeSection />
-      <ContactSection />
-    </>
+    <ContactSection
+      title={title}
+      description={description}
+      ctaLabel={ctaLabel}
+    />
   );
 }

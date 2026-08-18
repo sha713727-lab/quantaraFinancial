@@ -25,7 +25,7 @@ export function ConsultationView() {
           <ol className="mt-10 space-y-6">
             {processSteps.map((step) => (
               <li key={step.number}>
-                <p className="text-brand-accent text-[0.65rem] font-bold tracking-[0.22em] uppercase">
+                <p className="text-brand-navy text-[0.65rem] font-bold tracking-[0.22em] uppercase">
                   {step.number} — {step.title}
                 </p>
                 <p className="text-brand-muted mt-2 text-sm leading-7 sm:text-base">

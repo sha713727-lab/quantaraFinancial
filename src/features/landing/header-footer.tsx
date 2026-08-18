@@ -31,12 +31,12 @@ const legalLinks = [
 ] as const;
 
 const footerLinkClassName =
-  "transition-colors hover:text-brand-cream focus-visible:ring-2 focus-visible:ring-brand-cream focus-visible:ring-offset-4 focus-visible:ring-offset-brand-navy focus-visible:outline-none";
+  "inline-flex min-h-12 items-center transition-colors hover:text-brand-cream focus-visible:ring-2 focus-visible:ring-brand-cream focus-visible:ring-offset-4 focus-visible:ring-offset-brand-navy focus-visible:outline-none";
 
 function FooterLegalMenu() {
   return (
     <details className="group">
-      <summary className="focus-visible:ring-brand-cream focus-visible:ring-offset-brand-navy flex w-fit cursor-pointer list-none items-center gap-2 text-[0.65rem] font-bold tracking-[0.22em] uppercase focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none [&::-webkit-details-marker]:hidden">
+      <summary className="focus-visible:ring-brand-cream focus-visible:ring-offset-brand-navy flex min-h-12 w-fit cursor-pointer list-none items-center gap-2 text-[0.65rem] font-bold tracking-[0.22em] uppercase focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none [&::-webkit-details-marker]:hidden">
         Legal
         <svg
           viewBox="0 0 12 12"
@@ -53,7 +53,7 @@ function FooterLegalMenu() {
           />
         </svg>
       </summary>
-      <ul className="text-brand-cream/60 mt-5 space-y-3 text-sm">
+      <ul className="text-brand-cream/80 mt-2 space-y-1 text-sm">
         {legalLinks.map((item) => (
           <li key={item.href}>
             <Link href={item.href} className={footerLinkClassName}>
@@ -107,7 +107,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <Link
             href={sitePaths.consultation}
-            className={`${headerAdvisorClassName} hidden min-h-11 px-5 py-2.5 lg:inline-flex`}
+            className={`${headerAdvisorClassName} hidden min-h-12 px-5 py-2.5 lg:inline-flex`}
           >
             Talk to an Advisor
           </Link>
@@ -125,7 +125,7 @@ export function SiteFooter() {
       <div className="relative mx-auto grid w-full max-w-[1360px] gap-12 px-5 py-16 md:px-8 lg:grid-cols-[1.3fr_0.8fr_1fr_0.8fr]">
         <div>
           <QuantaraMark tone="dark" />
-          <p className="text-brand-cream/60 mt-6 max-w-md text-sm leading-7">
+          <p className="text-brand-cream/80 mt-6 max-w-md text-sm leading-7">
             Expert financial and accounting solutions from a specialized
             strategic practice of Shahbaz Hannan &amp; Co. Chartered Accountants
             — audit, tax, advisory, outsourcing, and ERP for lasting financial
@@ -137,13 +137,10 @@ export function SiteFooter() {
           <h2 className="text-[0.65rem] font-bold tracking-[0.22em] uppercase">
             Navigation
           </h2>
-          <ul className="text-brand-cream/60 mt-5 space-y-3 text-sm">
+          <ul className="text-brand-cream/80 mt-5 space-y-1 text-sm">
             {footerNav.map((item) => (
               <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="hover:text-brand-cream focus-visible:ring-brand-cream focus-visible:ring-offset-brand-navy transition-colors focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none"
-                >
+                <Link href={item.href} className={footerLinkClassName}>
                   {item.label}
                 </Link>
               </li>
@@ -154,12 +151,12 @@ export function SiteFooter() {
           <h2 className="text-[0.65rem] font-bold tracking-[0.22em] uppercase">
             Services
           </h2>
-          <ul className="text-brand-cream/60 mt-5 space-y-3 text-sm">
+          <ul className="text-brand-cream/80 mt-5 space-y-1 text-sm">
             {services.map((service) => (
               <li key={service.slug}>
                 <Link
                   href={servicePath(service.slug)}
-                  className="hover:text-brand-cream focus-visible:ring-brand-cream focus-visible:ring-offset-brand-navy transition-colors focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none"
+                  className={footerLinkClassName}
                 >
                   {service.title}
                 </Link>
@@ -170,7 +167,7 @@ export function SiteFooter() {
         <FooterLegalMenu />
       </div>
       <div className="border-brand-cream/10 relative border-t px-5 py-6 md:px-8">
-        <p className="text-brand-cream/50 mx-auto max-w-[1360px] text-xs">
+        <p className="text-brand-cream/80 mx-auto max-w-[1360px] text-xs">
           &copy; Quantara Financial. All rights reserved.
         </p>
       </div>

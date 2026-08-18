@@ -25,7 +25,7 @@ export function ImpactStatsSection() {
               className="impact-stat-card flex min-h-[15rem] flex-col justify-between rounded-[1.5rem] px-7 py-7 sm:min-h-[16.5rem] sm:px-8 sm:py-8"
             >
               <div>
-                <p className="text-brand-cream/55 font-sans text-[0.65rem] font-bold tracking-[0.2em] uppercase">
+                <p className="text-brand-cream/85 font-sans text-[0.65rem] font-bold tracking-[0.2em] uppercase">
                   {stat.label}
                 </p>
                 <p className="text-brand-cream mt-4 font-sans text-[clamp(2.5rem,4.5vw,3.25rem)] leading-none font-bold tracking-[-0.05em]">
@@ -38,7 +38,7 @@ export function ImpactStatsSection() {
                   className="bg-brand-cream/25 mb-4 h-px w-10"
                   aria-hidden="true"
                 />
-                <p className="text-brand-cream/72 max-w-[17rem] font-sans text-sm leading-6 font-normal">
+                <p className="text-brand-cream/85 max-w-[17rem] font-sans text-sm leading-6 font-normal">
                   {stat.description}
                 </p>
               </div>

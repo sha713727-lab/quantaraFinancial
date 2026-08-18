@@ -11,13 +11,29 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/about",
   },
+  openGraph: {
+    title: "About",
+    description:
+      "Quantara Financial is a specialized strategic practice of Shahbaz Hannan & Co. Chartered Accountants, delivering tailored financial and accounting solutions.",
+    url: "/about",
+    type: "website",
+  },
+  twitter: {
+    title: "About",
+    description:
+      "Quantara Financial is a specialized strategic practice of Shahbaz Hannan & Co. Chartered Accountants, delivering tailored financial and accounting solutions.",
+  },
 };
 
 export default function AboutPage() {
   return (
     <PageShell>
       <AboutView />
-      <InnerPageEndMatter />
+      <InnerPageEndMatter
+        title="Work with Quantara"
+        description="Talk to the practice about audit, tax, advisory, outsourcing, or ERP. We start with the problem, then the scope."
+        ctaLabel="Work With Quantara"
+      />
     </PageShell>
   );
 }

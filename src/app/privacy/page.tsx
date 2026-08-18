@@ -18,6 +18,11 @@ export const metadata: Metadata = {
     url: "/privacy",
     type: "website",
   },
+  twitter: {
+    title: "Privacy Policy",
+    description:
+      "How Quantara Financial handles personal information when you use this website or contact the team.",
+  },
 };
 
 export default function PrivacyPage() {
@@ -26,7 +31,7 @@ export default function PrivacyPage() {
       <LegalDocumentView
         title="Privacy Policy"
         description="How we handle personal information when you use this website or contact Quantara Financial."
-        updatedOn="16 August 2026"
+        updatedOn="18 August 2026"
         sections={privacySections}
       />
     </PageShell>

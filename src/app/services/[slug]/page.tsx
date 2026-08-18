@@ -36,6 +36,10 @@ export async function generateMetadata({
       url: `/services/${service.slug}`,
       type: "website",
     },
+    twitter: {
+      title: service.title,
+      description: service.description,
+    },
   };
 }
 
@@ -52,7 +56,11 @@ export default async function ServiceDetailPage({
   return (
     <PageShell>
       <ServiceDetailView service={service} />
-      <InnerPageEndMatter />
+      <InnerPageEndMatter
+        title="Book a consultation"
+        description={`${service.title} starts with a scoped conversation — not a generic pitch.`}
+        ctaLabel="Book a Consultation"
+      />
     </PageShell>
   );
 }

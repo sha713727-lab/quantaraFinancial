@@ -20,8 +20,8 @@ export const headerAdvisorClassName =
 const navLinkBaseClassName =
   "font-sans text-sm font-semibold tracking-[0.04em] transition-colors focus-visible:ring-2 focus-visible:ring-brand-cream focus-visible:ring-offset-4 focus-visible:ring-offset-brand-navy focus-visible:outline-none";
 
-const navLinkClassName = `${navLinkBaseClassName} text-brand-cream hover:text-brand-accent`;
-const navLinkActiveClassName = `${navLinkBaseClassName} text-brand-accent`;
+const navLinkClassName = `${navLinkBaseClassName} text-brand-cream/90 hover:text-brand-cream`;
+const navLinkActiveClassName = `${navLinkBaseClassName} text-brand-cream underline decoration-brand-cream/70 underline-offset-8`;
 
 function isNavActive(pathname: string, href: string): boolean {
   if (href === sitePaths.home) {
@@ -92,7 +92,7 @@ export function HeaderMobileNav() {
     <div className="lg:hidden">
       <button
         type="button"
-        className="text-brand-cream hover:bg-brand-cream/10 focus-visible:ring-brand-cream focus-visible:ring-offset-brand-navy grid size-11 place-items-center rounded-full transition-colors focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none"
+        className="text-brand-cream hover:bg-brand-cream/10 focus-visible:ring-brand-cream focus-visible:ring-offset-brand-navy grid size-12 place-items-center rounded-full transition-colors focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none"
         aria-expanded={open}
         aria-controls={menuId}
         onClick={() =>

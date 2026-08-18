@@ -5,7 +5,7 @@ export function AboutView() {
     <>
       <InnerPageHero
         title="About Us"
-        description="Customized financial solutions and expert guidance to drive the business toward sustainable growth — delivered as a specialized strategic practice of Shahbaz Hannan & Co. Chartered Accountants."
+        description="Quantara Financial is a specialized strategic practice of Shahbaz Hannan & Co. Chartered Accountants — audit, tax, advisory, outsourcing, and ERP for businesses that need numbers they can stand behind."
       />
 
       <section
@@ -17,21 +17,26 @@ export function AboutView() {
             id="about-body-title"
             className="text-brand-navy text-center text-[clamp(1.5rem,3.6vw,2.4rem)] leading-[1.15] font-bold tracking-[-0.03em] uppercase italic"
           >
-            What Quantara is about
+            Who we are
           </h2>
           <p className="text-brand-muted mt-6 text-sm leading-7 sm:text-base">
-            Quantara Financial is dedicated to empowering businesses with expert
-            financial and accounting services. We provide tailored solutions
-            that optimize financial health, drive growth, and ensure compliance.
-            Chartered Accountants offer strategic insight and personalized
-            guidance, enabling informed decision-making and sustainable success.
+            Quantara Financial provides audit and assurance, taxation, Odoo ERP,
+            corporate advisory, accounting and finance outsourcing, and risk
+            advisory. The practice is built for businesses that operate across
+            the UAE, UK, and USA and need one team that can keep the books, the
+            filings, and the decisions aligned.
           </p>
           <p className="text-brand-muted mt-4 text-sm leading-7 sm:text-base">
-            Operating as a specialized strategic practice of Shahbaz Hannan
-            &amp; Co. Chartered Accountants, we partner closely with businesses
-            to optimize financial efficiency, streamline compliance, and unlock
-            real potential. At Quantara, financial success is the core priority
-            — and the work is to turn strategic goals into lasting results.
+            We work as a specialized strategic practice of Shahbaz Hannan &amp;
+            Co. Chartered Accountants. That affiliation means engagements are
+            delivered with chartered-accountancy standards — documented work,
+            professional judgement, and a clear scope — rather than as a generic
+            bookkeeping shop.
+          </p>
+          <p className="text-brand-muted mt-4 text-sm leading-7 sm:text-base">
+            The sequence is the same on every matter: consult first, deliver the
+            work, then stay with the business through filings, reporting, and
+            the next question as operations change.
           </p>
         </div>
       </section>

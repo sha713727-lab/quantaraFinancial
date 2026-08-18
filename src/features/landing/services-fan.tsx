@@ -3,7 +3,7 @@
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { services } from "@/features/landing/content";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
@@ -14,13 +14,36 @@ const FAN_GEOMETRY = {
 } as const;
 
 export function ServicesFanSection() {
+  const sectionRef = useRef<HTMLElement>(null);
   const runwayRef = useRef<HTMLDivElement>(null);
   const fanRef = useRef<HTMLDivElement>(null);
   const reduceMotion = usePrefersReducedMotion();
   const isStatic = reduceMotion === true;
+  const [nearViewport, setNearViewport] = useState(false);
 
   useEffect(() => {
-    if (reduceMotion !== false) {
+    const section = sectionRef.current;
+
+    if (!section) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setNearViewport(true);
+        }
+      },
+      { rootMargin: "0px", threshold: 0.01 },
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!nearViewport || reduceMotion !== false) {
       return;
     }
 
@@ -113,10 +136,11 @@ export function ServicesFanSection() {
     }, runway);
 
     return () => context.revert();
-  }, [reduceMotion]);
+  }, [nearViewport, reduceMotion]);
 
   return (
     <section
+      ref={sectionRef}
       id="services-fan"
       aria-labelledby="services-fan-title"
       className="relative overflow-x-clip"
@@ -146,10 +170,10 @@ export function ServicesFanSection() {
               id="services-fan-title"
               className="mx-auto max-w-full text-[clamp(0.72rem,calc((100vw-2.75rem)/22),2.65rem)] leading-[1.12] font-semibold tracking-[-0.03em] uppercase italic"
             >
-              <span className="text-brand-navy/60 block whitespace-nowrap">
+              <span className="text-brand-navy/80 block min-[360px]:whitespace-nowrap">
                 Audit, Tax, Advisory
               </span>
-              <span className="text-brand-accent block whitespace-nowrap">
+              <span className="text-brand-navy block min-[360px]:whitespace-nowrap">
                 For Growing Businesses
               </span>
             </h2>
@@ -158,7 +182,7 @@ export function ServicesFanSection() {
               and ERP for corporates, SMEs, and founders.
             </p>
             {!isStatic && (
-              <p className="text-brand-muted/70 mt-3 text-[0.7rem] font-semibold tracking-[0.2em] uppercase sm:hidden">
+              <p className="text-brand-muted mt-3 text-[0.7rem] font-semibold tracking-[0.2em] uppercase sm:hidden">
                 Scroll to fan through each service.
               </p>
             )}
@@ -172,7 +196,7 @@ export function ServicesFanSection() {
                 : "relative mt-6 h-[20rem] w-full sm:mt-8 sm:h-[24rem]"
             }
           >
-            {services.map((service) => (
+            {services.map((service, index) => (
               <article
                 key={service.slug}
                 data-fan-card
@@ -189,7 +213,7 @@ export function ServicesFanSection() {
                       alt={service.imageAlt}
                       fill
                       sizes="(min-width: 640px) 16.5rem, 13.5rem"
-                      priority
+                      priority={index === 0}
                       className="object-cover"
                     />
                     <h3 className="sr-only">{service.title}</h3>
