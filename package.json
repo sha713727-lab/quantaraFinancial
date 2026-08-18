@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint src instrumentation.ts next.config.ts",
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test src/lib/env.test.ts src/constants/allowed-origins.test.ts src/schemas/contact-enquiry.test.ts src/server/database/token-bucket.test.ts",
+    "test": "tsx --test src/lib/env.test.ts src/constants/allowed-origins.test.ts src/schemas/contact-enquiry.test.ts src/server/database/token-bucket.test.ts src/features/landing/presence-globe-geometry.test.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "audit": "npm audit --audit-level=high",

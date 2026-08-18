@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { parentFirmName } from "@/constants/parent-firm";
 import { LandingPage } from "@/features/landing/landing-page";
 
 export const metadata: Metadata = {
@@ -8,8 +9,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     title: "Quantara Financial | Your Secure And Trusted Financial Partner",
-    description:
-      "Audit, taxation, ERP, corporate advisory, outsourcing, and risk advisory. A specialized practice of Shahbaz Hannan & Co. Chartered Accountants.",
+    description: `Audit, taxation, ERP, corporate advisory, outsourcing, and risk advisory. A specialized practice of ${parentFirmName}.`,
   },
 };
 

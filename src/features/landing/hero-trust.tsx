@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { parentFirmName } from "@/constants/parent-firm";
 import { sitePaths } from "@/constants/site-paths";
 import { FinancialVisual } from "@/features/landing/hero-visual";
 
@@ -26,10 +27,10 @@ export function HeroSection() {
             </span>
           </h1>
           <p className="text-brand-muted mx-auto mt-5 max-w-2xl px-1 text-sm leading-6 sm:text-base sm:leading-7">
-            Quantara Financial is a specialized strategic practice of Shahbaz
-            Hannan &amp; Co. Chartered Accountants. We provide audit, taxation,
-            ERP, corporate advisory, accounting outsourcing, and risk advisory
-            for businesses with obligations in the UAE, UK, and USA.
+            Quantara Financial is a specialized strategic practice of{" "}
+            {parentFirmName}. We provide audit, taxation, ERP, corporate
+            advisory, accounting outsourcing, and risk advisory for businesses
+            with obligations in the UAE, UK, and USA.
           </p>
           <div className="mt-7 flex w-full flex-col justify-center gap-3 sm:flex-row">
             <Link

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Sans } from "next/font/google";
 
 import { organizationJsonLd } from "@/constants/organization-json-ld";
+import { parentFirmName } from "@/constants/parent-firm";
 import { JsonLd } from "@/lib/json-ld";
 
 import "./globals.css";
@@ -18,12 +19,10 @@ export const metadata: Metadata = {
     default: "Quantara Financial | Your Secure And Trusted Financial Partner",
     template: "%s | Quantara Financial",
   },
-  description:
-    "Audit, taxation, ERP, corporate advisory, accounting outsourcing, and risk advisory for businesses in the UAE, UK, and USA. A specialized practice of Shahbaz Hannan & Co. Chartered Accountants.",
+  description: `Audit, taxation, ERP, corporate advisory, accounting outsourcing, and risk advisory for businesses in the UAE, UK, and USA. A specialized practice of ${parentFirmName}.`,
   openGraph: {
     title: "Quantara Financial | Your Secure And Trusted Financial Partner",
-    description:
-      "Audit, taxation, ERP, corporate advisory, outsourcing, and risk advisory. A specialized practice of Shahbaz Hannan & Co. Chartered Accountants.",
+    description: `Audit, taxation, ERP, corporate advisory, outsourcing, and risk advisory. A specialized practice of ${parentFirmName}.`,
     url: "https://quantarafinancial.info/",
     siteName: "Quantara Financial",
     type: "website",

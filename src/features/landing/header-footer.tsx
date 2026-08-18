@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { parentFirmName } from "@/constants/parent-firm";
 import { servicePath, sitePaths } from "@/constants/site-paths";
 import { ContactChannels } from "@/features/landing/contact-channels";
 import { services } from "@/features/landing/content";
@@ -127,9 +128,8 @@ export function SiteFooter() {
           <QuantaraMark tone="dark" />
           <p className="text-brand-cream/80 mt-6 max-w-md text-sm leading-7">
             Expert financial and accounting solutions from a specialized
-            strategic practice of Shahbaz Hannan &amp; Co. Chartered Accountants
-            — audit, tax, advisory, outsourcing, and ERP for lasting financial
-            success.
+            strategic practice of {parentFirmName} — audit, tax, advisory,
+            outsourcing, and ERP for lasting financial success.
           </p>
           <ContactChannels tone="navy" />
         </div>

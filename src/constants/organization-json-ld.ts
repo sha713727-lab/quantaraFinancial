@@ -1,4 +1,5 @@
 import { contactEmail, contactPhone } from "@/constants/contact-email";
+import { parentFirmName } from "@/constants/parent-firm";
 
 export const organizationJsonLd = {
   "@context": "https://schema.org",
@@ -7,11 +8,10 @@ export const organizationJsonLd = {
   url: "https://quantarafinancial.info",
   email: contactEmail,
   telephone: contactPhone,
-  description:
-    "Audit, taxation, ERP, corporate advisory, accounting outsourcing, and risk advisory. A specialized strategic practice of Shahbaz Hannan & Co. Chartered Accountants.",
+  description: `Audit, taxation, ERP, corporate advisory, accounting outsourcing, and risk advisory. A specialized strategic practice of ${parentFirmName}.`,
   parentOrganization: {
     "@type": "Organization",
-    name: "Shahbaz Hannan & Co. Chartered Accountants",
+    name: parentFirmName,
   },
   areaServed: ["AE", "GB", "US"],
 } as const;

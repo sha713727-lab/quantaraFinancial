@@ -1,73 +1,8 @@
 import { FileCheck2, Scale } from "lucide-react";
 
+import { parentFirmName } from "@/constants/parent-firm";
 import { Reveal } from "@/features/landing/motion-primitives";
-
-function PresenceMark() {
-  return (
-    <svg
-      viewBox="0 0 320 320"
-      className="size-full"
-      role="img"
-      aria-label="Global tax and assurance coverage"
-    >
-      <circle cx="160" cy="160" r="148" fill="#071426" />
-      <circle
-        cx="160"
-        cy="160"
-        r="132"
-        fill="none"
-        stroke="#f7f0df"
-        strokeOpacity="0.28"
-        strokeWidth="1.2"
-      />
-      <ellipse
-        cx="160"
-        cy="160"
-        rx="48"
-        ry="132"
-        fill="none"
-        stroke="#f7f0df"
-        strokeOpacity="0.22"
-        strokeWidth="1"
-      />
-      <ellipse
-        cx="160"
-        cy="160"
-        rx="96"
-        ry="132"
-        fill="none"
-        stroke="#f7f0df"
-        strokeOpacity="0.18"
-        strokeWidth="1"
-      />
-      <ellipse
-        cx="160"
-        cy="160"
-        rx="132"
-        ry="48"
-        fill="none"
-        stroke="#f7f0df"
-        strokeOpacity="0.2"
-        strokeWidth="1"
-      />
-      <ellipse
-        cx="160"
-        cy="160"
-        rx="132"
-        ry="96"
-        fill="none"
-        stroke="#f7f0df"
-        strokeOpacity="0.16"
-        strokeWidth="1"
-      />
-      <circle cx="118" cy="92" r="3.2" fill="#f7f0df" />
-      <circle cx="214" cy="108" r="3.2" fill="#6e91b9" />
-      <circle cx="168" cy="168" r="3.2" fill="#f7f0df" />
-      <circle cx="96" cy="186" r="3.2" fill="#6e91b9" />
-      <circle cx="236" cy="198" r="3.2" fill="#f7f0df" />
-    </svg>
-  );
-}
+import { PresenceGlobeCanvas } from "@/features/landing/presence-globe-canvas";
 
 export function PresenceGlobeSection() {
   return (
@@ -100,10 +35,9 @@ export function PresenceGlobeSection() {
               </span>
             </h2>
             <p className="text-brand-muted mt-4 max-w-md text-sm leading-7">
-              Quantara is a specialized strategic practice of Shahbaz Hannan
-              &amp; Co. Chartered Accountants, working with businesses to
-              optimize financial efficiency, streamline compliance, and unlock
-              real potential.
+              Quantara is a specialized strategic practice of {parentFirmName},
+              working with businesses to optimize financial efficiency,
+              streamline compliance, and unlock real potential.
             </p>
           </Reveal>
         </div>
@@ -113,8 +47,8 @@ export function PresenceGlobeSection() {
             className="pointer-events-none absolute inset-[6%] rounded-full bg-[radial-gradient(circle,rgb(110_145_185/0.22)_0%,transparent_68%)]"
             aria-hidden="true"
           />
-          <div className="absolute inset-[8%]">
-            <PresenceMark />
+          <div className="bg-brand-navy absolute inset-[8%] overflow-hidden rounded-full">
+            <PresenceGlobeCanvas />
           </div>
 
           <article className="border-brand-navy/10 bg-brand-cream/88 absolute top-[8%] left-0 z-20 w-[min(15.5rem,78%)] rounded-[1.25rem] border p-4 shadow-[0_18px_40px_-20px_rgba(7,20,38,0.35)] backdrop-blur-xl sm:left-[-4%] sm:p-5">

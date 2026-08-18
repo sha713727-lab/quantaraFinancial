@@ -1,3 +1,5 @@
+import { parentFirmName } from "@/constants/parent-firm";
+
 export type LegalSection = {
   readonly heading: string;
   readonly paragraphs: readonly string[];
@@ -7,7 +9,7 @@ export const privacySections: readonly LegalSection[] = [
   {
     heading: "Who we are",
     paragraphs: [
-      "Quantara Financial is a specialized strategic practice of Shahbaz Hannan & Co. Chartered Accountants. This policy describes how we handle personal information when you use quantarafinancial.info or contact us.",
+      `Quantara Financial is a specialized strategic practice of ${parentFirmName}. This policy describes how we handle personal information when you use quantarafinancial.info or contact us.`,
       "Questions about this policy can be sent to team@quantarafinancial.info or by telephone to +1 (877) 963-6280.",
     ],
   },
@@ -27,7 +29,7 @@ export const privacySections: readonly LegalSection[] = [
   {
     heading: "Sharing",
     paragraphs: [
-      "Information may be shared with Shahbaz Hannan & Co. Chartered Accountants where that is required to deliver the engagement, and with service providers who host this website, solely to operate it. We may disclose information if required by law or a professional regulator.",
+      `Information may be shared with ${parentFirmName} where that is required to deliver the engagement, and with service providers who host this website, solely to operate it. We may disclose information if required by law or a professional regulator.`,
     ],
   },
   {
@@ -48,7 +50,7 @@ export const termsSections: readonly LegalSection[] = [
   {
     heading: "About this website",
     paragraphs: [
-      "These terms govern use of quantarafinancial.info, operated by Quantara Financial, a specialized strategic practice of Shahbaz Hannan & Co. Chartered Accountants. By using the site you agree to these terms.",
+      `These terms govern use of quantarafinancial.info, operated by Quantara Financial, a specialized strategic practice of ${parentFirmName}. By using the site you agree to these terms.`,
     ],
   },
   {
@@ -78,7 +80,7 @@ export const termsSections: readonly LegalSection[] = [
   {
     heading: "Limitation of liability",
     paragraphs: [
-      "To the extent permitted by law, Quantara Financial and Shahbaz Hannan & Co. Chartered Accountants are not liable for loss arising from use of this website or reliance on its content. This does not affect liability that cannot be excluded, or liability under a signed engagement.",
+      `To the extent permitted by law, Quantara Financial and ${parentFirmName} are not liable for loss arising from use of this website or reliance on its content. This does not affect liability that cannot be excluded, or liability under a signed engagement.`,
     ],
   },
   {
