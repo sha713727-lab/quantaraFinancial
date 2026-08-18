@@ -64,6 +64,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/main",
+        destination: "/",
+        permanent: true,
+      },
+      {
         source: "/:path*",
         has: [{ type: "host", value: "www.quantarafinancial.info" }],
         destination: "https://quantarafinancial.info/:path*",

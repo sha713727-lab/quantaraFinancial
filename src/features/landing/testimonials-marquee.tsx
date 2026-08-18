@@ -28,6 +28,7 @@ export function TestimonialsMarqueeSection() {
           {marqueeItems.map((item, index) => (
             <article
               key={`${item.name}-${index}`}
+              aria-hidden={index >= testimonials.length ? true : undefined}
               className="bg-brand-navy mx-2.5 flex w-[20rem] shrink-0 flex-col overflow-hidden rounded-2xl sm:mx-3 sm:w-[22rem]"
             >
               <header className="border-brand-cream/10 flex items-center gap-3 border-b px-5 py-4">
