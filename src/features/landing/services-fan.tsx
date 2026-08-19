@@ -178,8 +178,8 @@ export function ServicesFanSection() {
               </span>
             </h2>
             <p className="text-brand-muted mx-auto mt-3 max-w-xl px-1 text-sm leading-6 sm:text-base sm:leading-7">
-              Independent assurance, taxation, corporate advisory, outsourcing,
-              and ERP for corporates, SMEs, and founders.
+              Independent assurance, taxation, corporate advisory, bookkeeping,
+              outsourcing, and ERP for corporates, SMEs, and founders.
             </p>
             {!isStatic && (
               <p className="text-brand-muted mt-3 text-[0.7rem] font-semibold tracking-[0.2em] uppercase sm:hidden">

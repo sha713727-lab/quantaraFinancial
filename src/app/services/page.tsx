@@ -7,21 +7,21 @@ import { ServicesIndex } from "@/features/landing/services-index";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Audit, taxation, ERP, corporate advisory, accounting outsourcing, and risk advisory from Quantara Financial.",
+    "Audit, taxation, ERP, corporate advisory, bookkeeping, accounting outsourcing, and risk advisory from Quantara Financial.",
   alternates: {
     canonical: "/services",
   },
   openGraph: {
     title: "Services",
     description:
-      "Audit, taxation, ERP, corporate advisory, accounting outsourcing, and risk advisory from Quantara Financial.",
+      "Audit, taxation, ERP, corporate advisory, bookkeeping, accounting outsourcing, and risk advisory from Quantara Financial.",
     url: "/services",
     type: "website",
   },
   twitter: {
     title: "Services",
     description:
-      "Audit, taxation, ERP, corporate advisory, accounting outsourcing, and risk advisory from Quantara Financial.",
+      "Audit, taxation, ERP, corporate advisory, bookkeeping, accounting outsourcing, and risk advisory from Quantara Financial.",
   },
 };
 

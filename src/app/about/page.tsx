@@ -29,7 +29,7 @@ export default function AboutPage() {
       <AboutView />
       <InnerPageEndMatter
         title="Work with Quantara"
-        description="Talk to the practice about audit, tax, advisory, outsourcing, or ERP. We start with the problem, then the scope."
+        description="Talk to the practice about audit, tax, advisory, bookkeeping, outsourcing, or ERP. We start with the problem, then the scope."
         ctaLabel="Work With Quantara"
       />
     </PageShell>

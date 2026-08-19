@@ -129,7 +129,7 @@ export function SiteFooter() {
           <p className="text-brand-cream/80 mt-6 max-w-md text-sm leading-7">
             Expert financial and accounting solutions from a specialized
             strategic partner of {parentFirmName} — audit, tax, advisory,
-            outsourcing, and ERP for lasting financial success.
+            bookkeeping, outsourcing, and ERP for lasting financial success.
           </p>
           <ContactChannels tone="navy" />
         </div>

@@ -7,7 +7,7 @@ export function ContactView() {
     <>
       <InnerPageHero
         title="Tell us what you are trying to solve"
-        description="Share the audit, tax, advisory, outsourcing, or ERP work you need. Email, call, or use the form — we will take it from there."
+        description="Share the audit, tax, advisory, bookkeeping, outsourcing, or ERP work you need. Email, call, or use the form — we will take it from there."
       />
 
       <section

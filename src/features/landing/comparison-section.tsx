@@ -163,7 +163,7 @@ export function ComparisonSection() {
           </h2>
           <p className="text-brand-navy mx-auto mt-5 max-w-xl text-base leading-7 font-semibold tracking-[-0.02em] uppercase italic sm:text-lg">
             Clearer numbers, written findings, and support that stays with the
-            business across audit, tax, advisory, and ERP.
+            business across audit, tax, advisory, bookkeeping, and ERP.
           </p>
         </div>
 

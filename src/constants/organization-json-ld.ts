@@ -8,7 +8,7 @@ export const organizationJsonLd = {
   url: "https://quantarafinancial.info",
   email: contactEmail,
   telephone: contactPhone,
-  description: `Audit, taxation, ERP, corporate advisory, accounting outsourcing, and risk advisory. A specialized strategic partner of ${parentFirmName}.`,
+  description: `Audit, taxation, ERP, corporate advisory, bookkeeping, accounting outsourcing, and risk advisory. A specialized strategic partner of ${parentFirmName}.`,
   parentOrganization: {
     "@type": "Organization",
     name: parentFirmName,

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     title: "Quantara Financial | Your Secure And Trusted Financial Partner",
-    description: `Audit, taxation, ERP, corporate advisory, outsourcing, and risk advisory. A specialized partner of ${parentFirmName}.`,
+    description: `Audit, taxation, ERP, corporate advisory, bookkeeping, outsourcing, and risk advisory. A specialized partner of ${parentFirmName}.`,
   },
 };
 

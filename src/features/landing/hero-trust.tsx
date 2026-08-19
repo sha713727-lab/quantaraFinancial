@@ -29,8 +29,8 @@ export function HeroSection() {
           <p className="text-brand-muted mx-auto mt-5 max-w-2xl px-1 text-sm leading-6 sm:text-base sm:leading-7">
             Quantara Financial is a specialized strategic partner of{" "}
             {parentFirmName}. We provide audit, taxation, ERP, corporate
-            advisory, accounting outsourcing, and risk advisory for businesses
-            with obligations in the UAE, UK, and USA.
+            advisory, bookkeeping, accounting outsourcing, and risk advisory for
+            businesses with obligations in the UAE, UK, and USA.
           </p>
           <div className="mt-7 flex w-full flex-col justify-center gap-3 sm:flex-row">
             <Link

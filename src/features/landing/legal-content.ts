@@ -62,7 +62,7 @@ export const termsSections: readonly LegalSection[] = [
   {
     heading: "Engagements",
     paragraphs: [
-      "Audit, tax, advisory, outsourcing, and ERP work is provided under a separate engagement letter or contract. That document, not these website terms, governs fees, confidentiality, liability, and the work itself.",
+      "Audit, tax, advisory, bookkeeping, outsourcing, and ERP work is provided under a separate engagement letter or contract. That document, not these website terms, governs fees, confidentiality, liability, and the work itself.",
     ],
   },
   {

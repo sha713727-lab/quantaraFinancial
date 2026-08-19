@@ -10,7 +10,7 @@ export function ServicesIndex() {
     <>
       <InnerPageHero
         title="Our Services"
-        description="Audit, taxation, ERP, corporate advisory, accounting outsourcing, and risk advisory — so the financial work of the business is handled with one practice."
+        description="Audit, taxation, ERP, corporate advisory, bookkeeping, accounting outsourcing, and risk advisory — so the financial work of the business is handled with one practice."
       />
 
       <section
