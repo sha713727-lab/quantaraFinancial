@@ -9,7 +9,7 @@ export const privacySections: readonly LegalSection[] = [
   {
     heading: "Who we are",
     paragraphs: [
-      `Quantara Financial is a specialized strategic practice of ${parentFirmName}. This policy describes how we handle personal information when you use quantarafinancial.info or contact us.`,
+      `Quantara Financial is a specialized strategic partner of ${parentFirmName}. This policy describes how we handle personal information when you use quantarafinancial.info or contact us.`,
       "Questions about this policy can be sent to team@quantarafinancial.info or by telephone to +1 (877) 963-6280.",
     ],
   },
@@ -50,7 +50,7 @@ export const termsSections: readonly LegalSection[] = [
   {
     heading: "About this website",
     paragraphs: [
-      `These terms govern use of quantarafinancial.info, operated by Quantara Financial, a specialized strategic practice of ${parentFirmName}. By using the site you agree to these terms.`,
+      `These terms govern use of quantarafinancial.info, operated by Quantara Financial, a specialized strategic partner of ${parentFirmName}. By using the site you agree to these terms.`,
     ],
   },
   {

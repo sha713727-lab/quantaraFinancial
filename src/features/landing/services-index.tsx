@@ -25,7 +25,7 @@ export function ServicesIndex() {
             <li key={service.slug}>
               <Link
                 href={servicePath(service.slug)}
-                className="border-brand-navy/10 bg-brand-cream-soft focus-visible:ring-brand-navy focus-visible:ring-offset-brand-cream flex h-full flex-col overflow-hidden rounded-2xl border transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none"
+                className="border-brand-navy/10 bg-brand-cream-soft focus-visible:ring-brand-navy focus-visible:ring-offset-brand-white flex h-full flex-col overflow-hidden rounded-2xl border transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none"
               >
                 <div className="bg-brand-navy relative aspect-16/10">
                   <Image

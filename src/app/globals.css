@@ -6,11 +6,12 @@
 @theme inline {
   --color-brand-navy: #071426;
   --color-brand-cream: #f7f0df;
+  --color-brand-white: #ffffff;
   --color-brand-deep: #020712;
   --color-brand-muted: #2f4158;
   --color-brand-accent: #6e91b9;
   --color-brand-label: #5c3d18;
-  --color-brand-cream-soft: #fff9ec;
+  --color-brand-cream-soft: #ffffff;
   --color-brand-navy-panel: #0b1c33;
   --color-brand-gold-mid: #e6d8ba;
   --color-brand-gold: #c5b48a;
@@ -184,7 +185,7 @@
   }
 
   .hero-cream {
-    background-color: var(--color-brand-cream);
+    background-color: var(--color-brand-white);
     color: var(--color-brand-navy);
   }
 
@@ -455,12 +456,12 @@
 
   .testimonials-marquee-fade-left {
     left: 0;
-    background: linear-gradient(90deg, var(--color-brand-cream), transparent);
+    background: linear-gradient(90deg, var(--color-brand-white), transparent);
   }
 
   .testimonials-marquee-fade-right {
     right: 0;
-    background: linear-gradient(270deg, var(--color-brand-cream), transparent);
+    background: linear-gradient(270deg, var(--color-brand-white), transparent);
   }
 
   @keyframes testimonials-marquee-scroll {

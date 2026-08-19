@@ -21,7 +21,7 @@ const risk = primaryService("risk-advisory");
 const erp = primaryService("erp-solutions");
 
 const floatCardClassName =
-  "hero-navy-panel outline-none transition-transform hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-brand-cream focus-visible:ring-offset-4 focus-visible:ring-offset-brand-cream";
+  "hero-navy-panel outline-none transition-transform hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-brand-cream focus-visible:ring-offset-4 focus-visible:ring-offset-brand-white";
 
 function ServiceFloatCard({
   service,
@@ -154,7 +154,7 @@ export function FinancialVisual() {
       <ServiceFloatCard
         service={outsourcing}
         label="Outsourcing"
-        heading="Accounting"
+        heading="Accounting & Bookkeeping"
         detail={outsourcing.description}
         className="absolute top-[14.5rem] left-2 z-30 w-[10rem] rounded-2xl p-4 sm:top-[13.5rem] sm:left-8 sm:w-[12rem] sm:p-5"
       />

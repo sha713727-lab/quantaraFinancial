@@ -19,7 +19,7 @@ export function ContactView() {
             id="contact-details-title"
             className="text-brand-navy text-center text-[clamp(1.5rem,3.6vw,2.4rem)] leading-[1.15] font-bold tracking-[-0.03em] uppercase italic"
           >
-            Request a consultation
+            Book a Consultation
           </h2>
           <ContactChannels tone="cream" />
 

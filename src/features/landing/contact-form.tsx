@@ -7,7 +7,7 @@ import { submitContactEnquiry } from "@/features/landing/submit-contact-enquiry"
 import type { ContactActionState } from "@/types/contact-enquiry";
 
 const inputClassName =
-  "mt-2 min-h-12 w-full rounded-xl border border-brand-navy/15 bg-brand-cream-soft px-4 text-sm text-brand-navy outline-none transition-colors placeholder:text-brand-navy/55 focus-visible:ring-2 focus-visible:ring-brand-navy focus-visible:ring-offset-4 focus-visible:ring-offset-brand-cream";
+  "mt-2 min-h-12 w-full rounded-xl border border-brand-navy/15 bg-brand-cream-soft px-4 text-sm text-brand-navy outline-none transition-colors placeholder:text-brand-navy/55 focus-visible:ring-2 focus-visible:ring-brand-navy focus-visible:ring-offset-4 focus-visible:ring-offset-brand-white";
 
 const labelClassName =
   "block text-[0.65rem] font-bold tracking-[0.18em] text-brand-navy uppercase";
@@ -246,7 +246,7 @@ export function ContactForm() {
           <button
             type="submit"
             disabled={pending}
-            className="bg-brand-navy text-brand-cream hover:bg-brand-deep focus-visible:ring-brand-navy focus-visible:ring-offset-brand-cream inline-flex min-h-12 items-center justify-center rounded-sm px-8 text-xs font-bold tracking-[0.12em] uppercase transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(7,20,38,0.28)] focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none disabled:translate-y-0 disabled:opacity-60"
+            className="bg-brand-navy text-brand-cream hover:bg-brand-deep focus-visible:ring-brand-navy focus-visible:ring-offset-brand-white inline-flex min-h-12 items-center justify-center rounded-sm px-8 text-xs font-bold tracking-[0.12em] uppercase transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(7,20,38,0.28)] focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none disabled:translate-y-0 disabled:opacity-60"
           >
             {pending ? "Sending" : "Send"}
           </button>

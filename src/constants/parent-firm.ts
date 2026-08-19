@@ -1,1 +1,1 @@
-export const parentFirmName = "Azadar & Co Chartered Accountants";
+export const parentFirmName = "SHUJA & Co Chartered Accountants";

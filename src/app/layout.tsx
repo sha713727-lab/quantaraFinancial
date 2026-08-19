@@ -19,10 +19,10 @@ export const metadata: Metadata = {
     default: "Quantara Financial | Your Secure And Trusted Financial Partner",
     template: "%s | Quantara Financial",
   },
-  description: `Audit, taxation, ERP, corporate advisory, accounting outsourcing, and risk advisory for businesses in the UAE, UK, and USA. A specialized practice of ${parentFirmName}.`,
+  description: `Audit, taxation, ERP, corporate advisory, accounting outsourcing, and risk advisory for businesses in the UAE, UK, and USA. A specialized partner of ${parentFirmName}.`,
   openGraph: {
     title: "Quantara Financial | Your Secure And Trusted Financial Partner",
-    description: `Audit, taxation, ERP, corporate advisory, outsourcing, and risk advisory. A specialized practice of ${parentFirmName}.`,
+    description: `Audit, taxation, ERP, corporate advisory, outsourcing, and risk advisory. A specialized partner of ${parentFirmName}.`,
     url: "https://quantarafinancial.info/",
     siteName: "Quantara Financial",
     type: "website",

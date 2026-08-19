@@ -170,8 +170,8 @@ export function ServicesFanSection() {
               id="services-fan-title"
               className="mx-auto max-w-full text-[clamp(0.72rem,calc((100vw-2.75rem)/22),2.65rem)] leading-[1.12] font-semibold tracking-[-0.03em] uppercase italic"
             >
-              <span className="text-brand-navy/80 block min-[360px]:whitespace-nowrap">
-                Audit, Tax, Advisory
+              <span className="text-brand-navy/80 block">
+                Audit, Tax, Advisory & Book Keeping
               </span>
               <span className="text-brand-navy block min-[360px]:whitespace-nowrap">
                 For Growing Businesses

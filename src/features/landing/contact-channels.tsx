@@ -7,7 +7,7 @@ import {
 } from "@/constants/contact-email";
 
 const creamLinkClassName =
-  "inline-flex min-h-12 items-center justify-center gap-2 font-semibold text-brand-navy underline-offset-4 transition-colors hover:underline focus-visible:ring-2 focus-visible:ring-brand-navy focus-visible:ring-offset-4 focus-visible:ring-offset-brand-cream focus-visible:outline-none";
+  "inline-flex min-h-12 items-center justify-center gap-2 font-semibold text-brand-navy underline-offset-4 transition-colors hover:underline focus-visible:ring-2 focus-visible:ring-brand-navy focus-visible:ring-offset-4 focus-visible:ring-offset-brand-white focus-visible:outline-none";
 
 const navyLinkClassName =
   "inline-flex min-h-12 items-center gap-2 transition-colors hover:text-brand-cream focus-visible:ring-2 focus-visible:ring-brand-cream focus-visible:ring-offset-4 focus-visible:ring-offset-brand-navy focus-visible:outline-none";

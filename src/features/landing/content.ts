@@ -37,8 +37,28 @@ export type ProcessStep = {
 
 export const services: readonly Service[] = [
   {
-    slug: "audit-assurance",
+    slug: "accounting-outsourcing",
     number: "01",
+    category: "Outsourcing",
+    title: "Accounting & Bookkeeping",
+    description:
+      "Bookkeeping, reporting, and finance operations so you can focus on growth.",
+    headline: "Accurate books, without the operational drag.",
+    statement: "Let the numbers stay current while you run the business.",
+    body: "Accounting and finance functions managed with accuracy and compliance, from daily bookkeeping to monthly reporting, receivables, payables, and financial statements. The work is built so leadership can focus on growing the business.",
+    highlights: [
+      "Bookkeeping and reconciliations",
+      "Monthly financial reporting",
+      "Accounts receivable and payable",
+    ],
+    ctaLabel: "Explore accounting outsourcing",
+    icon: CircleDollarSign,
+    image: "/services/accounting-outsourcing.jpg",
+    imageAlt: "Ledger, invoices, and financial records on a desk",
+  },
+  {
+    slug: "audit-assurance",
+    number: "02",
     category: "Assurance",
     title: "Audit & Assurance",
     description:
@@ -58,7 +78,7 @@ export const services: readonly Service[] = [
   },
   {
     slug: "taxation",
-    number: "02",
+    number: "03",
     category: "Tax",
     title: "Taxation",
     description:
@@ -78,7 +98,7 @@ export const services: readonly Service[] = [
   },
   {
     slug: "erp-solutions",
-    number: "03",
+    number: "04",
     category: "ERP",
     title: "ERP Solutions",
     description:
@@ -98,7 +118,7 @@ export const services: readonly Service[] = [
   },
   {
     slug: "corporate-advisory",
-    number: "04",
+    number: "05",
     category: "Advisory",
     title: "Corporate Advisory",
     description:
@@ -115,26 +135,6 @@ export const services: readonly Service[] = [
     icon: Landmark,
     image: "/services/corporate-advisory.jpg",
     imageAlt: "Two professionals shaking hands in an office meeting room",
-  },
-  {
-    slug: "accounting-outsourcing",
-    number: "05",
-    category: "Outsourcing",
-    title: "Accounting & Finance Outsourcing",
-    description:
-      "Bookkeeping, reporting, and finance operations so you can focus on growth.",
-    headline: "Accurate books, without the operational drag.",
-    statement: "Let the numbers stay current while you run the business.",
-    body: "Accounting and finance functions managed with accuracy and compliance, from daily bookkeeping to monthly reporting, receivables, payables, and financial statements. The work is built so leadership can focus on growing the business.",
-    highlights: [
-      "Bookkeeping and reconciliations",
-      "Monthly financial reporting",
-      "Accounts receivable and payable",
-    ],
-    ctaLabel: "Explore accounting outsourcing",
-    icon: CircleDollarSign,
-    image: "/services/accounting-outsourcing.jpg",
-    imageAlt: "Ledger, invoices, and financial records on a desk",
   },
   {
     slug: "risk-advisory",

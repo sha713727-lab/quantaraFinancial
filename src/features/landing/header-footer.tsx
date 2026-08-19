@@ -81,7 +81,7 @@ function QuantaraMark({
       href={sitePaths.home}
       className={`inline-flex shrink-0 items-center outline-none ${
         isCream
-          ? "focus-visible:ring-brand-navy focus-visible:ring-offset-brand-cream focus-visible:ring-2 focus-visible:ring-offset-4"
+          ? "focus-visible:ring-brand-navy focus-visible:ring-offset-brand-white focus-visible:ring-2 focus-visible:ring-offset-4"
           : "focus-visible:ring-brand-cream focus-visible:ring-offset-brand-navy focus-visible:ring-2 focus-visible:ring-offset-4"
       }`}
       aria-label="Quantara Financial home"
@@ -128,7 +128,7 @@ export function SiteFooter() {
           <QuantaraMark tone="dark" />
           <p className="text-brand-cream/80 mt-6 max-w-md text-sm leading-7">
             Expert financial and accounting solutions from a specialized
-            strategic practice of {parentFirmName} — audit, tax, advisory,
+            strategic partner of {parentFirmName} — audit, tax, advisory,
             outsourcing, and ERP for lasting financial success.
           </p>
           <ContactChannels tone="navy" />

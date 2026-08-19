@@ -28,16 +28,14 @@ export function PresenceGlobeSection() {
               className="max-w-xl text-[clamp(0.78rem,calc((100vw-2.75rem)/20),2.65rem)] leading-[1.12] font-semibold tracking-[-0.03em] uppercase italic"
             >
               <span className="text-brand-navy/80 block">
-                Tailored Financial
-              </span>
-              <span className="text-brand-navy mt-1 block">
-                Solutions For Growth
+                Providing Remote Bookkeeping Services
               </span>
             </h2>
             <p className="text-brand-muted mt-4 max-w-md text-sm leading-7">
-              Quantara is a specialized strategic practice of {parentFirmName},
-              working with businesses to optimize financial efficiency,
-              streamline compliance, and unlock real potential.
+              Quantara is a specialized strategic partner of {parentFirmName},
+              working with businesses to help keep their books organized,
+              reconcile their accounts, track expenses, and receive accurate
+              monthly financial reports.
             </p>
           </Reveal>
         </div>
@@ -51,7 +49,7 @@ export function PresenceGlobeSection() {
             <PresenceGlobeCanvas />
           </div>
 
-          <article className="border-brand-navy/10 bg-brand-cream/88 absolute top-[8%] left-0 z-20 w-[min(15.5rem,78%)] rounded-[1.25rem] border p-4 shadow-[0_18px_40px_-20px_rgba(7,20,38,0.35)] backdrop-blur-xl sm:left-[-4%] sm:p-5">
+          <article className="border-brand-navy/10 bg-brand-white/88 absolute top-[8%] left-0 z-20 w-[min(15.5rem,78%)] rounded-[1.25rem] border p-4 shadow-[0_18px_40px_-20px_rgba(7,20,38,0.35)] backdrop-blur-xl sm:left-[-4%] sm:p-5">
             <span className="bg-brand-navy/8 grid size-8 place-items-center rounded-full">
               <FileCheck2
                 className="text-brand-accent size-3.5"

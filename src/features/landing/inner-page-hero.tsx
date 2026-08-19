@@ -10,7 +10,7 @@ export function HeroGlowBackdrop() {
         aria-hidden="true"
       />
       <div
-        className="via-brand-cream/70 to-brand-cream pointer-events-none absolute inset-x-0 -bottom-px z-[1] h-36 bg-gradient-to-b from-transparent"
+        className="via-brand-white/70 to-brand-white pointer-events-none absolute inset-x-0 -bottom-px z-[1] h-36 bg-gradient-to-b from-transparent"
         aria-hidden="true"
       />
     </>

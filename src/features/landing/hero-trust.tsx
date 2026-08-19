@@ -27,7 +27,7 @@ export function HeroSection() {
             </span>
           </h1>
           <p className="text-brand-muted mx-auto mt-5 max-w-2xl px-1 text-sm leading-6 sm:text-base sm:leading-7">
-            Quantara Financial is a specialized strategic practice of{" "}
+            Quantara Financial is a specialized strategic partner of{" "}
             {parentFirmName}. We provide audit, taxation, ERP, corporate
             advisory, accounting outsourcing, and risk advisory for businesses
             with obligations in the UAE, UK, and USA.
@@ -35,13 +35,13 @@ export function HeroSection() {
           <div className="mt-7 flex w-full flex-col justify-center gap-3 sm:flex-row">
             <Link
               href={sitePaths.consultation}
-              className="bg-brand-navy text-brand-cream hover:bg-brand-deep focus-visible:ring-brand-navy focus-visible:ring-offset-brand-cream inline-flex min-h-12 w-full items-center justify-center rounded-sm px-8 text-xs font-bold tracking-[0.12em] uppercase transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(7,20,38,0.28)] focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none sm:w-auto"
+              className="bg-brand-navy text-brand-cream hover:bg-brand-deep focus-visible:ring-brand-navy focus-visible:ring-offset-brand-white inline-flex min-h-12 w-full items-center justify-center rounded-sm px-8 text-xs font-bold tracking-[0.12em] uppercase transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(7,20,38,0.28)] focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none sm:w-auto"
             >
-              Talk to an Advisor
+              Book a free consultation
             </Link>
             <Link
               href={sitePaths.services}
-              className="border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-brand-cream focus-visible:ring-brand-navy focus-visible:ring-offset-brand-cream inline-flex min-h-12 w-full items-center justify-center rounded-sm border bg-transparent px-8 text-xs font-bold tracking-[0.12em] uppercase transition-[transform,background-color,color] duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none sm:w-auto"
+              className="border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-brand-cream focus-visible:ring-brand-navy focus-visible:ring-offset-brand-white inline-flex min-h-12 w-full items-center justify-center rounded-sm border bg-transparent px-8 text-xs font-bold tracking-[0.12em] uppercase transition-[transform,background-color,color] duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none sm:w-auto"
             >
               Explore Our Services
             </Link>

@@ -6,7 +6,7 @@ export function AboutView() {
     <>
       <InnerPageHero
         title="About Us"
-        description={`Quantara Financial is a specialized strategic practice of ${parentFirmName} — audit, tax, advisory, outsourcing, and ERP for businesses that need numbers they can stand behind.`}
+        description={`Quantara Financial is a specialized strategic partner of ${parentFirmName} — audit, tax, advisory, outsourcing, and ERP for businesses that need numbers they can stand behind.`}
       />
 
       <section
@@ -28,8 +28,8 @@ export function AboutView() {
             filings, and the decisions aligned.
           </p>
           <p className="text-brand-muted mt-4 text-sm leading-7 sm:text-base">
-            We work as a specialized strategic practice of {parentFirmName}.
-            That affiliation means engagements are delivered with
+            We work as a specialized strategic partner of {parentFirmName}. That
+            affiliation means engagements are delivered with
             chartered-accountancy standards — documented work, professional
             judgement, and a clear scope — rather than as a generic bookkeeping
             shop.
