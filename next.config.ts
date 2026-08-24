@@ -4,16 +4,19 @@ import type { NextConfig } from "next";
 
 const isDev = process.env.NODE_ENV !== "production";
 
-const scriptSrc = isDev
-  ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com"
-  : "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com";
+const googleScriptSrc =
+  "https://www.googletagmanager.com https://pagead2.googlesyndication.com https://partner.googleadservices.com https://www.googletagservices.com";
 
-const googleAdsConnectSrc =
-  "https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://www.google.com https://googleads.g.doubleclick.net";
+const scriptSrc = isDev
+  ? `script-src 'self' 'unsafe-inline' 'unsafe-eval' ${googleScriptSrc}`
+  : `script-src 'self' 'unsafe-inline' ${googleScriptSrc}`;
+
+const googleConnectSrc =
+  "https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://www.google.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google";
 
 const connectSrc = isDev
-  ? `connect-src 'self' ws: wss: ${googleAdsConnectSrc}`
-  : `connect-src 'self' ${googleAdsConnectSrc}`;
+  ? `connect-src 'self' ws: wss: ${googleConnectSrc}`
+  : `connect-src 'self' ${googleConnectSrc}`;
 
 const securityHeaders = [
   {
@@ -42,9 +45,10 @@ const securityHeaders = [
       "default-src 'self'",
       scriptSrc,
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net",
+      "img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.googletagservices.com",
       "font-src 'self'",
       connectSrc,
+      "frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://pagead2.googlesyndication.com",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",

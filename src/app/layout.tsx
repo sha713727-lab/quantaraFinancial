@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Sans } from "next/font/google";
 
+import { googleAdsenseClient } from "@/constants/google-adsense-client";
 import { organizationJsonLd } from "@/constants/organization-json-ld";
 import { parentFirmName } from "@/constants/parent-firm";
 import { GoogleAds } from "@/lib/google-ads";
+import { GoogleAdsense } from "@/lib/google-adsense";
 import { JsonLd } from "@/lib/json-ld";
 
 import "./globals.css";
@@ -32,6 +34,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
   },
+  other: {
+    "google-adsense-account": googleAdsenseClient,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -42,6 +47,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-full flex-col">
         <GoogleAds />
+        <GoogleAdsense />
         <JsonLd data={organizationJsonLd} />
         {children}
       </body>
