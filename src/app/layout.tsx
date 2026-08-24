@@ -34,9 +34,6 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
   },
-  other: {
-    "google-adsense-account": googleAdsenseClient,
-  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -45,6 +42,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${ibmPlexSans.variable} h-full overflow-x-hidden antialiased`}
     >
+      <head>
+        <meta name="google-adsense-account" content={googleAdsenseClient} />
+      </head>
       <body className="flex min-h-full flex-col">
         <GoogleAds />
         <GoogleAdsense />
