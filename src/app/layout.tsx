@@ -3,6 +3,7 @@ import { IBM_Plex_Sans } from "next/font/google";
 
 import { organizationJsonLd } from "@/constants/organization-json-ld";
 import { parentFirmName } from "@/constants/parent-firm";
+import { GoogleAds } from "@/lib/google-ads";
 import { JsonLd } from "@/lib/json-ld";
 
 import "./globals.css";
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${ibmPlexSans.variable} h-full overflow-x-hidden antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <GoogleAds />
         <JsonLd data={organizationJsonLd} />
         {children}
       </body>

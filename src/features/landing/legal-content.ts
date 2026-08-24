@@ -17,7 +17,7 @@ export const privacySections: readonly LegalSection[] = [
     heading: "Information we collect",
     paragraphs: [
       "The contact form on this website collects first name, last name, email address, telephone number, organisation name, the practice area selected, and the message you submit. If you email or telephone us instead, we receive the details you choose to send — typically your name, email address, telephone number, organisation, and the content of your enquiry.",
-      "Our servers may record technical data required to deliver the site and to protect the contact form, such as IP address, browser type, and the pages requested. We do not use advertising cookies or analytics pixels on this site.",
+      "Our servers may record technical data required to deliver the site and to protect the contact form, such as IP address, browser type, and the pages requested. This site uses Google Ads conversion tracking, which may set cookies and collect usage data through Google’s tags. See Google’s privacy policy at policies.google.com/privacy for how Google handles that data.",
     ],
   },
   {

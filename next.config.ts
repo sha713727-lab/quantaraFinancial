@@ -5,10 +5,15 @@ import type { NextConfig } from "next";
 const isDev = process.env.NODE_ENV !== "production";
 
 const scriptSrc = isDev
-  ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
-  : "script-src 'self' 'unsafe-inline'";
+  ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com"
+  : "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com";
 
-const connectSrc = isDev ? "connect-src 'self' ws: wss:" : "connect-src 'self'";
+const googleAdsConnectSrc =
+  "https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://www.google.com https://googleads.g.doubleclick.net";
+
+const connectSrc = isDev
+  ? `connect-src 'self' ws: wss: ${googleAdsConnectSrc}`
+  : `connect-src 'self' ${googleAdsConnectSrc}`;
 
 const securityHeaders = [
   {
@@ -37,7 +42,7 @@ const securityHeaders = [
       "default-src 'self'",
       scriptSrc,
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob:",
+      "img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net",
       "font-src 'self'",
       connectSrc,
       "frame-ancestors 'none'",
