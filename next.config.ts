@@ -5,14 +5,14 @@ import type { NextConfig } from "next";
 const isDev = process.env.NODE_ENV !== "production";
 
 const googleScriptSrc =
-  "https://www.googletagmanager.com https://pagead2.googlesyndication.com https://partner.googleadservices.com https://www.googletagservices.com";
+  "https://www.googletagmanager.com https://pagead2.googlesyndication.com https://partner.googleadservices.com https://www.googletagservices.com https://www.clarity.ms https://scripts.clarity.ms";
 
 const scriptSrc = isDev
   ? `script-src 'self' 'unsafe-inline' 'unsafe-eval' ${googleScriptSrc}`
   : `script-src 'self' 'unsafe-inline' ${googleScriptSrc}`;
 
 const googleConnectSrc =
-  "https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://www.google.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google";
+  "https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://www.google.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.clarity.ms https://*.clarity.ms https://c.bing.com";
 
 const connectSrc = isDev
   ? `connect-src 'self' ws: wss: ${googleConnectSrc}`
@@ -45,7 +45,7 @@ const securityHeaders = [
       "default-src 'self'",
       scriptSrc,
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.googletagservices.com",
+      "img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.googletagservices.com https://c.clarity.ms https://c.bing.com",
       "font-src 'self'",
       connectSrc,
       "frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://pagead2.googlesyndication.com",

@@ -7,6 +7,7 @@ import { parentFirmName } from "@/constants/parent-firm";
 import { GoogleAds } from "@/lib/google-ads";
 import { GoogleAdsense } from "@/lib/google-adsense";
 import { JsonLd } from "@/lib/json-ld";
+import { MicrosoftClarity } from "@/lib/microsoft-clarity";
 
 import "./globals.css";
 
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col">
         <GoogleAds />
         <GoogleAdsense />
+        <MicrosoftClarity />
         <JsonLd data={organizationJsonLd} />
         {children}
       </body>
