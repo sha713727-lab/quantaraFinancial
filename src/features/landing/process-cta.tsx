@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { processSteps } from "@/features/landing/content";
+import { Reveal } from "@/features/landing/motion-primitives";
 
 function ProcessCard({
   step,
@@ -110,18 +111,20 @@ export function ProcessSection() {
       className="hero-cream relative overflow-hidden py-20 font-sans sm:py-28"
     >
       <div className="mx-auto w-full max-w-[1360px] px-5 md:px-8">
-        <div className="relative text-center">
+        <Reveal className="relative text-center">
           <h2
             id="process-title"
             className="text-brand-navy relative text-[clamp(1.5rem,4vw,2.75rem)] leading-[1.1] font-bold tracking-[-0.03em] uppercase"
           >
             How the work moves
           </h2>
-        </div>
+        </Reveal>
 
         <div className="mt-12 hidden gap-5 lg:mt-14 lg:grid lg:grid-cols-3">
           {processSteps.map((step, index) => (
-            <ProcessCard key={step.title} step={step} index={index} />
+            <Reveal key={step.title} delayMs={100 * (index + 1)}>
+              <ProcessCard step={step} index={index} />
+            </Reveal>
           ))}
         </div>
 
@@ -137,7 +140,9 @@ export function ProcessSection() {
                 data-process-card
                 className="w-[82%] max-w-[22rem] shrink-0 snap-center"
               >
-                <ProcessCard step={step} index={index} />
+                <Reveal delayMs={80 * (index + 1)}>
+                  <ProcessCard step={step} index={index} />
+                </Reveal>
               </div>
             ))}
           </div>

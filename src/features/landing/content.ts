@@ -53,8 +53,9 @@ export const services: readonly Service[] = [
     ],
     ctaLabel: "Explore accounting outsourcing",
     icon: CircleDollarSign,
-    image: "/services/accounting-outsourcing.jpg",
-    imageAlt: "Ledger, invoices, and financial records on a desk",
+    image: "/services/cards/accounting-outsourcing.jpg",
+    imageAlt:
+      "Bookkeeping desk with financial spreadsheet, invoices, calculator, and receipts",
   },
   {
     slug: "audit-assurance",
@@ -73,8 +74,9 @@ export const services: readonly Service[] = [
     ],
     ctaLabel: "Explore audit & assurance",
     icon: FileCheck2,
-    image: "/services/audit-assurance.jpg",
-    imageAlt: "Advisors reviewing financial statements together at a desk",
+    image: "/services/cards/audit-assurance.jpg",
+    imageAlt:
+      "Advisors reviewing a monthly report with charts, clipboard, and calculator",
   },
   {
     slug: "taxation",
@@ -93,8 +95,9 @@ export const services: readonly Service[] = [
     ],
     ctaLabel: "Explore taxation",
     icon: Scale,
-    image: "/services/taxation.jpg",
-    imageAlt: "Tax documents, calculator, and pen arranged on a desk",
+    image: "/services/cards/taxation.jpg",
+    imageAlt:
+      "Tax consultation with profit and loss notes, calculator, and notebooks",
   },
   {
     slug: "erp-solutions",
@@ -113,8 +116,9 @@ export const services: readonly Service[] = [
     ],
     ctaLabel: "Explore ERP solutions",
     icon: Building2,
-    image: "/services/erp-solutions.jpg",
-    imageAlt: "Business operations dashboard on a laptop screen",
+    image: "/services/cards/erp-solutions.jpg",
+    imageAlt:
+      "Modern workstation with dual apps open on a display overlooking the city",
   },
   {
     slug: "corporate-advisory",
@@ -133,8 +137,9 @@ export const services: readonly Service[] = [
     ],
     ctaLabel: "Explore corporate advisory",
     icon: Landmark,
-    image: "/services/corporate-advisory.jpg",
-    imageAlt: "Two professionals shaking hands in an office meeting room",
+    image: "/services/cards/corporate-advisory.jpg",
+    imageAlt:
+      "Advisor presenting a project roadmap on screen during a boardroom meeting",
   },
   {
     slug: "risk-advisory",
@@ -154,8 +159,9 @@ export const services: readonly Service[] = [
     ],
     ctaLabel: "Explore risk advisory",
     icon: BarChart3,
-    image: "/services/risk-advisory.jpg",
-    imageAlt: "Risk review notes and financial charts on a conference table",
+    image: "/services/cards/risk-advisory.jpg",
+    imageAlt:
+      "Quiet professional office workstation ready for control and risk review",
   },
 ];
 
@@ -204,26 +210,37 @@ export const comparisonPoints: readonly ComparisonPoint[] = [
   },
 ];
 
+export type ImpactStatId =
+  "practiceAreas" | "taxJurisdictions" | "engagementStages";
+
 export type ImpactStat = {
+  readonly id: ImpactStatId;
   readonly value: string;
+  readonly numericTarget: number;
   readonly label: string;
   readonly description: string;
 };
 
 export const impactStats: readonly ImpactStat[] = [
   {
+    id: "practiceAreas",
     value: "06",
+    numericTarget: 6,
     label: "Practice areas",
     description:
       "Audit, taxation, ERP, corporate advisory, outsourcing, and risk.",
   },
   {
+    id: "taxJurisdictions",
     value: "03",
+    numericTarget: 3,
     label: "Tax jurisdictions",
     description: "UAE, UK, and USA tax, accounting, and compliance support.",
   },
   {
+    id: "engagementStages",
     value: "03",
+    numericTarget: 3,
     label: "Engagement stages",
     description:
       "Consult, deliver, and support — staying with the business through each phase.",
@@ -237,6 +254,7 @@ export type Testimonial = {
   readonly quote: string;
 };
 
+/** Retained for owner review; not rendered until publication permission is confirmed. */
 export const testimonials: readonly Testimonial[] = [
   {
     name: "Adil Khan",
@@ -258,20 +276,6 @@ export const testimonials: readonly Testimonial[] = [
     photo: "/testimonials/masoodKhalidMughal.jpg",
     quote:
       "Quantara is a top-tier firm with expert chartered accountants. Their professionalism, detailed audits, smooth tax filing, business registrations, and exceptional accounting service are outstanding.",
-  },
-  {
-    name: "Todd Thordinsky",
-    role: "Ti Coat Inc, USA",
-    photo: "/testimonials/toddThordinsky.jpg",
-    quote:
-      "Quantara provided us with a one-stop solution in Odoo for all our needs, from a custom quotation tool to our website, as well as invoicing and accounting management.",
-  },
-  {
-    name: "John T Cox",
-    role: "Chateau Montreux LLC, USA",
-    photo: "/testimonials/johnTCox.jpg",
-    quote:
-      "The Quantara team has been instrumental in streamlining the accounting and procurement processes for my rental business.",
   },
 ];
 

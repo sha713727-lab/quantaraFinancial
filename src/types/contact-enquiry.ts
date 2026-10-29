@@ -5,6 +5,7 @@ export type ContactFieldName =
   | "phone"
   | "company"
   | "service"
+  | "source"
   | "message";
 
 export type ContactFieldErrors = {
@@ -14,12 +15,14 @@ export type ContactFieldErrors = {
   readonly phone?: string;
   readonly company?: string;
   readonly service?: string;
+  readonly source?: string;
   readonly message?: string;
 };
 
 export type ContactActionState =
   | {
       readonly ok: true;
+      readonly service: string;
     }
   | {
       readonly ok: false;

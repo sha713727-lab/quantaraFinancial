@@ -8,6 +8,30 @@ import type { ContactEnquiryInput } from "@/schemas/contact-enquiry";
 export type CreateEnquiryResult =
   { readonly ok: true } | { readonly ok: false; readonly code: "UNAVAILABLE" };
 
+function practiceAreaLabel(service: ContactEnquiryInput["service"]): string {
+  if (service === "") {
+    return "Not specified";
+  }
+
+  if (service === "cpa-outsourcing") {
+    return "CPA Firm Outsourcing";
+  }
+
+  return services.find((item) => item.slug === service)?.title ?? service;
+}
+
+function sourceLabel(source: ContactEnquiryInput["source"]): string {
+  if (source === "") {
+    return "Not specified";
+  }
+
+  if (source === "cpa-outsourcing") {
+    return "cpa-outsourcing";
+  }
+
+  return source;
+}
+
 export async function createEnquiry(
   input: ContactEnquiryInput,
   correlationId: string,
@@ -31,12 +55,8 @@ export async function createEnquiry(
       `Email: ${input.email}`,
       `Phone: ${input.phone}`,
       `Organisation: ${input.company === "" ? "Not provided" : input.company}`,
-      `Practice area: ${
-        input.service === ""
-          ? "Not specified"
-          : (services.find((service) => service.slug === input.service)
-              ?.title ?? input.service)
-      }`,
+      `Practice area: ${practiceAreaLabel(input.service)}`,
+      `Source: ${sourceLabel(input.source)}`,
       "",
       "Message:",
       input.message,

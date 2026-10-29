@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 import { comparisonPoints } from "@/features/landing/content";
+import { Reveal } from "@/features/landing/motion-primitives";
 
 function OtherFirmsCard() {
   return (
@@ -137,7 +138,7 @@ export function ComparisonSection() {
       className="hero-cream relative overflow-hidden py-16 font-sans sm:py-20"
     >
       <div className="mx-auto w-full max-w-[1080px] px-5 md:px-8">
-        <div className="text-center">
+        <Reveal className="text-center">
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             <p className="text-brand-muted text-[0.7rem] font-semibold tracking-[0.18em] uppercase italic">
               Other firms
@@ -165,12 +166,15 @@ export function ComparisonSection() {
             Clearer numbers, written findings, and support that stays with the
             business across audit, tax, advisory, bookkeeping, and ERP.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="mt-10 hidden gap-5 sm:mt-12 lg:grid lg:grid-cols-2">
+        <Reveal
+          className="mt-10 hidden gap-5 sm:mt-12 lg:grid lg:grid-cols-2"
+          delayMs={120}
+        >
           <OtherFirmsCard />
           <QuantaraCard />
-        </div>
+        </Reveal>
 
         <div className="mt-10 lg:hidden">
           <div

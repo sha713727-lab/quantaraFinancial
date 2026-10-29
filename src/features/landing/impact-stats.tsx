@@ -1,50 +1,98 @@
 import { impactStats } from "@/features/landing/content";
-import { Reveal } from "@/features/landing/motion-primitives";
+import { ImpactStatsMotion } from "@/features/landing/impact-stats-motion.client";
+import styles from "@/features/landing/impact-stats.module.css";
+import { cn } from "@/lib/utils";
+
+const offsetClass = [
+  styles.itemOffset0,
+  styles.itemOffset1,
+  styles.itemOffset2,
+] as const;
 
 export function ImpactStatsSection() {
   return (
     <section
       id="impact"
       aria-labelledby="impact-title"
-      className="hero-cream relative overflow-hidden py-12 font-sans sm:py-16"
+      className={cn(styles.section, "hero-cream")}
     >
-      <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
-        <Reveal>
-          <h2
-            id="impact-title"
-            className="text-brand-navy mx-auto max-w-2xl text-center font-sans text-[clamp(1.5rem,3.6vw,2.5rem)] leading-[1.15] font-bold tracking-[-0.03em] uppercase"
-          >
-            Clear financial direction for businesses ready to grow
-          </h2>
-        </Reveal>
-
-        <ul className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 sm:grid-cols-3 sm:gap-5">
-          {impactStats.map((stat) => (
-            <li
-              key={stat.label}
-              className="impact-stat-card flex min-h-[15rem] flex-col justify-between rounded-[1.5rem] px-7 py-7 sm:min-h-[16.5rem] sm:px-8 sm:py-8"
+      <div className={styles.container}>
+        <ImpactStatsMotion>
+          <div data-impact-observe="heading" className={styles.headingWrap}>
+            <h2
+              id="impact-title"
+              data-impact-animate="heading"
+              className={cn(styles.heading, styles.animateTarget)}
             >
-              <div>
-                <p className="text-brand-cream/85 font-sans text-[0.65rem] font-bold tracking-[0.2em] uppercase">
-                  {stat.label}
-                </p>
-                <p className="text-brand-cream mt-4 font-sans text-[clamp(2.5rem,4.5vw,3.25rem)] leading-none font-bold tracking-[-0.05em]">
-                  {stat.value}
-                </p>
-              </div>
+              Clear financial direction for businesses ready to grow
+            </h2>
+          </div>
 
-              <div className="mt-6">
-                <div
-                  className="bg-brand-cream/25 mb-4 h-px w-10"
-                  aria-hidden="true"
-                />
-                <p className="text-brand-cream/85 max-w-[17rem] font-sans text-sm leading-6 font-normal">
-                  {stat.description}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ul>
+          <ul data-impact-observe="row" className={styles.grid}>
+            {impactStats.map((stat, index) => {
+              const isLight = index !== 1;
+              const isValueEnd = index === 0;
+
+              return (
+                <li
+                  key={stat.id}
+                  data-impact-observe="card"
+                  data-impact-index={index}
+                  className={cn(styles.item, offsetClass[index])}
+                >
+                  <div
+                    data-impact-animate="card"
+                    className={cn(
+                      styles.card,
+                      styles.animateTarget,
+                      isLight ? styles.cardLight : styles.cardDark,
+                      isValueEnd
+                        ? styles.layoutValueEnd
+                        : styles.layoutValueStart,
+                    )}
+                  >
+                    <p className={styles.label}>{stat.label}</p>
+
+                    {isValueEnd ? (
+                      <>
+                        <p className={styles.description}>{stat.description}</p>
+                        <div className={styles.spacer} aria-hidden="true" />
+                        <div className={styles.metricRow}>
+                          <p className={styles.metric}>
+                            <span className="sr-only">{stat.value}</span>
+                            <span
+                              aria-hidden="true"
+                              data-impact-counter={stat.numericTarget}
+                            >
+                              {stat.value}
+                            </span>
+                          </p>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className={styles.spacer} aria-hidden="true" />
+                        <div className={styles.metricRow}>
+                          <p className={styles.metric}>
+                            <span className="sr-only">{stat.value}</span>
+                            <span
+                              aria-hidden="true"
+                              data-impact-counter={stat.numericTarget}
+                            >
+                              {stat.value}
+                            </span>
+                          </p>
+                        </div>
+                        <div className={styles.divider} aria-hidden="true" />
+                        <p className={styles.description}>{stat.description}</p>
+                      </>
+                    )}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </ImpactStatsMotion>
       </div>
     </section>
   );

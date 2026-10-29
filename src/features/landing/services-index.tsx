@@ -27,7 +27,7 @@ export function ServicesIndex() {
                 href={servicePath(service.slug)}
                 className="border-brand-navy/10 bg-brand-cream-soft focus-visible:ring-brand-navy focus-visible:ring-offset-brand-white flex h-full flex-col overflow-hidden rounded-2xl border transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none"
               >
-                <div className="bg-brand-navy relative aspect-16/10">
+                <div className="bg-brand-navy relative aspect-3/4 sm:aspect-4/5">
                   <Image
                     src={service.image}
                     alt={service.imageAlt}

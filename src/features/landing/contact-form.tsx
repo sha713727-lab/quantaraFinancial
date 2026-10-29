@@ -4,6 +4,10 @@ import { useActionState, useEffect, useRef } from "react";
 
 import { services } from "@/features/landing/content";
 import { submitContactEnquiry } from "@/features/landing/submit-contact-enquiry";
+import type {
+  ContactServiceValue,
+  ContactSourceValue,
+} from "@/schemas/contact-enquiry";
 import type { ContactActionState } from "@/types/contact-enquiry";
 
 const inputClassName =
@@ -12,13 +16,23 @@ const inputClassName =
 const labelClassName =
   "block text-[0.65rem] font-bold tracking-[0.18em] text-brand-navy uppercase";
 
-export function ContactForm() {
+const cpaMessagePlaceholder =
+  "Share the software you use, approximate workload, and preferred timing for support.";
+
+export function ContactForm({
+  defaultService = "",
+  defaultSource = "",
+}: {
+  readonly defaultService?: ContactServiceValue;
+  readonly defaultSource?: ContactSourceValue;
+} = {}) {
   const [state, formAction, pending] = useActionState(
     submitContactEnquiry,
     null as ContactActionState | null,
   );
   const dialogRef = useRef<HTMLDialogElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const isCpaEnquiry = defaultService === "cpa-outsourcing";
 
   useEffect(() => {
     if (state?.ok) {
@@ -29,6 +43,8 @@ export function ContactForm() {
 
   const fields = state && !state.ok ? state.error.fields : undefined;
   const formError = state && !state.ok ? state.error.message : undefined;
+  const successIsCpa =
+    state?.ok === true && state.service === "cpa-outsourcing";
 
   return (
     <>
@@ -48,6 +64,8 @@ export function ContactForm() {
             autoComplete="off"
           />
         </p>
+
+        <input type="hidden" name="source" value={defaultSource} />
 
         <p>
           <label htmlFor="contact-first-name" className={labelClassName}>
@@ -186,7 +204,7 @@ export function ContactForm() {
           <select
             id="contact-service"
             name="service"
-            defaultValue=""
+            defaultValue={defaultService}
             aria-invalid={Boolean(fields?.service)}
             aria-describedby={
               fields?.service ? "contact-service-error" : undefined
@@ -194,6 +212,7 @@ export function ContactForm() {
             className={inputClassName}
           >
             <option value="">Tell us in the message</option>
+            <option value="cpa-outsourcing">CPA Firm Outsourcing</option>
             {services.map((service) => (
               <option key={service.slug} value={service.slug}>
                 {service.title}
@@ -220,6 +239,7 @@ export function ContactForm() {
             rows={6}
             maxLength={4000}
             required
+            placeholder={isCpaEnquiry ? cpaMessagePlaceholder : undefined}
             aria-invalid={Boolean(fields?.message)}
             aria-describedby={
               fields?.message ? "contact-message-error" : undefined
@@ -270,8 +290,9 @@ export function ContactForm() {
           Submitted successfully
         </h2>
         <p className="text-brand-cream/85 mt-4 text-sm leading-7">
-          Your message is with the Quantara team. We will reply to the email you
-          entered.
+          {successIsCpa
+            ? "Thank you. Your CPA partnership enquiry has been received. Our team will contact you using the details provided."
+            : "Your message is with the Quantara team. We will reply to the email you entered."}
         </p>
         <button
           type="button"

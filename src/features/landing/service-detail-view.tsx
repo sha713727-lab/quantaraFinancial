@@ -56,6 +56,17 @@ export function ServiceDetailView({ service }: { readonly service: Service }) {
             >
               Book a Consultation
             </Link>
+            {service.slug === "accounting-outsourcing" ? (
+              <p className="text-brand-muted mt-5 text-sm leading-7">
+                Looking for support for your CPA practice?{" "}
+                <Link
+                  href={sitePaths.cpaOutsourcing}
+                  className="text-brand-navy decoration-brand-navy/40 hover:decoration-brand-navy focus-visible:ring-brand-navy focus-visible:ring-offset-brand-white rounded-sm font-semibold underline underline-offset-4 transition-colors focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none"
+                >
+                  Explore our CPA outsourcing services.
+                </Link>
+              </p>
+            ) : null}
           </div>
         </div>
       </section>

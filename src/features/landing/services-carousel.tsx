@@ -9,14 +9,32 @@ import type { KeyboardEvent } from "react";
 
 import { servicePath } from "@/constants/site-paths";
 import { services } from "@/features/landing/content";
+import { requestScrollSync } from "@/features/landing/scroll-sync.client";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 
 const SCROLL_PER_CARD = 480;
+const LAST_INDEX = services.length - 1;
+
+function resolveActiveIndex(position: number, current: number): number {
+  const lower = current - 0.55;
+  const upper = current + 0.55;
+
+  if (position >= upper && current < LAST_INDEX) {
+    return Math.min(LAST_INDEX, current + 1);
+  }
+
+  if (position <= lower && current > 0) {
+    return Math.max(0, current - 1);
+  }
+
+  return current;
+}
 
 export function ServicesCarouselSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<ScrollTrigger | null>(null);
+  const activeIndexRef = useRef(0);
   const reduceMotion = usePrefersReducedMotion();
   const isStatic = reduceMotion === true;
   const [nearViewport, setNearViewport] = useState(false);
@@ -35,7 +53,7 @@ export function ServicesCarouselSection() {
           setNearViewport(true);
         }
       },
-      { rootMargin: "0px", threshold: 0.01 },
+      { rootMargin: "240px 0px", threshold: 0.01 },
     );
 
     observer.observe(section);
@@ -61,10 +79,10 @@ export function ServicesCarouselSection() {
       stage.querySelectorAll<HTMLElement>("[data-carousel-card]"),
     );
 
+    let spacing = window.innerWidth < 640 ? 150 : 250;
+
     const context = gsap.context(() => {
       const render = (position: number) => {
-        const spacing = window.innerWidth < 640 ? 150 : 250;
-
         cards.forEach((card, index) => {
           const distance = index - position;
           const magnitude = Math.abs(distance);
@@ -77,40 +95,67 @@ export function ServicesCarouselSection() {
             rotateY: -distance * 26,
             opacity: Math.max(0, 1 - magnitude * 0.42),
             zIndex: 100 - Math.round(magnitude * 10),
+            force3D: true,
+            immediateRender: true,
           });
         });
       };
 
-      render(0);
+      render(activeIndexRef.current);
 
-      const progress = { position: 0 };
+      const progress = { position: activeIndexRef.current };
 
       const tween = gsap.to(progress, {
-        position: services.length - 1,
+        position: LAST_INDEX,
         ease: "none",
         scrollTrigger: {
           trigger: section,
           start: "top 5rem",
-          end: `+=${SCROLL_PER_CARD * (services.length - 1)}`,
+          end: `+=${SCROLL_PER_CARD * LAST_INDEX}`,
           pin: true,
+          pinSpacing: true,
           anticipatePin: 1,
-          scrub: 0.8,
+          scrub: 0.35,
           invalidateOnRefresh: true,
+          fastScrollEnd: true,
+          onRefresh: () => {
+            spacing = window.innerWidth < 640 ? 150 : 250;
+            render(progress.position);
+          },
         },
         onUpdate: () => {
           render(progress.position);
-          setActiveIndex(Math.round(progress.position));
+          const next = resolveActiveIndex(
+            progress.position,
+            activeIndexRef.current,
+          );
+          if (next !== activeIndexRef.current) {
+            activeIndexRef.current = next;
+            setActiveIndex(next);
+          }
         },
       });
 
       triggerRef.current = tween.scrollTrigger ?? null;
+      requestScrollSync();
     }, section);
 
+    const onResize = () => {
+      spacing = window.innerWidth < 640 ? 150 : 250;
+      requestScrollSync();
+    };
+    window.addEventListener("resize", onResize, { passive: true });
+
     return () => {
+      window.removeEventListener("resize", onResize);
       triggerRef.current = null;
       context.revert();
     };
   }, [nearViewport, reduceMotion]);
+
+  useEffect(() => {
+    activeIndexRef.current = activeIndex;
+  }, [activeIndex]);
 
   const goToChapter = (index: number) => {
     const trigger = triggerRef.current;
@@ -120,12 +165,13 @@ export function ServicesCarouselSection() {
         index
       ];
       card?.scrollIntoView({ behavior: "smooth", inline: "center" });
+      activeIndexRef.current = index;
       setActiveIndex(index);
       return;
     }
 
     const span = trigger.end - trigger.start;
-    const target = trigger.start + (span * index) / (services.length - 1);
+    const target = trigger.start + (span * index) / LAST_INDEX;
 
     window.scrollTo({ top: target, behavior: "smooth" });
   };
@@ -133,7 +179,7 @@ export function ServicesCarouselSection() {
   const onChapterKeyDown = (event: KeyboardEvent<HTMLElement>) => {
     if (event.key === "ArrowRight") {
       event.preventDefault();
-      goToChapter(Math.min(activeIndex + 1, services.length - 1));
+      goToChapter(Math.min(activeIndex + 1, LAST_INDEX));
     }
 
     if (event.key === "ArrowLeft") {
@@ -153,9 +199,13 @@ export function ServicesCarouselSection() {
       ref={sectionRef}
       id="services"
       aria-labelledby="practice-areas-title"
-      className="stage-dark text-brand-cream relative scroll-mt-24 overflow-hidden"
+      className="stage-dark text-brand-cream relative z-10 scroll-mt-24 overflow-hidden"
     >
       <span className="stage-grain" aria-hidden="true" />
+      <span
+        className="bg-brand-navy pointer-events-none absolute inset-x-0 -top-px h-2"
+        aria-hidden="true"
+      />
 
       <p
         aria-hidden="true"
@@ -164,7 +214,7 @@ export function ServicesCarouselSection() {
         {active.number}
       </p>
 
-      <div className="relative mx-auto flex min-h-[calc(100svh-5rem)] w-full max-w-[1360px] flex-col justify-start px-5 pt-10 pb-12 md:px-8 md:pt-12">
+      <div className="relative mx-auto flex min-h-[calc(100vh-5rem)] w-full max-w-[1360px] flex-col justify-start px-5 pt-10 pb-12 md:px-8 md:pt-12">
         <div className="relative text-center">
           <h2
             id="practice-areas-title"
@@ -185,10 +235,7 @@ export function ServicesCarouselSection() {
 
         <div className="mt-8 grid items-center gap-8 lg:mt-10 lg:grid-cols-[minmax(18rem,24rem)_1fr] lg:gap-10">
           <div>
-            <div
-              key={active.slug}
-              className="animate-in fade-in-0 slide-in-from-bottom-3 duration-500"
-            >
+            <div className="relative min-h-[8.5rem] sm:min-h-[9.25rem]">
               <h3 className="text-2xl leading-[1.15] font-bold tracking-[-0.03em] sm:text-3xl">
                 {active.headline}
               </h3>
@@ -220,7 +267,7 @@ export function ServicesCarouselSection() {
                 >
                   <span
                     data-active={index === activeIndex}
-                    className="bg-brand-cream/20 group-hover:bg-brand-cream/50 group-focus-visible:ring-brand-cream data-[active=true]:from-brand-cream data-[active=true]:to-brand-accent block h-0.5 w-4 rounded-full transition-all duration-500 group-focus-visible:ring-2 data-[active=true]:w-10 data-[active=true]:bg-gradient-to-r"
+                    className="bg-brand-cream/20 data-[active=true]:from-brand-cream data-[active=true]:to-brand-accent block h-0.5 w-4 rounded-full transition-[width,background-color] duration-300 data-[active=true]:w-10 data-[active=true]:bg-gradient-to-r"
                   />
                   <span className="sr-only">{service.title}</span>
                 </button>
@@ -233,27 +280,29 @@ export function ServicesCarouselSection() {
             className={
               isStatic
                 ? "flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-                : "stage-3d relative h-[22rem] w-full sm:h-[24rem]"
+                : "stage-3d relative h-[22rem] w-full transform-gpu sm:h-[24rem]"
             }
           >
-            {services.map((service) => (
+            {services.map((service, index) => (
               <article
                 key={service.slug}
                 data-carousel-card
                 className={
                   isStatic
                     ? "media-card aspect-3/4 w-[13rem] shrink-0 snap-center"
-                    : "media-card absolute top-1/2 left-1/2 aspect-3/4 w-[13rem] sm:w-[16rem]"
+                    : "media-card absolute top-1/2 left-1/2 aspect-3/4 w-[13rem] will-change-transform backface-hidden sm:w-[16rem]"
                 }
               >
                 {nearViewport ? (
                   <Image
+                    key={service.image}
                     src={service.image}
                     alt={service.imageAlt}
                     fill
                     sizes="(min-width: 640px) 16rem, 13rem"
-                    loading="lazy"
-                    className="object-cover"
+                    priority={index < 3}
+                    className="object-cover object-center"
+                    onLoad={() => requestScrollSync()}
                   />
                 ) : (
                   <div

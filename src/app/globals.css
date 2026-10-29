@@ -321,6 +321,11 @@
     transform-style: preserve-3d;
   }
 
+  .stage-3d [data-carousel-card] {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+
   @media (min-width: 1024px) {
     .stage-3d {
       perspective: 1600px;
@@ -352,35 +357,6 @@
 
   .partners-logo {
     opacity: 0.95;
-  }
-
-  .impact-stat-card {
-    background-color: var(--color-brand-navy);
-    background-image: radial-gradient(
-      var(--color-brand-deep) 1.75px,
-      transparent 1.85px
-    );
-    background-size: 18px 18px;
-    border: 1px solid rgb(247 240 223 / 8%);
-    box-shadow: 0 18px 40px rgb(2 7 18 / 12%);
-    transition:
-      transform 280ms ease,
-      border-color 280ms ease,
-      box-shadow 280ms ease;
-  }
-
-  .impact-stat-card:hover {
-    transform: translateY(-3px);
-    border-color: rgb(247 240 223 / 16%);
-    box-shadow: 0 22px 48px rgb(2 7 18 / 18%);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .impact-stat-card,
-    .impact-stat-card:hover {
-      transition: none;
-      transform: none;
-    }
   }
 
   .partners-marquee-track {
@@ -496,5 +472,28 @@
 
   .process-mobile-scroller::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Baseline visible. Entrance hide is armed only after JS confirms offscreen. */
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-on-scroll[data-reveal-ready="true"]:not([data-visible="true"]) {
+      opacity: 0;
+      transform: translate3d(0, var(--reveal-y, 18px), 0);
+      transition:
+        opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition-delay: var(--reveal-delay, 0ms);
+      will-change: opacity, transform;
+    }
+
+    .reveal-on-scroll[data-visible="true"] {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
   }
 }

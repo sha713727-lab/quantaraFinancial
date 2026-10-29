@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { ConsultationView } from "@/features/landing/consultation-view";
 import { PageShell } from "@/features/landing/page-shell";
+import { resolveConsultationDefaults } from "@/schemas/contact-enquiry";
 
 export const metadata: Metadata = {
   title: "Book a Consultation",
@@ -24,10 +25,23 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ConsultationPage() {
+export default async function ConsultationPage({
+  searchParams,
+}: {
+  readonly searchParams: Promise<{
+    readonly service?: string | string[] | undefined;
+    readonly source?: string | string[] | undefined;
+  }>;
+}) {
+  const params = await searchParams;
+  const defaults = resolveConsultationDefaults(params);
+
   return (
     <PageShell>
-      <ConsultationView />
+      <ConsultationView
+        defaultService={defaults.service}
+        defaultSource={defaults.source}
+      />
     </PageShell>
   );
 }

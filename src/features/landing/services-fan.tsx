@@ -1,228 +1,94 @@
 "use client";
 
-import Image from "next/image";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef, useState } from "react";
+import {
+  TiltedGridHero,
+  type TiltedGridImage,
+} from "@/components/ui/tilted-grid-hero";
+import { Reveal } from "@/features/landing/motion-primitives";
 
-import { services } from "@/features/landing/content";
-import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
-
-const FAN_GEOMETRY = {
-  mobile: { pivot: 720, step: 13, start: 28, end: -28 },
-  desktop: { pivot: 1040, step: 9, start: 34, end: -34 },
-} as const;
+const FAN_IMAGES: readonly TiltedGridImage[] = [
+  {
+    src: "/services/cards/accounting-outsourcing.jpg",
+    alt: "Bookkeeping desk with spreadsheet, invoices, and calculator",
+  },
+  {
+    src: "/services/cards/audit-assurance.jpg",
+    alt: "Monthly report review with charts and calculator",
+  },
+  {
+    src: "/services/cards/taxation.jpg",
+    alt: "Tax consultation with profit and loss notes",
+  },
+  {
+    src: "/services/cards/erp-solutions.jpg",
+    alt: "Modern ERP workstation overlooking the city",
+  },
+  {
+    src: "/services/cards/corporate-advisory.jpg",
+    alt: "Boardroom roadmap presentation",
+  },
+  {
+    src: "/services/cards/risk-advisory.jpg",
+    alt: "Professional office workstation for risk review",
+  },
+  {
+    src: "/services/cards/tax-planning.jpg",
+    alt: "Strategy table with charts, sticky notes, and notebook",
+  },
+  {
+    src: "/services/cards/advisory-consultancy.jpg",
+    alt: "Executive conference room ready for advisory work",
+  },
+  {
+    src: "/services/cards/enterprise-support.jpg",
+    alt: "Enterprise meeting room with presentation screen",
+  },
+  {
+    src: "/services/cards/growth-strategies.jpg",
+    alt: "Evening desk setup for focused planning work",
+  },
+  {
+    src: "/services/cards/specialty-services.jpg",
+    alt: "Analytics monitor at a city-view desk",
+  },
+];
 
 export function ServicesFanSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const runwayRef = useRef<HTMLDivElement>(null);
-  const fanRef = useRef<HTMLDivElement>(null);
-  const reduceMotion = usePrefersReducedMotion();
-  const isStatic = reduceMotion === true;
-  const [nearViewport, setNearViewport] = useState(false);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-
-    if (!section) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry?.isIntersecting) {
-          setNearViewport(true);
-        }
-      },
-      { rootMargin: "0px", threshold: 0.01 },
-    );
-
-    observer.observe(section);
-
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!nearViewport || reduceMotion !== false) {
-      return;
-    }
-
-    const runway = runwayRef.current;
-    const fan = fanRef.current;
-
-    if (!runway || !fan) {
-      return;
-    }
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const cards = Array.from(
-      fan.querySelectorAll<HTMLElement>("[data-fan-card]"),
-    );
-    const inners = cards.map((card) =>
-      card.querySelector<HTMLElement>("[data-fan-inner]"),
-    );
-    const lastIndex = Math.max(cards.length - 1, 1);
-
-    const context = gsap.context(() => {
-      let pivot: number = FAN_GEOMETRY.desktop.pivot;
-      let step: number = FAN_GEOMETRY.desktop.step;
-      let startAngle: number = FAN_GEOMETRY.desktop.start;
-      let endAngle: number = FAN_GEOMETRY.desktop.end;
-
-      const layout = () => {
-        const geometry =
-          window.innerWidth < 640 ? FAN_GEOMETRY.mobile : FAN_GEOMETRY.desktop;
-
-        pivot = geometry.pivot;
-        step = geometry.step;
-        startAngle = geometry.start;
-        endAngle = geometry.end;
-
-        gsap.set(fan, { transformOrigin: `50% ${pivot}px` });
-        cards.forEach((card, index) => {
-          gsap.set(card, {
-            xPercent: -50,
-            transformOrigin: `50% ${pivot}px`,
-            rotation: index * step,
-          });
-        });
-      };
-
-      const render = (progress: number) => {
-        const spread = step * lastIndex;
-        const fanRotation =
-          startAngle + (endAngle - spread - startAngle) * progress;
-
-        gsap.set(fan, { rotation: fanRotation });
-
-        cards.forEach((_, index) => {
-          const inner = inners[index];
-
-          if (!inner) {
-            return;
-          }
-
-          const worldAngle = fanRotation + index * step;
-          const falloff = Math.min(Math.abs(worldAngle) / (step * 2.4), 1);
-
-          gsap.set(inner, {
-            autoAlpha: 1 - falloff * 0.78,
-            scale: 1.06 - falloff * 0.2,
-          });
-        });
-      };
-
-      layout();
-      render(0);
-
-      const progress = { value: 0 };
-
-      gsap.to(progress, {
-        value: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: runway,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 0.8,
-          invalidateOnRefresh: true,
-          onRefreshInit: () => {
-            layout();
-          },
-        },
-        onUpdate: () => render(progress.value),
-      });
-    }, runway);
-
-    return () => context.revert();
-  }, [nearViewport, reduceMotion]);
-
   return (
     <section
-      ref={sectionRef}
-      id="services-fan"
+      id="services-overview"
       aria-labelledby="services-fan-title"
-      className="relative overflow-x-clip"
+      className="relative z-0 flex h-[calc(100vh-5rem)] min-h-[32rem] w-full flex-col overflow-hidden"
     >
-      <div
-        ref={runwayRef}
-        className={isStatic ? "relative" : "relative h-[460svh]"}
-      >
-        <div
-          className={
-            isStatic
-              ? "relative overflow-hidden px-5 py-20 md:px-8"
-              : "sticky top-20 flex flex-col overflow-x-clip overflow-y-visible px-5 pt-2 pb-8 md:px-8 md:pb-10"
-          }
-        >
-          <div
-            className="hero-glow hero-glow-primary top-40 -left-40 size-[32rem] sm:size-[42rem]"
-            aria-hidden="true"
-          />
-          <div
-            className="hero-glow hero-glow-secondary top-[22rem] -right-24 size-[24rem] sm:size-[32rem]"
-            aria-hidden="true"
-          />
-
-          <div className="relative mx-auto w-full max-w-5xl text-center">
-            <h2
-              id="services-fan-title"
-              className="mx-auto max-w-full text-[clamp(0.72rem,calc((100vw-2.75rem)/22),2.65rem)] leading-[1.12] font-semibold tracking-[-0.03em] uppercase italic"
-            >
-              <span className="text-brand-navy/80 block">
-                Audit, Tax, Advisory & Book Keeping
-              </span>
-              <span className="text-brand-navy block min-[360px]:whitespace-nowrap">
-                For Growing Businesses
-              </span>
-            </h2>
-            <p className="text-brand-muted mx-auto mt-3 max-w-xl px-1 text-sm leading-6 sm:text-base sm:leading-7">
-              Independent assurance, taxation, corporate advisory, bookkeeping,
-              outsourcing, and ERP for corporates, SMEs, and founders.
-            </p>
-            {!isStatic && (
-              <p className="text-brand-muted mt-3 text-[0.7rem] font-semibold tracking-[0.2em] uppercase sm:hidden">
-                Scroll to fan through each service.
-              </p>
-            )}
-          </div>
-
-          <div
-            ref={fanRef}
-            className={
-              isStatic
-                ? "relative mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-                : "relative mt-6 h-[20rem] w-full sm:mt-8 sm:h-[24rem]"
-            }
+      <div className="relative flex h-full min-h-0 w-full flex-1 flex-col overflow-hidden px-5 pt-8 pb-6 md:px-8 md:pt-10 md:pb-8">
+        <Reveal className="relative z-20 mx-auto w-full max-w-5xl shrink-0 text-center">
+          <h2
+            id="services-fan-title"
+            className="mx-auto max-w-full text-[clamp(0.72rem,calc((100vw-2.75rem)/22),2.65rem)] leading-[1.12] font-semibold tracking-[-0.03em] uppercase italic"
           >
-            {services.map((service, index) => (
-              <article
-                key={service.slug}
-                data-fan-card
-                className={
-                  isStatic
-                    ? "w-[13.5rem] shrink-0 snap-center sm:w-[16.5rem]"
-                    : "absolute top-0 left-1/2 w-[13.5rem] sm:w-[16.5rem]"
-                }
-              >
-                <div data-fan-inner>
-                  <div className="media-card aspect-3/4">
-                    <Image
-                      src={service.image}
-                      alt={service.imageAlt}
-                      fill
-                      sizes="(min-width: 640px) 16.5rem, 13.5rem"
-                      priority={index === 0}
-                      className="object-cover"
-                    />
-                    <h3 className="sr-only">{service.title}</h3>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
+            <span className="text-brand-navy/80 block">
+              Audit, Tax, Advisory & Book Keeping
+            </span>
+            <span className="text-brand-navy block min-[360px]:whitespace-nowrap">
+              For Growing Businesses
+            </span>
+          </h2>
+          <p className="text-brand-muted mx-auto mt-3 max-w-xl px-1 text-sm leading-6 sm:text-base sm:leading-7">
+            Independent assurance, taxation, corporate advisory, bookkeeping,
+            outsourcing, and ERP for corporates, SMEs, and founders.
+          </p>
+        </Reveal>
+
+        <TiltedGridHero
+          images={FAN_IMAGES}
+          className="relative mt-6 min-h-0 w-full flex-1"
+          tileHeight={58}
+          aspectRatio={3 / 4}
+          axis={50}
+          curve={72}
+          fade={10}
+          speed={4.5}
+        />
       </div>
     </section>
   );

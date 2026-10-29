@@ -2,13 +2,33 @@ import { ContactChannels } from "@/features/landing/contact-channels";
 import { ContactForm } from "@/features/landing/contact-form";
 import { processSteps } from "@/features/landing/content";
 import { InnerPageHero } from "@/features/landing/inner-page-hero";
+import type {
+  ContactServiceValue,
+  ContactSourceValue,
+} from "@/schemas/contact-enquiry";
 
-export function ConsultationView() {
+export function ConsultationView({
+  defaultService = "",
+  defaultSource = "",
+}: {
+  readonly defaultService?: ContactServiceValue;
+  readonly defaultSource?: ContactSourceValue;
+} = {}) {
+  const isCpa = defaultService === "cpa-outsourcing";
+
   return (
     <>
       <InnerPageHero
-        title="Book a consultation"
-        description="Tell Quantara what you need on audit, taxation, advisory, outsourcing, or ERP. We assess the business and the right scope before any recommendation is made."
+        title={
+          isCpa
+            ? "Request a CPA partnership consultation"
+            : "Book a consultation"
+        }
+        description={
+          isCpa
+            ? "Tell Quantara about your firm's bookkeeping workload, software and delivery timing. We will review the scope and discuss a suitable engagement."
+            : "Tell Quantara what you need on audit, taxation, advisory, outsourcing, or ERP. We assess the business and the right scope before any recommendation is made."
+        }
       />
 
       <section
@@ -49,7 +69,10 @@ export function ConsultationView() {
             Reach the team
           </h2>
           <ContactChannels tone="cream" />
-          <ContactForm />
+          <ContactForm
+            defaultService={defaultService}
+            defaultSource={defaultSource}
+          />
         </div>
       </section>
     </>

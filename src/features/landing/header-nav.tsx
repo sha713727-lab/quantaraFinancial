@@ -9,6 +9,7 @@ import { sitePaths } from "@/constants/site-paths";
 const navLinks = [
   { href: sitePaths.home, label: "Home" },
   { href: sitePaths.services, label: "Services" },
+  { href: sitePaths.cpaOutsourcing, label: "For CPA Firms" },
   { href: sitePaths.blogs, label: "Blogs" },
   { href: sitePaths.about, label: "About" },
   { href: sitePaths.contact, label: "Contact" },

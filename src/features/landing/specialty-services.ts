@@ -30,8 +30,9 @@ export const specialtyServices: readonly Service[] = [
     ],
     ctaLabel: "Explore UAE tax & accounting",
     icon: Scale,
-    image: "/services/taxation.jpg",
-    imageAlt: "Tax documents, calculator, and pen arranged on a desk",
+    image: "/services/cards/taxation.jpg",
+    imageAlt:
+      "Tax consultation with profit and loss notes, calculator, and notebooks",
   },
   {
     slug: "uk-tax",
@@ -50,8 +51,9 @@ export const specialtyServices: readonly Service[] = [
     ],
     ctaLabel: "Explore UK tax & accounting",
     icon: Scale,
-    image: "/services/taxation.jpg",
-    imageAlt: "Tax documents, calculator, and pen arranged on a desk",
+    image: "/services/cards/taxation.jpg",
+    imageAlt:
+      "Tax consultation with profit and loss notes, calculator, and notebooks",
   },
   {
     slug: "usa-tax",
@@ -70,8 +72,9 @@ export const specialtyServices: readonly Service[] = [
     ],
     ctaLabel: "Explore USA tax & accounting",
     icon: Scale,
-    image: "/services/taxation.jpg",
-    imageAlt: "Tax documents, calculator, and pen arranged on a desk",
+    image: "/services/cards/taxation.jpg",
+    imageAlt:
+      "Tax consultation with profit and loss notes, calculator, and notebooks",
   },
   {
     slug: "bookkeeping",
@@ -90,8 +93,9 @@ export const specialtyServices: readonly Service[] = [
     ],
     ctaLabel: "Explore bookkeeping",
     icon: CircleDollarSign,
-    image: "/services/accounting-outsourcing.jpg",
-    imageAlt: "Ledger, invoices, and financial records on a desk",
+    image: "/services/cards/accounting-outsourcing.jpg",
+    imageAlt:
+      "Bookkeeping workspace with laptop spreadsheet, invoices, calculator, and receipts",
   },
   {
     slug: "financial-modeling",
@@ -110,8 +114,9 @@ export const specialtyServices: readonly Service[] = [
     ],
     ctaLabel: "Explore financial modeling",
     icon: CircleDollarSign,
-    image: "/services/accounting-outsourcing.jpg",
-    imageAlt: "Ledger, invoices, and financial records on a desk",
+    image: "/services/cards/accounting-outsourcing.jpg",
+    imageAlt:
+      "Bookkeeping workspace with laptop spreadsheet, invoices, calculator, and receipts",
   },
   {
     slug: "investor-documentation",
@@ -130,7 +135,8 @@ export const specialtyServices: readonly Service[] = [
     ],
     ctaLabel: "Explore investor documentation",
     icon: Landmark,
-    image: "/services/corporate-advisory.jpg",
-    imageAlt: "Two professionals shaking hands in an office meeting room",
+    image: "/services/cards/corporate-advisory.jpg",
+    imageAlt:
+      "Advisor presenting a project roadmap on screen during a boardroom meeting",
   },
 ];

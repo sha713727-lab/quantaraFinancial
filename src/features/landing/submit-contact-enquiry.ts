@@ -24,6 +24,7 @@ const fieldMessages: Record<ContactFieldName, string> = {
   phone: "Enter a valid phone number.",
   company: "Enter a shorter organisation name.",
   service: "Choose a practice area.",
+  source: "Choose a valid enquiry source.",
   message: "Enter a message of at least 10 characters.",
 };
 
@@ -78,7 +79,7 @@ export async function submitContactEnquiry(
 
   if (readField(formData, "website").trim() !== "") {
     log("info", "enquiry_honeypot_blocked", { correlationId });
-    return { ok: true };
+    return { ok: true, service: "" };
   }
 
   const limit = await consumeIdentityToken(requestIdentity(requestHeaders));
@@ -105,6 +106,7 @@ export async function submitContactEnquiry(
     phone: readField(formData, "phone"),
     company: readField(formData, "company"),
     service: readField(formData, "service"),
+    source: readField(formData, "source"),
     message: readField(formData, "message"),
   });
 
@@ -116,6 +118,7 @@ export async function submitContactEnquiry(
       phone?: string;
       company?: string;
       service?: string;
+      source?: string;
       message?: string;
     } = {};
 
@@ -151,5 +154,5 @@ export async function submitContactEnquiry(
     };
   }
 
-  return { ok: true };
+  return { ok: true, service: parsed.data.service };
 }
