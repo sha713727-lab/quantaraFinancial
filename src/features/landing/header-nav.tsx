@@ -108,14 +108,14 @@ export function HeaderMobileNav() {
         <>
           <button
             type="button"
-            className="bg-brand-navy/55 fixed top-full right-0 left-0 z-40 h-screen"
+            className="bg-brand-navy/55 fixed inset-x-0 top-16 z-40 h-[calc(100dvh-4rem)]"
             aria-label="Close menu"
             onClick={() => setMenuPath(null)}
           />
           <nav
             id={menuId}
             aria-label="Primary"
-            className="border-brand-cream/10 bg-brand-navy fixed top-full right-0 left-0 z-50 border-t px-5 py-5 shadow-[0_24px_48px_-24px_rgba(2,7,18,0.65)]"
+            className="border-brand-cream/10 bg-brand-navy fixed inset-x-0 top-16 z-50 max-h-[calc(100dvh-4rem)] overflow-y-auto border-t px-5 py-5 shadow-[0_24px_48px_-24px_rgba(2,7,18,0.65)]"
           >
             <ul className="flex flex-col">
               {navLinks.map((link) => {
