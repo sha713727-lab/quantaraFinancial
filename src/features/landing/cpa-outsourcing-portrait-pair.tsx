@@ -5,21 +5,12 @@ import { cn } from "@/lib/utils";
 export function CpaPortraitPair({
   left,
   right,
-  variant,
 }: {
   readonly left: Figure;
   readonly right: Figure;
-  readonly variant: "a" | "b";
 }) {
   return (
-    <div
-      className={cn(
-        "mx-auto grid w-full max-w-[1100px] gap-6 px-[clamp(1.25rem,3vw,4rem)] max-[767px]:grid-cols-1 max-[767px]:gap-6 min-[768px]:gap-[10%]",
-        variant === "a"
-          ? "min-[768px]:grid-cols-[1fr_0.8fr]"
-          : "min-[768px]:grid-cols-[1.08fr_0.72fr]",
-      )}
-    >
+    <div className="mx-auto grid w-full max-w-[1100px] gap-6 px-[clamp(1.25rem,3vw,4rem)] max-[767px]:grid-cols-1 max-[767px]:gap-6 min-[768px]:grid-cols-[1fr_0.8fr] min-[768px]:gap-[10%]">
       <CpaPortraitFigure
         title={left.title}
         caption={left.caption}

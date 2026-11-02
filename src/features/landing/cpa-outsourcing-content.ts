@@ -122,20 +122,20 @@ export const cpaOutsourcingPage = {
   },
   portraitPairB: {
     left: {
-      title: "Reporting",
-      caption: "MONTH-END SUPPORT",
-      meaning: "Agreed reports and schedules for review",
-      imageSrc: "/services/cards/taxation.jpg",
-      glowX: 62,
-      glowY: 44,
-    },
-    right: {
       title: "Year-end preparation",
       caption: "ORGANISED RECORDS",
       meaning: "Reconciled schedules and supporting information",
       imageSrc: "/services/cards/corporate-advisory.jpg",
       glowX: 78,
       glowY: 34,
+    },
+    right: {
+      title: "Reporting",
+      caption: "MONTH-END SUPPORT",
+      meaning: "Agreed reports and schedules for review",
+      imageSrc: "/services/cards/taxation.jpg",
+      glowX: 62,
+      glowY: 44,
     },
   } satisfies {
     readonly left: CpaPortraitFigure;

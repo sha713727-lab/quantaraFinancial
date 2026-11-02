@@ -2,10 +2,11 @@
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 
 import { CpaAbstractArtwork } from "@/features/landing/cpa-outsourcing-artwork";
 import { cpaOutsourcingPage } from "@/features/landing/cpa-outsourcing-content";
+import { requestScrollSync } from "@/features/landing/scroll-sync.client";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 
 export function CpaHeroZoom() {
@@ -17,8 +18,11 @@ export function CpaHeroZoom() {
   const mediaRef = useRef<HTMLDivElement>(null);
   const reduceMotion = usePrefersReducedMotion();
 
-  useEffect(() => {
-    if (reduceMotion !== false) {
+  // Animated pin layout unless reduced motion is confirmed.
+  const isStatic = reduceMotion === true;
+
+  useLayoutEffect(() => {
+    if (reduceMotion === true) {
       return;
     }
 
@@ -34,42 +38,46 @@ export function CpaHeroZoom() {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const context = gsap.context(() => {
-      const placeMediaInSlot = () => {
-        const pinBox = pin.getBoundingClientRect();
-        const slotBox = slot.getBoundingClientRect();
+    const placeMediaInSlot = () => {
+      const pinBox = pin.getBoundingClientRect();
+      const slotBox = slot.getBoundingClientRect();
 
-        gsap.set(media, {
-          top: slotBox.top - pinBox.top,
-          left: slotBox.left - pinBox.left,
-          width: slotBox.width,
-          height: Math.max(slotBox.height, 220),
-          borderRadius: 4,
-        });
-      };
-
-      placeMediaInSlot();
-      gsap.set(text, { opacity: 1, y: 0 });
-
-      const timeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 0.7,
-          pin: pin,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          onRefresh: placeMediaInSlot,
-        },
+      gsap.set(media, {
+        top: slotBox.top - pinBox.top,
+        left: slotBox.left - pinBox.left,
+        width: slotBox.width,
+        height: Math.max(slotBox.height, 220),
+        borderRadius: 4,
       });
+    };
 
-      timeline
+    placeMediaInSlot();
+    gsap.set(text, { opacity: 1, y: 0 });
+
+    // Wait for motion preference before pinning / scrubbing.
+    if (reduceMotion !== false) {
+      return;
+    }
+
+    const context = gsap.context(() => {
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 0.45,
+            pin,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            onRefresh: placeMediaInSlot,
+          },
+        })
         .to(
           text,
           {
             opacity: 0,
-            y: -40,
+            y: -36,
             ease: "none",
             duration: 0.35,
           },
@@ -88,14 +96,14 @@ export function CpaHeroZoom() {
           },
           0.05,
         );
+
+      requestScrollSync();
     }, section);
 
     return () => {
       context.revert();
     };
   }, [reduceMotion]);
-
-  const isStatic = reduceMotion !== false;
 
   const artwork = (
     <CpaAbstractArtwork
