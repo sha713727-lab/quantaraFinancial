@@ -15,8 +15,8 @@ export function LegalDocumentView({
   return (
     <>
       <InnerPageHero title={title} description={description} />
-      <article className="hero-cream pb-16 sm:pb-20">
-        <div className="mx-auto w-full max-w-3xl px-5 md:px-8">
+      <article className="hero-cream site-section">
+        <div className="site-prose">
           <p className="text-brand-muted text-xs tracking-[0.04em]">
             Last updated {updatedOn}
           </p>

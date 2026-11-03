@@ -108,9 +108,9 @@ export function ProcessSection() {
     <section
       id="process"
       aria-labelledby="process-title"
-      className="hero-cream relative overflow-hidden py-20 font-sans sm:py-28"
+      className="hero-cream site-section-lg relative overflow-hidden font-sans"
     >
-      <div className="mx-auto w-full max-w-[1360px] px-5 md:px-8">
+      <div className="site-shell">
         <Reveal className="relative text-center">
           <h2
             id="process-title"

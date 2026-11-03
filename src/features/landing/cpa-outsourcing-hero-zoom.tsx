@@ -68,10 +68,9 @@ export function CpaHeroZoom() {
         )
         .fromTo(
           media,
-          { scale: 0.92, borderRadius: 4 },
+          { scale: 0.94 },
           {
-            scale: 1,
-            borderRadius: 0,
+            scale: 1.04,
             duration: 1,
             transformOrigin: "50% 50%",
           },
@@ -102,31 +101,27 @@ export function CpaHeroZoom() {
       className="relative md:h-[220svh]"
       aria-label="CPA outsourcing introduction"
     >
-      <div className="relative flex flex-col px-[clamp(1.25rem,3vw,4rem)] pt-[clamp(7.5rem,14vw,10rem)] pb-[clamp(3rem,6vw,5rem)] md:sticky md:top-0 md:h-svh md:overflow-hidden md:pt-[clamp(5.5rem,10vw,7.5rem)] md:pb-8">
+      <div className="site-gutter relative flex flex-col pt-[calc(var(--site-header-h)+2.5rem)] pb-12 md:sticky md:top-0 md:h-svh md:overflow-hidden md:pb-8">
         <div
           ref={textRef}
-          className="relative z-20 mx-auto w-full max-w-[1600px] shrink-0 text-center"
+          className="relative z-20 mx-auto w-full max-w-[1360px] shrink-0 text-center"
         >
           <h1 className="text-brand-navy mx-auto max-w-[24ch] text-[clamp(2rem,5vw,3.75rem)] leading-[1.12] font-semibold tracking-[-0.03em]">
             {page.hero.title}
           </h1>
-          <p className="text-brand-muted mx-auto mt-6 max-w-xl text-base leading-7 sm:text-lg">
+          <p className="text-brand-muted mx-auto mt-5 max-w-xl text-base leading-7 sm:mt-6 sm:text-lg">
             {page.hero.body}
           </p>
         </div>
 
-        <div className="relative z-10 mx-auto mt-16 min-h-0 w-full max-w-[1600px] flex-1 sm:mt-20 md:mt-14">
-          <div
-            ref={mediaRef}
-            className="h-full overflow-hidden rounded-[4px] md:h-full"
-          >
+        <div className="relative z-10 mx-auto mt-10 flex min-h-0 w-full max-w-[1360px] flex-1 items-center justify-center sm:mt-12 md:mt-8">
+          <div ref={mediaRef} className="overflow-hidden rounded-[4px]">
             <CpaAbstractArtwork
-              className="h-full min-h-full"
-              aspectClassName="aspect-[3/2] md:h-full md:min-h-full md:!aspect-auto"
+              className="h-[min(58svh,36rem)] w-auto max-w-[min(100vw-2.5rem,28rem)]"
+              aspectClassName="aspect-[3/4]"
               imageSrc={page.heroArt.imageSrc}
+              imageAlt={page.heroArt.panelTitle}
               priority
-              panelTitle={page.heroArt.panelTitle}
-              panelLabel={page.heroArt.panelLabel}
             />
           </div>
         </div>

@@ -9,9 +9,9 @@ export function TestimonialsMarqueeSection() {
     <section
       id="testimonials"
       aria-labelledby="testimonials-title"
-      className="hero-cream relative overflow-hidden py-16 font-sans sm:py-20"
+      className="hero-cream site-section relative overflow-hidden font-sans"
     >
-      <div className="mx-auto w-full max-w-[1360px] px-5 text-center md:px-8">
+      <div className="site-shell">
         <h2
           id="testimonials-title"
           className="text-brand-navy text-[clamp(1.5rem,3.6vw,2.5rem)] leading-[1.15] font-semibold tracking-[-0.03em] uppercase italic"

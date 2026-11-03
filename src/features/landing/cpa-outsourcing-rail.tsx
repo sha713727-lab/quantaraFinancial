@@ -30,20 +30,26 @@ function RailCard({ card }: { readonly card: CpaRailCard }) {
     return (
       <article
         className={cn(
-          "relative w-[min(84vw,360px)] shrink-0 snap-start overflow-hidden rounded-[10px] md:w-[clamp(320px,28.9vw,459px)]",
+          "flex w-[min(84vw,360px)] shrink-0 snap-start flex-col overflow-hidden rounded-[10px] md:w-[clamp(320px,28.9vw,459px)]",
           heightClass.tall,
         )}
       >
-        <CpaAbstractArtwork
-          className="absolute inset-0 !aspect-auto h-full min-h-full rounded-[10px]"
-          aspectClassName="h-full min-h-full"
-          imageSrc={card.imageSrc}
-          glowX={card.glowX}
-          glowY={card.glowY}
-          panelTitle={card.title}
-          panelLabel={card.caption}
-          showCaptions
-        />
+        <div className="relative min-h-0 flex-1 overflow-hidden rounded-[10px]">
+          <CpaAbstractArtwork
+            className="absolute inset-0 !aspect-auto h-full min-h-full rounded-[10px]"
+            aspectClassName="h-full min-h-full"
+            imageSrc={card.imageSrc}
+            imageAlt={card.title}
+          />
+        </div>
+        <div className="bg-brand-cream-soft px-5 py-4">
+          <p className="text-brand-accent text-[0.62rem] font-bold tracking-[0.2em] uppercase">
+            {card.caption}
+          </p>
+          <p className="text-brand-navy mt-2 text-lg font-semibold tracking-[-0.02em]">
+            {card.title}
+          </p>
+        </div>
       </article>
     );
   }
@@ -184,7 +190,7 @@ export function CpaCredentialsRail({
 
   return (
     <div ref={rootRef} className="relative">
-      <div className="mb-4 flex justify-end gap-2 px-[clamp(1.25rem,3vw,4rem)]">
+      <div className="site-gutter mb-4 flex justify-end gap-2">
         {reduceMotion !== true && isSlow !== true ? (
           <button
             type="button"
@@ -226,7 +232,7 @@ export function CpaCredentialsRail({
 
       <div
         ref={scrollerRef}
-        className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-[clamp(1.25rem,3vw,4rem)] pb-2 [scrollbar-width:none] md:gap-4 [&::-webkit-scrollbar]:hidden"
+        className="site-gutter flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 [scrollbar-width:none] md:gap-4 [&::-webkit-scrollbar]:hidden"
       >
         {cards.map((card, index) => (
           <RailCard key={`${card.kind}-${index}`} card={card} />

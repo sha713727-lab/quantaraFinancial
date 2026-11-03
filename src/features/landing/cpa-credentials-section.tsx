@@ -11,9 +11,9 @@ export function CpaCredentialsSection() {
     <section
       id="cpa-credentials"
       aria-labelledby="cpa-credentials-title"
-      className="hero-cream relative overflow-hidden py-16 sm:py-20"
+      className="hero-cream site-section relative overflow-hidden"
     >
-      <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
+      <div className="site-content">
         <Reveal>
           <p className="text-brand-navy text-center text-[0.65rem] font-bold tracking-[0.22em] uppercase">
             {content.eyebrow}

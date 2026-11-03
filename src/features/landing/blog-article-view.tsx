@@ -16,7 +16,7 @@ export function BlogArticleView({
     <article className="hero-cream">
       <header className="relative">
         <HeroGlowBackdrop />
-        <div className="relative z-10 mx-auto w-full max-w-3xl px-5 pt-16 pb-10 sm:px-8 sm:pt-20">
+        <div className="site-prose relative z-10 pt-[calc(var(--site-header-h)+2rem)] pb-10">
           <h1 className="text-brand-navy text-[clamp(1.65rem,4vw,2.75rem)] leading-[1.15] font-semibold tracking-[-0.03em] uppercase italic">
             {article.title}
           </h1>
@@ -26,7 +26,7 @@ export function BlogArticleView({
         </div>
       </header>
 
-      <div className="mx-auto w-full max-w-3xl px-5 pb-12 sm:px-8 sm:pb-16">
+      <div className="site-prose pb-12 sm:pb-16">
         {article.sections.map((section, index) => {
           if (section.type === "heading") {
             return (
@@ -72,9 +72,9 @@ export function BlogArticleView({
 
       <section
         aria-labelledby="related-blogs-title"
-        className="border-brand-navy/10 border-t py-16 sm:py-20"
+        className="border-brand-navy/10 site-section border-t"
       >
-        <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
+        <div className="site-content">
           <h2
             id="related-blogs-title"
             className="text-brand-navy text-center text-[clamp(1.5rem,3.6vw,2.4rem)] leading-[1.15] font-bold tracking-[-0.03em] uppercase italic"

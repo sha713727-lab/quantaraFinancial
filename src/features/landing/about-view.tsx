@@ -11,9 +11,9 @@ export function AboutView() {
 
       <section
         aria-labelledby="about-body-title"
-        className="hero-cream relative pb-16 sm:pb-20"
+        className="hero-cream site-section relative"
       >
-        <div className="mx-auto w-full max-w-3xl px-5 md:px-8">
+        <div className="site-prose">
           <h2
             id="about-body-title"
             className="text-brand-navy text-center text-[clamp(1.5rem,3.6vw,2.4rem)] leading-[1.15] font-bold tracking-[-0.03em] uppercase italic"

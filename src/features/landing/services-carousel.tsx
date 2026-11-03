@@ -220,7 +220,7 @@ export function ServicesCarouselSection() {
         {active.number}
       </p>
 
-      <div className="relative mx-auto flex min-h-[calc(100vh-5rem)] w-full max-w-[1360px] flex-col justify-start px-5 pt-10 pb-12 md:px-8 md:pt-12">
+      <div className="site-shell relative flex min-h-[calc(100svh-var(--site-header-h))] w-full flex-col justify-start pt-10 pb-12 md:pt-12">
         <div className="relative text-center">
           <h2
             id="practice-areas-title"

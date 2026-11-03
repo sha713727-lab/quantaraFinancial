@@ -15,12 +15,12 @@ export function ServicesIndex() {
 
       <section
         aria-labelledby="services-index-title"
-        className="hero-cream relative pb-16 sm:pb-20"
+        className="hero-cream site-section relative"
       >
         <h2 id="services-index-title" className="sr-only">
           Practice areas
         </h2>
-        <ul className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-4 px-5 sm:grid-cols-2 sm:gap-5 md:px-8 lg:grid-cols-3">
+        <ul className="site-content grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {services.map((service) => (
             <li key={service.slug}>
               <Link

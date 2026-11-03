@@ -73,7 +73,7 @@ function QuantaraMark({
 export function SiteHeader() {
   return (
     <header className="border-brand-cream/10 bg-brand-navy sticky top-0 z-40 border-b font-sans">
-      <div className="relative mx-auto flex min-h-16 w-full max-w-[1360px] items-center justify-between px-4 md:px-8 lg:min-h-20">
+      <div className="site-shell relative flex min-h-16 w-full items-center justify-between lg:min-h-20">
         <QuantaraMark tone="dark" priority />
         <HeaderDesktopNav />
         <div className="flex items-center gap-3">
@@ -94,7 +94,7 @@ export function SiteFooter() {
   return (
     <footer className="stage-dark text-brand-cream relative overflow-hidden">
       <span className="stage-grain" aria-hidden="true" />
-      <div className="relative mx-auto grid w-full max-w-[1360px] gap-10 px-5 py-16 sm:gap-12 md:grid-cols-2 md:px-8 lg:grid-cols-[1.35fr_0.75fr_1fr_0.75fr]">
+      <div className="site-shell site-section relative grid gap-10 sm:gap-12 md:grid-cols-2 lg:grid-cols-[1.35fr_0.75fr_1fr_0.75fr]">
         <div className="md:col-span-2 lg:col-span-1">
           <QuantaraMark tone="dark" />
           <p className="text-brand-cream/80 mt-6 max-w-md text-sm leading-7">
@@ -158,8 +158,8 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="border-brand-cream/10 relative border-t px-5 py-6 md:px-8">
-        <div className="text-brand-cream/70 mx-auto flex max-w-[1360px] flex-col gap-3 text-xs sm:flex-row sm:items-center sm:justify-between">
+      <div className="border-brand-cream/10 relative border-t py-6">
+        <div className="site-shell text-brand-cream/70 flex flex-col gap-3 text-xs sm:flex-row sm:items-center sm:justify-between">
           <p>
             &copy; {new Date().getFullYear()} Quantara Financial. All rights
             reserved.

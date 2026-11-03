@@ -14,7 +14,7 @@ export function ServiceDetailView({ service }: { readonly service: Service }) {
     <>
       <section className="hero-cream relative">
         <HeroGlowBackdrop />
-        <div className="relative z-10 mx-auto grid w-full max-w-[1200px] gap-10 px-5 pt-12 pb-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-14 lg:pt-16 lg:pb-20">
+        <div className="site-content relative z-10 grid gap-10 pt-12 pb-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-14 lg:pt-16 lg:pb-20">
           <div className="bg-brand-navy relative aspect-4/5 overflow-hidden rounded-[1.75rem] sm:aspect-4/3 lg:aspect-4/5">
             <Image
               src={service.image}
@@ -76,7 +76,7 @@ export function ServiceDetailView({ service }: { readonly service: Service }) {
           aria-labelledby="service-offerings-title"
           className="hero-cream pb-8 sm:pb-12"
         >
-          <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
+          <div className="site-content">
             <h2
               id="service-offerings-title"
               className="text-brand-navy text-center text-[clamp(1.5rem,3.6vw,2.4rem)] leading-[1.15] font-bold tracking-[-0.03em] uppercase italic"
@@ -125,9 +125,9 @@ export function ServiceDetailView({ service }: { readonly service: Service }) {
 
       <section
         aria-labelledby="related-services-title"
-        className="hero-cream py-16 sm:py-20"
+        className="hero-cream site-section"
       >
-        <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
+        <div className="site-content">
           <h2
             id="related-services-title"
             className="text-brand-navy text-center text-[clamp(1.5rem,3.6vw,2.4rem)] leading-[1.15] font-bold tracking-[-0.03em] uppercase italic"

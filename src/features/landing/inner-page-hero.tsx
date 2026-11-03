@@ -28,7 +28,7 @@ export function InnerPageHero({
     <section className="hero-cream relative">
       <HeroGlowBackdrop />
 
-      <div className="relative z-10 mx-auto w-full max-w-5xl px-5 pt-16 pb-12 text-center sm:px-8 sm:pt-20 sm:pb-16">
+      <div className="site-gutter relative z-10 mx-auto w-full max-w-5xl pt-[calc(var(--site-header-h)+2rem)] pb-12 text-center sm:pb-16">
         <h1 className="text-brand-navy text-[clamp(1.65rem,4.2vw,3rem)] leading-[1.12] font-semibold tracking-[-0.03em] uppercase italic">
           {title}
         </h1>

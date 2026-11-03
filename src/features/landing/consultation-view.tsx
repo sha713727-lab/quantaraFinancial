@@ -33,9 +33,9 @@ export function ConsultationView({
 
       <section
         aria-labelledby="consultation-steps-title"
-        className="hero-cream pb-8 sm:pb-12"
+        className="hero-cream site-section"
       >
-        <div className="mx-auto w-full max-w-3xl px-5 md:px-8">
+        <div className="site-prose">
           <h2
             id="consultation-steps-title"
             className="text-brand-navy text-center text-[clamp(1.5rem,3.6vw,2.4rem)] leading-[1.15] font-bold tracking-[-0.03em] uppercase italic"
@@ -59,9 +59,9 @@ export function ConsultationView({
 
       <section
         aria-labelledby="consultation-contact-title"
-        className="hero-cream pb-8"
+        className="hero-cream site-section"
       >
-        <div className="mx-auto w-full max-w-3xl px-5 pb-4 md:px-8">
+        <div className="site-prose">
           <h2
             id="consultation-contact-title"
             className="text-brand-navy text-center text-[clamp(1.5rem,3.6vw,2.4rem)] leading-[1.15] font-bold tracking-[-0.03em] uppercase italic"

@@ -43,7 +43,7 @@ export function CpaOutsourcingDetails() {
   }, [disclosures.scope.id]);
 
   return (
-    <div className="mx-auto mt-12 w-full max-w-[min(100%-3rem,1320px)] px-[clamp(1.25rem,3vw,4rem)]">
+    <div className="site-shell mt-12">
       <details
         ref={scopeRef}
         id={disclosures.scope.id}

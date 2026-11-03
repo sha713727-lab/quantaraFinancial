@@ -40,9 +40,9 @@ export function ContactSection({
     <section
       id="contact"
       aria-labelledby="contact-title"
-      className="hero-cream relative scroll-mt-24 py-16 font-sans sm:py-20"
+      className="hero-cream site-section relative scroll-mt-24 font-sans"
     >
-      <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
+      <div className="site-content">
         <Reveal className="bg-brand-navy text-brand-cream relative rounded-[1.75rem] px-6 py-8 sm:px-10 sm:py-10 lg:px-12 lg:py-12">
           <div
             className="pointer-events-none absolute inset-0 rounded-[1.75rem] bg-[radial-gradient(circle_at_18%_20%,rgb(247_240_223/0.08),transparent_42%)]"

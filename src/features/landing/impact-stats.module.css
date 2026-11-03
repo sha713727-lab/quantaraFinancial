@@ -4,7 +4,7 @@
   font-family: var(--font-ibm-plex-sans), sans-serif;
   background-color: var(--color-brand-white);
   color: var(--color-brand-navy);
-  padding: 48px 0;
+  padding: var(--site-section-y) 0;
   box-sizing: border-box;
 }
 
@@ -13,7 +13,7 @@
   width: 100%;
   max-width: 1200px;
   margin-inline: auto;
-  padding-inline: 20px;
+  padding-inline: var(--site-gutter);
 }
 
 .headingWrap {
@@ -171,11 +171,11 @@
 
 @media (min-width: 768px) {
   .section {
-    padding: 64px 0 72px;
+    padding: var(--site-section-y) 0;
   }
 
   .container {
-    padding-inline: 32px;
+    padding-inline: var(--site-gutter);
   }
 
   .heading {
@@ -220,7 +220,7 @@
 
 @media (min-width: 1024px) {
   .section {
-    padding: 80px 0 88px;
+    padding: var(--site-section-y-lg) 0;
   }
 
   .heading {

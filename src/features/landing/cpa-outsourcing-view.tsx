@@ -17,9 +17,9 @@ import { LandingScrollSync } from "@/features/landing/scroll-sync.client";
 
 const consultationUrl = consultationHref(cpaConsultationQuery);
 
-const widePad = "px-[clamp(1.25rem,3vw,4rem)]";
-const sectionY = "py-[clamp(4.5rem,10vw,8.5rem)]";
-const editorial = `mx-auto w-full max-w-[1100px] ${widePad}`;
+const editorial = "site-gutter mx-auto w-full max-w-[1100px]";
+const sectionY = "site-section";
+const sectionYLg = "site-section-lg";
 
 export function CpaOutsourcingView() {
   const page = cpaOutsourcingPage;
@@ -77,7 +77,7 @@ export function CpaOutsourcingView() {
               right={page.portraitPairA.right}
             />
           </CpaReveal>
-          <div className="mt-10 min-[768px]:mt-16">
+          <div className="mt-12 sm:mt-16">
             <CpaReveal y={36}>
               <CpaPortraitPair
                 left={page.portraitPairB.left}
@@ -99,7 +99,7 @@ export function CpaOutsourcingView() {
               {page.process.heading}
             </h2>
           </CpaReveal>
-          <ol className="mt-12 grid grid-cols-1 gap-x-[clamp(2rem,5vw,4.5rem)] gap-y-[clamp(2.75rem,5vw,4.5rem)] min-[768px]:grid-cols-2 min-[1024px]:grid-cols-3">
+          <ol className="mt-10 grid grid-cols-1 gap-x-10 gap-y-12 min-[768px]:grid-cols-2 min-[1024px]:grid-cols-3 sm:mt-12">
             {page.process.steps.map((step, index) => (
               <li key={step.number}>
                 <CpaReveal delay={100 * index} y={32}>
@@ -152,9 +152,9 @@ export function CpaOutsourcingView() {
 
         <section
           aria-labelledby="cpa-cream-title"
-          className="bg-brand-cream-soft border-brand-navy/10 text-brand-navy border-y py-[clamp(5rem,9vw,9.375rem)]"
+          className={`bg-brand-cream-soft border-brand-navy/10 text-brand-navy border-y ${sectionYLg}`}
         >
-          <CpaReveal className="mx-auto mb-[clamp(2.625rem,6vw,5.5rem)] w-full max-w-[min(100%-3rem,1320px)] px-[clamp(1.25rem,3vw,4rem)]">
+          <CpaReveal className="site-shell mb-10 sm:mb-14">
             <p className="text-brand-accent text-[0.65rem] font-bold tracking-[0.22em] uppercase">
               {page.creamBand.eyebrow}
             </p>
@@ -179,28 +179,10 @@ export function CpaOutsourcingView() {
 
         <section
           aria-labelledby="cpa-closing-title"
-          className="bg-brand-navy text-brand-cream relative overflow-hidden py-[clamp(4.5rem,10vw,8.5rem)]"
+          className={`bg-brand-navy text-brand-cream relative overflow-hidden ${sectionY}`}
         >
           <div
-            className="pointer-events-none absolute inset-0 opacity-30"
-            aria-hidden="true"
-            style={{
-              backgroundImage:
-                "linear-gradient(to right, rgba(110,145,185,0.25) 1px, transparent 1px), linear-gradient(to bottom, rgba(110,145,185,0.25) 1px, transparent 1px)",
-              backgroundSize: "48px 48px",
-            }}
-          />
-          <div
-            className="pointer-events-none absolute top-[58%] left-1/2 size-[min(70vw,28rem)] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
-            aria-hidden="true"
-            style={{
-              background:
-                "radial-gradient(circle, rgba(110,145,185,0.45) 0%, transparent 70%)",
-            }}
-          />
-
-          <div
-            className={`relative z-10 ${editorial} grid grid-cols-1 gap-10 min-[900px]:grid-cols-2 min-[900px]:items-end`}
+            className={`${editorial} grid grid-cols-1 gap-10 min-[900px]:grid-cols-2 min-[900px]:items-end`}
           >
             <CpaReveal>
               <p className="text-brand-accent text-[0.65rem] font-bold tracking-[0.22em] uppercase">
@@ -224,16 +206,6 @@ export function CpaOutsourcingView() {
                 {page.closingCta.buttonLabel}
               </Link>
             </CpaReveal>
-          </div>
-
-          <div
-            className="pointer-events-none relative mx-auto mt-16 h-40 w-full max-w-md"
-            aria-hidden="true"
-          >
-            <div className="border-brand-accent/30 absolute top-4 left-1/2 size-28 -translate-x-1/2 rounded-full border" />
-            <div className="border-brand-accent/20 absolute top-10 left-[42%] size-16 rounded-full border" />
-            <div className="bg-brand-deep/70 absolute bottom-2 left-[28%] h-16 w-40 rounded-[4px]" />
-            <div className="bg-brand-deep/50 absolute right-[24%] bottom-6 h-12 w-28 rounded-[4px]" />
           </div>
         </section>
       </CpaScrollRoot>

@@ -14,12 +14,12 @@ export function BlogsIndex() {
 
       <section
         aria-labelledby="blogs-index-title"
-        className="hero-cream relative pb-16 sm:pb-20"
+        className="hero-cream site-section relative"
       >
         <h2 id="blogs-index-title" className="sr-only">
           Articles
         </h2>
-        <ul className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-4 px-5 md:grid-cols-3 md:gap-5 md:px-8">
+        <ul className="site-content grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
           {blogArticles.map((article) => (
             <li key={article.slug}>
               <Link

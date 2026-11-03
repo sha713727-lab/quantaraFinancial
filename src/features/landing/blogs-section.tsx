@@ -9,9 +9,9 @@ export function BlogsSection() {
     <section
       id="blogs"
       aria-labelledby="blogs-title"
-      className="hero-cream relative scroll-mt-24 py-16 font-sans sm:py-20"
+      className="hero-cream site-section relative scroll-mt-24 font-sans"
     >
-      <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
+      <div className="site-content">
         <Reveal>
           <h2
             id="blogs-title"

@@ -135,9 +135,9 @@ export function ComparisonSection() {
     <section
       id="comparison"
       aria-labelledby="comparison-title"
-      className="hero-cream relative overflow-hidden py-16 font-sans sm:py-20"
+      className="hero-cream site-section relative overflow-hidden font-sans"
     >
-      <div className="mx-auto w-full max-w-[1080px] px-5 md:px-8">
+      <div className="site-gutter mx-auto w-full max-w-[1080px]">
         <Reveal className="text-center">
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             <p className="text-brand-muted text-[0.7rem] font-semibold tracking-[0.18em] uppercase italic">

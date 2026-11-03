@@ -16,7 +16,7 @@ export function HeroSection() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 mx-auto flex min-h-[calc(100svh-5rem)] w-full max-w-7xl flex-col items-center justify-start gap-4 px-5 pt-16 pb-10 text-center sm:px-8 sm:pt-20 sm:pb-12 lg:pt-24">
+      <div className="site-gutter relative z-10 mx-auto flex min-h-[calc(100svh-var(--site-header-h))] w-full max-w-7xl flex-col items-center justify-start gap-4 pt-[calc(var(--site-header-h)+2rem)] pb-10 text-center sm:pb-12">
         <div className="relative z-20 mx-auto w-full max-w-5xl">
           <h1 className="text-brand-navy mx-auto max-w-full text-[clamp(0.78rem,calc((100vw-2.75rem)/17.2),2.85rem)] leading-[1.12] font-semibold tracking-[-0.03em] uppercase italic">
             <span className="block min-[360px]:whitespace-nowrap">

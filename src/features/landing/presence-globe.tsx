@@ -20,7 +20,7 @@ export function PresenceGlobeSection() {
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto grid w-full max-w-[1360px] items-center gap-8 px-5 py-16 md:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-6 lg:py-20">
+      <div className="site-shell site-section relative grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-6">
         <div className="relative z-10">
           <Reveal>
             <h2
