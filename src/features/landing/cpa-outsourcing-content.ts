@@ -66,17 +66,17 @@ export const cpaOutsourcingPage = {
   },
   portraitPairA: {
     left: {
-      title: "Bookkeeping",
+      title: "Monthly bookkeeping",
       caption: "TRANSACTIONS & RECORDS",
-      meaning: "Support aligned with the firm's instructions",
+      meaning: "Transaction processing, ledgers and account maintenance",
       imageSrc: "/cpa-outsourcing/accounting-outsourcing.jpg",
       glowX: 68,
       glowY: 38,
     },
     right: {
-      title: "Reconciliation",
+      title: "Reconciliations",
       caption: "BANK & CARD ACCOUNTS",
-      meaning: "Account matching and documented open items",
+      meaning: "Bank, card, control accounts and issue schedules",
       imageSrc: "/cpa-outsourcing/audit-assurance.jpg",
       glowX: 74,
       glowY: 42,
@@ -122,17 +122,17 @@ export const cpaOutsourcingPage = {
   },
   portraitPairB: {
     left: {
-      title: "Year-end preparation",
+      title: "Year-end cleanup",
       caption: "ORGANISED RECORDS",
-      meaning: "Reconciled schedules and supporting information",
+      meaning: "Supporting schedules, corrections and open issues",
       imageSrc: "/cpa-outsourcing/corporate-advisory.jpg",
       glowX: 78,
       glowY: 34,
     },
     right: {
-      title: "Reporting",
+      title: "Month-end reporting",
       caption: "MONTH-END SUPPORT",
-      meaning: "Agreed reports and schedules for review",
+      meaning: "Trial balance, P&L and balance sheet for review",
       imageSrc: "/cpa-outsourcing/taxation.jpg",
       glowX: 62,
       glowY: 44,

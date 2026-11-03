@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useId, useState } from "react";
 
 import { sitePaths } from "@/constants/site-paths";
+import { scrollToTopInstant } from "@/features/landing/route-scroll-reset.client";
 
 const navLinks = [
   { href: sitePaths.home, label: "Home" },
@@ -14,6 +15,12 @@ const navLinks = [
   { href: sitePaths.about, label: "About" },
   { href: sitePaths.contact, label: "Contact" },
 ] as const;
+
+function scrollHomeIfCurrent(pathname: string, href: string): void {
+  if (href === sitePaths.home && pathname === sitePaths.home) {
+    scrollToTopInstant();
+  }
+}
 
 export const headerAdvisorClassName =
   "inline-flex items-center justify-center rounded-full bg-brand-cream font-sans text-sm font-semibold text-brand-navy transition-colors hover:bg-brand-cream-soft focus-visible:ring-2 focus-visible:ring-brand-cream focus-visible:ring-offset-4 focus-visible:ring-offset-brand-navy focus-visible:outline-none";
@@ -50,6 +57,7 @@ export function HeaderDesktopNav() {
                 href={link.href}
                 className={active ? navLinkActiveClassName : navLinkClassName}
                 aria-current={active ? "page" : undefined}
+                onClick={() => scrollHomeIfCurrent(pathname, link.href)}
               >
                 {link.label}
               </Link>
@@ -129,7 +137,10 @@ export function HeaderMobileNav() {
                         active ? navLinkActiveClassName : navLinkClassName
                       } border-brand-cream/8 hover:bg-brand-cream/8 flex min-h-12 items-center border-b px-1`}
                       aria-current={active ? "page" : undefined}
-                      onClick={() => setMenuPath(null)}
+                      onClick={() => {
+                        scrollHomeIfCurrent(pathname, link.href);
+                        setMenuPath(null);
+                      }}
                     >
                       {link.label}
                     </Link>

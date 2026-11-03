@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { parentFirmName } from "@/constants/parent-firm";
 import { servicePath, sitePaths } from "@/constants/site-paths";
+import { BrandHomeLink } from "@/features/landing/brand-home-link.client";
 import { ContactChannels } from "@/features/landing/contact-channels";
 import { services } from "@/features/landing/content";
 import {
@@ -48,8 +49,7 @@ function QuantaraMark({
   const isCream = tone === "cream";
 
   return (
-    <Link
-      href={sitePaths.home}
+    <BrandHomeLink
       className={`inline-flex shrink-0 items-center outline-none ${
         isCream
           ? "focus-visible:ring-brand-navy focus-visible:ring-offset-brand-white focus-visible:ring-2 focus-visible:ring-offset-4"
@@ -66,7 +66,7 @@ function QuantaraMark({
         unoptimized
         priority={priority}
       />
-    </Link>
+    </BrandHomeLink>
   );
 }
 
