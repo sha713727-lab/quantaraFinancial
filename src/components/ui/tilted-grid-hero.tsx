@@ -3,7 +3,9 @@
 import * as React from "react";
 
 import { requestScrollSync } from "@/features/landing/scroll-sync.client";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
+import { useSlowConnection } from "@/hooks/use-slow-connection";
 import { cn } from "@/lib/utils";
 
 /* ── the curved row ──────────────────────────────────────────────
@@ -13,9 +15,11 @@ import { cn } from "@/lib/utils";
  * ─────────────────────────────────────────────────────────────── */
 
 const SLICES = 16;
+const SLICES_MOBILE = 8;
 const CAMERA = 1.6;
 const MAX_WIDTH = 55;
 const RESIZE_EPSILON_PX = 2;
+const LITE_IMAGE_COUNT = 5;
 
 function arc(bend: number) {
   return (CAMERA - 1 + Math.cos(bend)) / (2 * CAMERA * Math.sin(bend));
@@ -41,7 +45,10 @@ function measure(
   const unit = deg(h / radius);
   const pitch = (aspect + gap / 100) * unit;
   const limit = deg(bend) + (aspect * unit) / 2;
-  const columns = Math.min(60, Math.max(2, Math.ceil((2 * limit) / pitch)));
+  const columns = Math.min(
+    width < 768 ? 18 : 60,
+    Math.max(2, Math.ceil((2 * limit) / pitch)),
+  );
   const round = (n: number) => +n.toFixed(4);
   const sweep = round((columns * pitch) / 2);
   return {
@@ -50,6 +57,60 @@ function measure(
     unit: round(unit),
     limit: round(Math.min(sweep, limit)),
   };
+}
+
+function LiteFanStrip({
+  images,
+  className,
+  fade,
+}: {
+  readonly images: readonly TiltedGridImage[];
+  readonly className?: string | undefined;
+  readonly fade: number;
+}) {
+  const visible = images.slice(0, LITE_IMAGE_COUNT);
+  const fadeWidth = `${Math.max(fade, 0)}%`;
+
+  return (
+    <div className={cn("relative overflow-hidden", className)}>
+      <div className="flex h-full items-stretch justify-center gap-2 px-1">
+        {visible.map((image) => (
+          <div
+            key={image.src}
+            className="bg-muted relative h-full min-w-0 flex-1 overflow-hidden rounded-lg"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element -- lightweight mobile strip */}
+            <img
+              src={image.src}
+              alt={image.alt ?? ""}
+              loading="lazy"
+              decoding="async"
+              draggable={false}
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </div>
+        ))}
+      </div>
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 left-0 z-10"
+        style={{
+          width: fadeWidth,
+          background:
+            "linear-gradient(90deg, var(--color-brand-cream-soft, #ffffff) 0%, transparent 100%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 right-0 z-10"
+        style={{
+          width: fadeWidth,
+          background:
+            "linear-gradient(270deg, var(--color-brand-cream-soft, #ffffff) 0%, transparent 100%)",
+        }}
+      />
+    </div>
+  );
 }
 
 type Layout = ReturnType<typeof measure>;
@@ -109,6 +170,13 @@ export function TiltedGridHero({
   const columnsRef = React.useRef(0);
 
   const reduceMotion = usePrefersReducedMotion();
+  const isMobile = useMediaQuery("(max-width: 767px)");
+  const isSlow = useSlowConnection();
+  // Prefer lite until we know the viewport is desktop and the network is fine.
+  const useLite =
+    reduceMotion === true || isMobile !== false || isSlow === true;
+  const sliceCount =
+    isMobile !== false || isSlow === true ? SLICES_MOBILE : SLICES;
   const id = React.useId().replace(/[^a-zA-Z0-9]/g, "");
   const orbit = `tgh-o-${id}`;
   const tileClass = `tgh-t-${id}`;
@@ -186,13 +254,6 @@ export function TiltedGridHero({
     return () => observer.disconnect();
   }, []);
 
-  React.useEffect(() => {
-    for (const image of images) {
-      const preload = new window.Image();
-      preload.src = image.src;
-    }
-  }, [images]);
-
   const { columns, sweep, unit, limit } = layout ?? {
     columns: 0,
     sweep: 0,
@@ -248,7 +309,7 @@ export function TiltedGridHero({
     );
   }, [layout, columns, orbit, turn, sweep, hide]);
 
-  const share = aspectRatio / SLICES;
+  const share = aspectRatio / sliceCount;
   const fadeWidth = `${Math.max(fade, 0)}%`;
   const imageCount = Math.max(images.length, 1);
   const ready = Boolean(layout && columns > 0);
@@ -285,6 +346,15 @@ export function TiltedGridHero({
     },
     [],
   );
+
+  if (useLite) {
+    return (
+      <>
+        <LiteFanStrip images={images} className={className} fade={fade} />
+        {children}
+      </>
+    );
+  }
 
   return (
     <div
@@ -329,18 +399,18 @@ export function TiltedGridHero({
                   }}
                   onAnimationIteration={onTileIteration}
                 >
-                  {Array.from({ length: SLICES }, (_, k) => (
+                  {Array.from({ length: sliceCount }, (_, k) => (
                     <div
                       key={k}
                       className={cn(
                         "bg-muted absolute top-0 overflow-hidden",
                         k === 0 && "rounded-l-lg",
-                        k === SLICES - 1 && "rounded-r-lg",
+                        k === sliceCount - 1 && "rounded-r-lg",
                       )}
                       style={{
                         left: u((aspectRatio - share) / 2),
                         width:
-                          k === SLICES - 1
+                          k === sliceCount - 1
                             ? u(share)
                             : `calc(${u(share)} + 1px)`,
                         height: u(1),
@@ -355,6 +425,8 @@ export function TiltedGridHero({
                         <img
                           src={img.src}
                           alt={k === 0 ? (img.alt ?? "") : ""}
+                          loading="lazy"
+                          decoding="async"
                           draggable={false}
                           className="absolute top-0 max-w-none object-cover"
                           style={{

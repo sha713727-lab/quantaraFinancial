@@ -13,6 +13,7 @@ import {
   CpaReveal,
   CpaScrollRoot,
 } from "@/features/landing/cpa-outsourcing-scroll.client";
+import { LandingScrollSync } from "@/features/landing/scroll-sync.client";
 
 const consultationUrl = consultationHref(cpaConsultationQuery);
 
@@ -25,6 +26,7 @@ export function CpaOutsourcingView() {
 
   return (
     <div className="hero-cream text-brand-navy">
+      <LandingScrollSync />
       <CpaHeroZoom />
 
       <CpaScrollRoot>

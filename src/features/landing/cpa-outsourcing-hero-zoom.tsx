@@ -8,130 +8,101 @@ import { CpaAbstractArtwork } from "@/features/landing/cpa-outsourcing-artwork";
 import { cpaOutsourcingPage } from "@/features/landing/cpa-outsourcing-content";
 import { requestScrollSync } from "@/features/landing/scroll-sync.client";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
+import { useSlowConnection } from "@/hooks/use-slow-connection";
 
+/**
+ * Desktop: CSS sticky stage inside a tall track; GSAP only scrubs text/media.
+ * Mobile: normal flow (Tailwind max-md), no GSAP.
+ * No GSAP pin / no layout remount — safe for mid-page refresh + scroll-up.
+ */
 export function CpaHeroZoom() {
   const page = cpaOutsourcingPage;
   const sectionRef = useRef<HTMLElement>(null);
-  const pinRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
-  const mediaSlotRef = useRef<HTMLDivElement>(null);
   const mediaRef = useRef<HTMLDivElement>(null);
   const reduceMotion = usePrefersReducedMotion();
-
-  // Animated pin layout unless reduced motion is confirmed.
-  const isStatic = reduceMotion === true;
+  const isSlow = useSlowConnection();
 
   useLayoutEffect(() => {
-    if (reduceMotion === true) {
+    if (reduceMotion !== false || isSlow === true) {
       return;
     }
 
     const section = sectionRef.current;
-    const pin = pinRef.current;
     const text = textRef.current;
-    const slot = mediaSlotRef.current;
     const media = mediaRef.current;
 
-    if (!section || !pin || !text || !slot || !media) {
+    if (!section || !text || !media) {
+      return;
+    }
+
+    const desktop = window.matchMedia("(min-width: 768px)");
+    if (!desktop.matches) {
       return;
     }
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const placeMediaInSlot = () => {
-      const pinBox = pin.getBoundingClientRect();
-      const slotBox = slot.getBoundingClientRect();
-
-      gsap.set(media, {
-        top: slotBox.top - pinBox.top,
-        left: slotBox.left - pinBox.left,
-        width: slotBox.width,
-        height: Math.max(slotBox.height, 220),
-        borderRadius: 4,
-      });
-    };
-
-    placeMediaInSlot();
-    gsap.set(text, { opacity: 1, y: 0 });
-
-    // Wait for motion preference before pinning / scrubbing.
-    if (reduceMotion !== false) {
-      return;
-    }
-
     const context = gsap.context(() => {
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 0.45,
-            pin,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-            onRefresh: placeMediaInSlot,
-          },
-        })
-        .to(
+      const timeline = gsap.timeline({
+        defaults: { ease: "none" },
+        scrollTrigger: {
+          trigger: section,
+          // Progress 0: section top hits viewport top (sticky engages).
+          // Progress 1: section bottom hits viewport top (section fully left).
+          start: "top top",
+          end: "bottom top",
+          // Instant scrub so deep refresh / jump-scroll never leaves stale mid-values.
+          scrub: true,
+          invalidateOnRefresh: true,
+          anticipatePin: 0,
+        },
+      });
+
+      timeline
+        .fromTo(
           text,
-          {
-            opacity: 0,
-            y: -36,
-            ease: "none",
-            duration: 0.35,
-          },
+          { opacity: 1, y: 0 },
+          { opacity: 0, y: -36, duration: 0.4 },
           0,
         )
-        .to(
+        .fromTo(
           media,
+          { scale: 0.92, borderRadius: 4 },
           {
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
+            scale: 1,
             borderRadius: 0,
-            ease: "none",
             duration: 1,
+            transformOrigin: "50% 50%",
           },
-          0.05,
+          0,
         );
 
       requestScrollSync();
+      requestAnimationFrame(() => {
+        ScrollTrigger.refresh();
+      });
     }, section);
 
-    return () => {
-      context.revert();
+    const onBreakpoint = () => {
+      ScrollTrigger.refresh();
     };
-  }, [reduceMotion]);
+    desktop.addEventListener("change", onBreakpoint);
 
-  const artwork = (
-    <CpaAbstractArtwork
-      {...(isStatic ? {} : { className: "h-full min-h-full" })}
-      aspectClassName={
-        isStatic ? "aspect-[3/2]" : "h-full min-h-full !aspect-auto"
-      }
-      imageSrc={page.heroArt.imageSrc}
-      priority
-      panelTitle={page.heroArt.panelTitle}
-      panelLabel={page.heroArt.panelLabel}
-    />
-  );
+    return () => {
+      desktop.removeEventListener("change", onBreakpoint);
+      context.revert();
+      gsap.set([text, media], { clearProps: "all" });
+    };
+  }, [isSlow, reduceMotion]);
 
   return (
     <section
       ref={sectionRef}
-      className={isStatic ? "relative" : "relative h-[250svh]"}
+      className="relative md:h-[220svh]"
       aria-label="CPA outsourcing introduction"
     >
-      <div
-        ref={pinRef}
-        className={
-          isStatic
-            ? "relative px-[clamp(1.25rem,3vw,4rem)] pt-[clamp(7.5rem,14vw,10rem)] pb-[clamp(3rem,6vw,5rem)]"
-            : "relative flex h-svh flex-col overflow-hidden px-[clamp(1.25rem,3vw,4rem)] pt-[clamp(5.5rem,10vw,7.5rem)] pb-8"
-        }
-      >
+      <div className="relative flex flex-col px-[clamp(1.25rem,3vw,4rem)] pt-[clamp(7.5rem,14vw,10rem)] pb-[clamp(3rem,6vw,5rem)] md:sticky md:top-0 md:h-svh md:overflow-hidden md:pt-[clamp(5.5rem,10vw,7.5rem)] md:pb-8">
         <div
           ref={textRef}
           className="relative z-20 mx-auto w-full max-w-[1600px] shrink-0 text-center"
@@ -144,26 +115,21 @@ export function CpaHeroZoom() {
           </p>
         </div>
 
-        <div
-          ref={mediaSlotRef}
-          className={
-            isStatic
-              ? "relative z-10 mx-auto mt-16 w-full max-w-[1600px] overflow-hidden rounded-[4px] sm:mt-20"
-              : "pointer-events-none relative z-0 mx-auto mt-14 min-h-0 w-full max-w-[1600px] flex-1 sm:mt-20"
-          }
-          aria-hidden={!isStatic ? true : undefined}
-        >
-          {isStatic ? artwork : null}
-        </div>
-
-        {!isStatic ? (
+        <div className="relative z-10 mx-auto mt-16 min-h-0 w-full max-w-[1600px] flex-1 sm:mt-20 md:mt-14">
           <div
             ref={mediaRef}
-            className="pointer-events-none absolute z-10 overflow-hidden will-change-[width,height,top,left,border-radius]"
+            className="h-full overflow-hidden rounded-[4px] md:h-full"
           >
-            {artwork}
+            <CpaAbstractArtwork
+              className="h-full min-h-full"
+              aspectClassName="aspect-[3/2] md:h-full md:min-h-full md:!aspect-auto"
+              imageSrc={page.heroArt.imageSrc}
+              priority
+              panelTitle={page.heroArt.panelTitle}
+              panelLabel={page.heroArt.panelLabel}
+            />
           </div>
-        ) : null}
+        </div>
       </div>
     </section>
   );

@@ -130,27 +130,31 @@ export function CpaPortraitFigure({
   readonly className?: string;
 }) {
   return (
-    <figure className={cn("relative", className)}>
-      <CpaAbstractArtwork
-        aspectClassName="aspect-[2/3]"
-        imageSrc={imageSrc}
-        glowX={glowX}
-        glowY={glowY}
-        showCaptions={false}
-      />
-      <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 p-4 sm:p-5">
-        <div className="max-w-[18rem] rounded-[4px] bg-[rgba(7,20,38,0.78)] p-4 backdrop-blur-[2px] sm:p-5">
-          <p className="text-brand-cream text-lg font-semibold tracking-[-0.02em] sm:text-xl">
-            {title}
-          </p>
-          <p className="text-brand-accent mt-2 text-[0.62rem] font-bold tracking-[0.18em] uppercase">
-            {caption}
-          </p>
-          <p className="text-brand-cream/90 mt-3 text-xs leading-5 sm:text-sm sm:leading-6">
-            {meaning}
-          </p>
-        </div>
-      </figcaption>
+    <figure
+      className={cn("relative overflow-visible pb-14 sm:pb-16", className)}
+    >
+      <div className="relative">
+        <CpaAbstractArtwork
+          aspectClassName="aspect-[2/3]"
+          imageSrc={imageSrc}
+          glowX={glowX}
+          glowY={glowY}
+          showCaptions={false}
+        />
+        <figcaption className="pointer-events-none absolute bottom-0 left-0 z-10 w-[min(100%,18rem)] -translate-x-3 translate-y-[32%] sm:-translate-x-4">
+          <div className="rounded-[4px] bg-[rgba(7,20,38,0.78)] p-4 backdrop-blur-[2px] sm:p-5">
+            <p className="text-brand-cream text-lg font-semibold tracking-[-0.02em] sm:text-xl">
+              {title}
+            </p>
+            <p className="text-brand-accent mt-2 text-[0.62rem] font-bold tracking-[0.18em] uppercase">
+              {caption}
+            </p>
+            <p className="text-brand-cream/90 mt-3 text-xs leading-5 sm:text-sm sm:leading-6">
+              {meaning}
+            </p>
+          </div>
+        </figcaption>
+      </div>
     </figure>
   );
 }

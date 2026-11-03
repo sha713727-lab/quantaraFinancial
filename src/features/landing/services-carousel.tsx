@@ -10,7 +10,9 @@ import type { KeyboardEvent } from "react";
 import { servicePath } from "@/constants/site-paths";
 import { services } from "@/features/landing/content";
 import { requestScrollSync } from "@/features/landing/scroll-sync.client";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
+import { useSlowConnection } from "@/hooks/use-slow-connection";
 
 const SCROLL_PER_CARD = 480;
 const LAST_INDEX = services.length - 1;
@@ -36,7 +38,11 @@ export function ServicesCarouselSection() {
   const triggerRef = useRef<ScrollTrigger | null>(null);
   const activeIndexRef = useRef(0);
   const reduceMotion = usePrefersReducedMotion();
-  const isStatic = reduceMotion === true;
+  const isMobile = useMediaQuery("(max-width: 767px)");
+  const isSlow = useSlowConnection();
+  // Skip pinned 3D scrub on phones / slow networks — use snap strip instead.
+  const isStatic =
+    reduceMotion === true || isMobile !== false || isSlow === true;
   const [nearViewport, setNearViewport] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -62,7 +68,7 @@ export function ServicesCarouselSection() {
   }, []);
 
   useEffect(() => {
-    if (!nearViewport || reduceMotion !== false) {
+    if (!nearViewport || isStatic || reduceMotion !== false) {
       return;
     }
 
@@ -151,7 +157,7 @@ export function ServicesCarouselSection() {
       triggerRef.current = null;
       context.revert();
     };
-  }, [nearViewport, reduceMotion]);
+  }, [isStatic, nearViewport, reduceMotion]);
 
   useEffect(() => {
     activeIndexRef.current = activeIndex;

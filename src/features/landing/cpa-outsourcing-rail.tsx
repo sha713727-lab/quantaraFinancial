@@ -10,11 +10,14 @@ import {
   cpaConsultationQuery,
   type CpaRailCard,
 } from "@/features/landing/cpa-outsourcing-content";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
+import { useSlowConnection } from "@/hooks/use-slow-connection";
 import { cn } from "@/lib/utils";
 
 const consultationUrl = consultationHref(cpaConsultationQuery);
-const AUTO_SLIDE_MS = 4000;
+const AUTO_SLIDE_MS = 5500;
+const AUTO_SLIDE_MOBILE_MS = 8000;
 
 const heightClass: Record<CpaRailCard["height"], string> = {
   tall: "min-h-[460px] md:min-h-[552px]",
@@ -96,12 +99,15 @@ export function CpaCredentialsRail({
 }: {
   readonly cards: readonly CpaRailCard[];
 }) {
+  const rootRef = useRef<HTMLDivElement>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
-  const [paused, setPaused] = useState(false);
   const [userPaused, setUserPaused] = useState(false);
+  const [inView, setInView] = useState(false);
   const reduceMotion = usePrefersReducedMotion();
+  const isMobile = useMediaQuery("(max-width: 767px)");
+  const isSlow = useSlowConnection();
 
   const updateEdges = useCallback(() => {
     const el = scrollerRef.current;
@@ -145,31 +151,41 @@ export function CpaCredentialsRail({
   }, [updateEdges]);
 
   useEffect(() => {
-    if (reduceMotion === true || userPaused || paused) {
+    const root = rootRef.current;
+    if (!root) {
       return;
     }
 
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(Boolean(entry?.isIntersecting));
+      },
+      { threshold: 0.15 },
+    );
+
+    observer.observe(root);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    // Wait for motion preference; never autoplay on slow networks.
+    if (reduceMotion !== false || userPaused || !inView || isSlow === true) {
+      return;
+    }
+
+    const intervalMs = isMobile === true ? AUTO_SLIDE_MOBILE_MS : AUTO_SLIDE_MS;
+
     const timer = window.setInterval(() => {
       scrollByCard(1);
-    }, AUTO_SLIDE_MS);
+    }, intervalMs);
 
     return () => window.clearInterval(timer);
-  }, [paused, reduceMotion, scrollByCard, userPaused]);
+  }, [inView, isMobile, isSlow, reduceMotion, scrollByCard, userPaused]);
 
   return (
-    <div
-      className="relative"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocusCapture={() => setPaused(true)}
-      onBlurCapture={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-          setPaused(false);
-        }
-      }}
-    >
+    <div ref={rootRef} className="relative">
       <div className="mb-4 flex justify-end gap-2 px-[clamp(1.25rem,3vw,4rem)]">
-        {reduceMotion !== true ? (
+        {reduceMotion !== true && isSlow !== true ? (
           <button
             type="button"
             aria-pressed={userPaused}

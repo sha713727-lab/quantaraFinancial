@@ -10,7 +10,7 @@ export function CpaPortraitPair({
   readonly right: Figure;
 }) {
   return (
-    <div className="mx-auto grid w-full max-w-[1100px] gap-6 px-[clamp(1.25rem,3vw,4rem)] max-[767px]:grid-cols-1 max-[767px]:gap-6 min-[768px]:grid-cols-[1fr_0.8fr] min-[768px]:gap-[10%]">
+    <div className="mx-auto grid w-full max-w-[1100px] gap-6 overflow-visible px-[clamp(1.25rem,3vw,4rem)] max-[767px]:grid-cols-1 max-[767px]:gap-6 min-[768px]:grid-cols-[1fr_0.8fr] min-[768px]:gap-[10%]">
       <CpaPortraitFigure
         title={left.title}
         caption={left.caption}

@@ -4,6 +4,7 @@ import { IBM_Plex_Sans } from "next/font/google";
 import { googleAdsenseClient } from "@/constants/google-adsense-client";
 import { organizationJsonLd } from "@/constants/organization-json-ld";
 import { parentFirmName } from "@/constants/parent-firm";
+import { DeferredMarketing } from "@/lib/deferred-marketing";
 import { GoogleAds } from "@/lib/google-ads";
 import { GoogleAdsense } from "@/lib/google-adsense";
 import { JsonLd } from "@/lib/json-ld";
@@ -47,9 +48,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <meta name="google-adsense-account" content={googleAdsenseClient} />
       </head>
       <body className="flex min-h-full flex-col">
-        <GoogleAds />
-        <GoogleAdsense />
-        <MicrosoftClarity />
+        <DeferredMarketing>
+          <GoogleAds />
+          <GoogleAdsense />
+          <MicrosoftClarity />
+        </DeferredMarketing>
         <JsonLd data={organizationJsonLd} />
         {children}
       </body>

@@ -4,19 +4,112 @@ import type { NextConfig } from "next";
 
 const isDev = process.env.NODE_ENV !== "production";
 
-const googleScriptSrc =
-  "https://www.googletagmanager.com https://pagead2.googlesyndication.com https://partner.googleadservices.com https://www.googletagservices.com https://www.clarity.ms https://scripts.clarity.ms";
+const googleScriptSrc = [
+  "https://www.googletagmanager.com",
+  "https://www.googleadservices.com",
+  "https://www.google.com",
+  "https://www.gstatic.com",
+  "https://pagead2.googlesyndication.com",
+  "https://*.googlesyndication.com",
+  "https://partner.googleadservices.com",
+  "https://www.googletagservices.com",
+  "https://adservice.google.com",
+  "https://fundingchoicesmessages.google.com",
+  // Multi-level hosts: *.doubleclick.net does not match googleads.g.doubleclick.net
+  "https://googleads.g.doubleclick.net",
+  "https://*.g.doubleclick.net",
+  "https://ep1.adtrafficquality.google",
+  "https://ep2.adtrafficquality.google",
+  "https://*.adtrafficquality.google",
+  "https://www.clarity.ms",
+  "https://scripts.clarity.ms",
+].join(" ");
 
 const scriptSrc = isDev
   ? `script-src 'self' 'unsafe-inline' 'unsafe-eval' ${googleScriptSrc}`
   : `script-src 'self' 'unsafe-inline' ${googleScriptSrc}`;
 
-const googleConnectSrc =
-  "https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://www.google.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.clarity.ms https://*.clarity.ms https://c.bing.com";
+const googleConnectSrc = [
+  "https://www.google-analytics.com",
+  "https://*.google-analytics.com",
+  "https://analytics.google.com",
+  "https://*.analytics.google.com",
+  "https://www.googletagmanager.com",
+  "https://stats.g.doubleclick.net",
+  "https://ad.doubleclick.net",
+  "https://*.doubleclick.net",
+  "https://*.g.doubleclick.net",
+  "https://googleads.g.doubleclick.net",
+  "https://www.google.com",
+  "https://www.googleadservices.com",
+  "https://adservice.google.com",
+  "https://pagead2.googlesyndication.com",
+  "https://*.googlesyndication.com",
+  "https://ep1.adtrafficquality.google",
+  "https://ep2.adtrafficquality.google",
+  "https://*.adtrafficquality.google",
+  "https://www.gstatic.com",
+  "https://csi.gstatic.com",
+  "https://www.clarity.ms",
+  "https://*.clarity.ms",
+  "https://c.bing.com",
+].join(" ");
 
 const connectSrc = isDev
   ? `connect-src 'self' ws: wss: ${googleConnectSrc}`
   : `connect-src 'self' ${googleConnectSrc}`;
+
+// Country Google hosts (e.g. google.com.pk) are not covered by *.google.com.
+const googleCountryHosts = [
+  "https://www.google.com.pk",
+  "https://*.google.com.pk",
+  "https://www.google.ae",
+  "https://www.google.co.uk",
+  "https://www.google.co.in",
+  "https://www.google.com.sa",
+  "https://www.google.com.sg",
+  "https://www.google.com.au",
+  "https://www.google.ca",
+].join(" ");
+
+const googleImgSrc = [
+  "https://www.google-analytics.com",
+  "https://*.google-analytics.com",
+  "https://www.googletagmanager.com",
+  "https://www.google.com",
+  "https://*.google.com",
+  googleCountryHosts,
+  "https://www.googleadservices.com",
+  "https://www.gstatic.com",
+  "https://*.gstatic.com",
+  "https://googleads.g.doubleclick.net",
+  "https://*.g.doubleclick.net",
+  "https://ad.doubleclick.net",
+  "https://*.doubleclick.net",
+  "https://pagead2.googlesyndication.com",
+  "https://*.googlesyndication.com",
+  "https://www.googletagservices.com",
+  "https://ep1.adtrafficquality.google",
+  "https://ep2.adtrafficquality.google",
+  "https://*.adtrafficquality.google",
+  "https://c.clarity.ms",
+  "https://c.bing.com",
+].join(" ");
+
+const googleFrameSrc = [
+  "https://googleads.g.doubleclick.net",
+  "https://*.g.doubleclick.net",
+  "https://*.doubleclick.net",
+  "https://tpc.googlesyndication.com",
+  "https://*.googlesyndication.com",
+  "https://www.google.com",
+  "https://pagead2.googlesyndication.com",
+  "https://www.googletagmanager.com",
+  "https://fundingchoicesmessages.google.com",
+  "https://ep1.adtrafficquality.google",
+  "https://ep2.adtrafficquality.google",
+  "https://*.adtrafficquality.google",
+].join(" ");
 
 const securityHeaders = [
   {
@@ -45,10 +138,10 @@ const securityHeaders = [
       "default-src 'self'",
       scriptSrc,
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.googletagservices.com https://c.clarity.ms https://c.bing.com",
+      `img-src 'self' data: blob: ${googleImgSrc}`,
       "font-src 'self'",
       connectSrc,
-      "frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://pagead2.googlesyndication.com",
+      `frame-src ${googleFrameSrc}`,
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",

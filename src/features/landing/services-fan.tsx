@@ -58,9 +58,9 @@ export function ServicesFanSection() {
     <section
       id="services-overview"
       aria-labelledby="services-fan-title"
-      className="relative z-0 flex h-[calc(100vh-5rem)] min-h-[32rem] w-full flex-col overflow-hidden"
+      className="relative z-0 flex w-full flex-col overflow-hidden md:h-[calc(100vh-5rem)] md:min-h-[32rem]"
     >
-      <div className="relative flex h-full min-h-0 w-full flex-1 flex-col overflow-hidden px-5 pt-8 pb-6 md:px-8 md:pt-10 md:pb-8">
+      <div className="relative flex w-full flex-col overflow-hidden px-5 pt-6 pb-5 md:h-full md:min-h-0 md:flex-1 md:px-8 md:pt-10 md:pb-8">
         <Reveal className="relative z-20 mx-auto w-full max-w-5xl shrink-0 text-center">
           <h2
             id="services-fan-title"
@@ -81,7 +81,7 @@ export function ServicesFanSection() {
 
         <TiltedGridHero
           images={FAN_IMAGES}
-          className="relative mt-6 min-h-0 w-full flex-1"
+          className="relative mt-4 h-[12.5rem] w-full shrink-0 sm:h-[15rem] md:mt-6 md:h-auto md:min-h-0 md:flex-1"
           tileHeight={58}
           aspectRatio={3 / 4}
           axis={50}
