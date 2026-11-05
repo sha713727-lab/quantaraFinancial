@@ -1,1 +1,1 @@
-export const googleAdsId = "AW-18071223256";
+export const googleAdsId = "AW-18558611587";
