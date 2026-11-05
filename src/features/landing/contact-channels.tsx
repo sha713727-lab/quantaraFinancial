@@ -1,8 +1,8 @@
-import { Mail, Phone } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
 
 import {
   contactEmail,
-  contactPhone,
+  contactPhoneDisplay,
   phoneHref,
 } from "@/constants/contact-email";
 
@@ -31,9 +31,14 @@ export function ContactChannels({ tone }: { readonly tone: "cream" | "navy" }) {
         </a>
       </li>
       <li>
-        <a href={phoneHref(contactPhone)} className={linkClassName}>
-          <Phone className="size-4 shrink-0" aria-hidden="true" />
-          {contactPhone}
+        <a
+          href={phoneHref()}
+          className={linkClassName}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <MessageCircle className="size-4 shrink-0" aria-hidden="true" />
+          {contactPhoneDisplay}
         </a>
       </li>
     </ul>

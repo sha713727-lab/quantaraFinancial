@@ -6,8 +6,12 @@ if (configured === undefined || !configured.includes("@")) {
 
 export const contactEmail = configured;
 
-export const contactPhone = "+1 (877) 963-6280";
+export const contactPhone = "03214433514";
 
-export function phoneHref(phone: string): string {
-  return `tel:${phone.replaceAll(/[^\d+]/g, "")}`;
+export const contactPhoneDisplay = "03214433514 (WhatsApp only)";
+
+export const contactPhoneE164 = "+923214433514";
+
+export function phoneHref(): string {
+  return `https://wa.me/${contactPhoneE164.replace("+", "")}`;
 }

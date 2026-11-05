@@ -10,7 +10,7 @@ export const privacySections: readonly LegalSection[] = [
     heading: "Who we are",
     paragraphs: [
       `Quantara Financial is a specialized strategic partner of ${parentFirmName}. This policy describes how we handle personal information when you use quantarafinancial.info or contact us.`,
-      "Questions about this policy can be sent to team@quantarafinancial.info or by telephone to +1 (877) 963-6280.",
+      "Questions about this policy can be sent to team@quantarafinancial.info or by WhatsApp to 03214433514 (WhatsApp only).",
     ],
   },
   {
@@ -86,7 +86,7 @@ export const termsSections: readonly LegalSection[] = [
   {
     heading: "Changes and contact",
     paragraphs: [
-      "We may update these terms by posting a new version on this page. Continued use of the site after a change means you accept the new terms. Contact team@quantarafinancial.info or +1 (877) 963-6280.",
+      "We may update these terms by posting a new version on this page. Continued use of the site after a change means you accept the new terms. Contact team@quantarafinancial.info or WhatsApp 03214433514 (WhatsApp only).",
     ],
   },
 ];

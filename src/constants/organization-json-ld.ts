@@ -1,4 +1,4 @@
-import { contactEmail, contactPhone } from "@/constants/contact-email";
+import { contactEmail, contactPhoneE164 } from "@/constants/contact-email";
 import { parentFirmName } from "@/constants/parent-firm";
 
 export const organizationJsonLd = {
@@ -7,7 +7,7 @@ export const organizationJsonLd = {
   name: "Quantara Financial",
   url: "https://quantarafinancial.info",
   email: contactEmail,
-  telephone: contactPhone,
+  telephone: contactPhoneE164,
   description: `Audit, taxation, ERP, corporate advisory, bookkeeping, accounting outsourcing, and risk advisory. A specialized strategic partner of ${parentFirmName}.`,
   parentOrganization: {
     "@type": "Organization",

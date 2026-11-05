@@ -7,7 +7,7 @@ import { resolveConsultationDefaults } from "@/schemas/contact-enquiry";
 export const metadata: Metadata = {
   title: "Book a Consultation",
   description:
-    "Consult Quantara Financial on audit, UAE UK and USA tax, advisory, bookkeeping, outsourcing, and Odoo ERP. Email or call to start.",
+    "Consult Quantara Financial on audit, UAE UK and USA tax, advisory, bookkeeping, outsourcing, and Odoo ERP. Email or WhatsApp to start.",
   alternates: {
     canonical: "/consultation",
   },
